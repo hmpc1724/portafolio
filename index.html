@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Miguel Cota — Frontend Developer</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <h1 class="logo">Miguel Cota</h1>
+        <button id="nav-toggle" class="nav-toggle" aria-label="Abrir menú">☰</button>
+        <nav id="main-nav" class="main-nav">
+          <a href="#inicio">Inicio</a>
+          <a href="#sobre">Sobre</a>
+          <a href="#proyectos">Proyectos</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="inicio" class="hero">
+        <div class="container">
+          <h2>Hola, soy MiguelCota </h2>
+          <p>Frontend Developer especializado en React, Vue y UX/UI. Creo experiencias web modernas, accesibles y de alto rendimiento.</p>
+          <a class="cta" href="#proyectos">Ver proyectos</a>
+        </div>
+      </section>
+
+      <section id="sobre" class="about container">
+        <h3>Sobre mí</h3>
+        <p>Tengo 5+ años de experiencia en desarrollo frontend. Domino JavaScript, React, Vue 3, TypeScript y CSS moderno. Me encanta resolver problemas complejos de UX y optimizar rendimiento. Cuando no codifico, contribuyo a open source y aprendo nuevas tecnologías.</p>
+        <h4>Habilidades clave:</h4>
+        <ul>
+          <li>React, Vue 3, Next.js</li>
+          <li>JavaScript/TypeScript</li>
+          <li>HTML5, CSS Grid, Flexbox</li>
+          <li>Git, GitHub, CI/CD</li>
+          <li>Testing (Jest, Vitest)</li>
+          <li>Accesibilidad (WCAG)</li>
+        </ul>
+      </section>
+
+      <section id="proyectos" class="projects container">
+        <h3>Proyectos</h3>
+        <div class="project-grid">
+          <article class="project">
+            <h4>Dashboard Analytics</h4>
+            <p>Aplicación React para visualizar métricas en tiempo real. Integración con APIs REST, gráficos interactivos con Chart.js y exportación de reportes.</p>
+            <div class="tags">React • TypeScript • Chart.js</div>
+            <a href="#">Ver demo</a> <a href="#">GitHub</a>
+          </article>
+          <article class="project">
+            <h4>E-commerce Stores</h4>
+            <p>Tienda online responsive con Vue 3 y Pinia. Carrito persistente, checkout seguro y panel admin para gestionar productos.</p>
+            <div class="tags">Vue 3 • Pinia • Stripe</div>
+            <a href="#">Ver demo</a> <a href="#">GitHub</a>
+          </article>
+          <article class="project">
+            <h4>Task Manager App</h4>
+            <p>Aplicación de tareas con sincronización en tiempo real. Local storage, drag-and-drop y colaboración básica entre usuarios.</p>
+            <div class="tags">JavaScript • Firebase • CSS</div>
+            <a href="#">Ver demo</a> <a href="#">GitHub</a>
+          </article>
+        </div>
+      </section>
+
+      <section id="contacto" class="contact container">
+        <h3>Contacto</h3>
+        <p>¿Interesado en colaborar? Contactame a través de redes o envía un mensaje.</p>
+        <div class="contact-links">
+          <a href="mailto:abrakza03@gmail.com">📧 Email</a>
+          <a href="https://hmpc1724.github.com" target="_blank">🐙 GitHub</a>
+          <a href="https://linkedin.com" target="_blank">💼 LinkedIn</a>
+          <a href="https://twitter.com" target="_blank">𝕏 Twitter</a>
+        </div>
+        <form id="contact-form">
+          <label>Nombre<input name="name" required></label>
+          <label>Email<input name="email" type="email" required></label>
+          <label>Mensaje<textarea name="message" required></textarea></label>
+          <button type="submit">Enviar mensaje</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer container">
+      <p>© 2026 Miguel Cota. Diseñado y construido con HTML/CSS/JS vanilla.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
