@@ -30,6 +30,7 @@ export default function Navbar() {
 
   const navLinks = [
     { name: 'Inicio', href: '/#inicio' },
+    { name: 'Agencia', href: '/agencia' },
     { name: 'Demos 3D', href: '/#demos-carrusel' },
     { name: 'Proyectos', href: '/#proyectos' },
     { name: 'Paquetes', href: '/#paquetes' },
