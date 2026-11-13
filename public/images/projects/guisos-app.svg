@@ -1,0 +1,43 @@
+<svg width="800" height="500" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-guisos" x1="0" y1="0" x2="800" y2="500" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#451a03"/>
+      <stop offset="60%" stop-color="#291307"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <filter id="glow-guisos" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="40" />
+    </filter>
+  </defs>
+  <rect width="800" height="500" rx="20" fill="url(#bg-guisos)"/>
+  <circle cx="240" cy="220" r="150" fill="#f97316" opacity="0.3" filter="url(#glow-guisos)"/>
+  <circle cx="600" cy="300" r="130" fill="#ef4444" opacity="0.2" filter="url(#glow-guisos)"/>
+
+  <g transform="translate(60, 50)">
+    <rect width="680" height="400" rx="16" fill="rgba(255, 255, 255, 0.04)" stroke="rgba(255, 255, 255, 0.16)" stroke-width="1.5"/>
+    <rect width="680" height="44" rx="16" fill="rgba(255, 255, 255, 0.06)"/>
+    <circle cx="28" cy="22" r="5" fill="#ef4444"/>
+    <circle cx="44" cy="22" r="5" fill="#f59e0b"/>
+    <circle cx="60" cy="22" r="5" fill="#10b981"/>
+    <text x="340" y="26" fill="rgba(255, 255, 255, 0.7)" font-family="sans-serif" font-size="11" text-anchor="middle">laolladebarro.menu/guisos-del-dia</text>
+
+    <!-- Dish Showcase -->
+    <rect x="40" y="70" width="280" height="295" rx="14" fill="rgba(255,255,255,0.06)" stroke="rgba(249, 115, 22, 0.4)"/>
+    <circle cx="180" cy="170" r="65" fill="#ea580c" opacity="0.3"/>
+    <text x="180" y="175" fill="#ffedd5" font-family="sans-serif" font-size="42" text-anchor="middle">🍲</text>
+    <text x="60" y="265" fill="#ffffff" font-family="sans-serif" font-size="16" font-weight="bold">Menú Corrido 6 Tiempos</text>
+    <text x="60" y="285" fill="#fdba74" font-family="sans-serif" font-size="11">Cazuelas Tradicionales • Guaymas, Son.</text>
+    <text x="60" y="325" fill="#22c55e" font-family="sans-serif" font-size="18" font-weight="bold">29 MXN / paquete</text>
+
+    <!-- Order Workflow -->
+    <rect x="340" y="70" width="300" height="295" rx="14" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)"/>
+    <text x="365" y="105" fill="#fed7aa" font-family="sans-serif" font-size="14" font-weight="bold">Comanda de Cocina & WhatsApp</text>
+    <rect x="365" y="125" width="250" height="1" fill="rgba(255,255,255,0.1)"/>
+    <text x="365" y="155" fill="#ffffff" font-family="sans-serif" font-size="12">✓ Menú rotativo diario autoadministrable</text>
+    <text x="365" y="185" fill="#ffffff" font-family="sans-serif" font-size="12">✓ Selector de nivel de picante y guarnición</text>
+    <text x="365" y="215" fill="#ffffff" font-family="sans-serif" font-size="12">✓ Ticket virtual automático sin comisiones</text>
+    <text x="365" y="245" fill="#ffffff" font-family="sans-serif" font-size="12">✓ Despacho en 1-clic a WhatsApp</text>
+    <rect x="365" y="280" width="250" height="35" rx="8" fill="rgba(34, 197, 94, 0.2)" stroke="#22c55e"/>
+    <text x="490" y="302" fill="#4ade80" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle">Pedido Directo a Cocina 📲</text>
+  </g>
+</svg>

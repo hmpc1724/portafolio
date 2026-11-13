@@ -1,0 +1,54 @@
+<svg width="800" height="500" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg8" x1="0" y1="0" x2="800" y2="500" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#111827"/>
+      <stop offset="60%" stop-color="#1e1b4b"/>
+      <stop offset="100%" stop-color="#312e81"/>
+    </linearGradient>
+    <filter id="glow8" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="40" />
+    </filter>
+  </defs>
+  <rect width="800" height="500" rx="20" fill="url(#bg8)"/>
+  <circle cx="240" cy="180" r="160" fill="#6366f1" opacity="0.3" filter="url(#glow8)"/>
+  <circle cx="560" cy="320" r="150" fill="#818cf8" opacity="0.25" filter="url(#glow8)"/>
+
+  <g transform="translate(60, 50)">
+    <rect width="680" height="400" rx="16" fill="rgba(255, 255, 255, 0.04)" stroke="rgba(255, 255, 255, 0.16)" stroke-width="1.5"/>
+    <rect width="680" height="44" rx="16" fill="rgba(255, 255, 255, 0.06)"/>
+    <circle cx="28" cy="22" r="5" fill="#ef4444"/>
+    <circle cx="44" cy="22" r="5" fill="#f59e0b"/>
+    <circle cx="60" cy="22" r="5" fill="#10b981"/>
+    <text x="340" y="26" fill="rgba(255, 255, 255, 0.7)" font-family="sans-serif" font-size="11" text-anchor="middle">cms.datasphere.io/database/inventory-matrix</text>
+
+    <!-- Table Header Toolbar -->
+    <rect x="35" y="70" width="610" height="45" rx="8" fill="rgba(255,255,255,0.06)"/>
+    <rect x="50" y="80" width="180" height="24" rx="6" fill="rgba(255,255,255,0.1)"/>
+    <text x="70" y="96" fill="#94a3b8" font-family="sans-serif" font-size="10">🔍 Buscar por SKU o título...</text>
+    <rect x="520" y="80" width="110" height="24" rx="6" fill="#6366f1"/>
+    <text x="575" y="96" fill="#ffffff" font-family="sans-serif" font-size="10" font-weight="bold" text-anchor="middle">+ Nuevo Registro</text>
+
+    <!-- Data Table Rows -->
+    <rect x="35" y="125" width="610" height="235" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+    <!-- Row 1 -->
+    <rect x="45" y="140" width="590" height="36" rx="6" fill="rgba(99, 102, 241, 0.12)"/>
+    <text x="65" y="162" fill="#ffffff" font-family="monospace" font-size="11">SKU-9901</text>
+    <text x="180" y="162" fill="#ffffff" font-family="sans-serif" font-size="11">Sensor IoT Lidar v4</text>
+    <text x="360" y="162" fill="#34d399" font-family="sans-serif" font-size="11">● Activo (480 uds)</text>
+    <text x="560" y="162" fill="#a5b4fc" font-family="sans-serif" font-size="11">Editar | Borrar</text>
+
+    <!-- Row 2 -->
+    <rect x="45" y="185" width="590" height="36" rx="6" fill="rgba(255,255,255,0.03)"/>
+    <text x="65" y="207" fill="#ffffff" font-family="monospace" font-size="11">SKU-9902</text>
+    <text x="180" y="207" fill="#ffffff" font-family="sans-serif" font-size="11">Controlador Óptico 100G</text>
+    <text x="360" y="207" fill="#34d399" font-family="sans-serif" font-size="11">● Activo (120 uds)</text>
+    <text x="560" y="207" fill="#a5b4fc" font-family="sans-serif" font-size="11">Editar | Borrar</text>
+
+    <!-- Row 3 -->
+    <rect x="45" y="230" width="590" height="36" rx="6" fill="rgba(255,255,255,0.03)"/>
+    <text x="65" y="252" fill="#ffffff" font-family="monospace" font-size="11">SKU-9903</text>
+    <text x="180" y="252" fill="#ffffff" font-family="sans-serif" font-size="11">Módulo Batería Estado Sólido</text>
+    <text x="360" y="252" fill="#f59e0b" font-family="sans-serif" font-size="11">▲ Bajo stock (14 uds)</text>
+    <text x="560" y="252" fill="#a5b4fc" font-family="sans-serif" font-size="11">Editar | Borrar</text>
+  </g>
+</svg>

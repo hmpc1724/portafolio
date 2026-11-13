@@ -1,0 +1,58 @@
+<svg width="800" height="500" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="800" y2="500" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#022c22"/>
+      <stop offset="60%" stop-color="#064e3b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <filter id="glow3" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="40" />
+    </filter>
+  </defs>
+  <rect width="800" height="500" rx="20" fill="url(#bg3)"/>
+  <circle cx="300" cy="200" r="160" fill="#10b981" opacity="0.25" filter="url(#glow3)"/>
+  <circle cx="580" cy="300" r="140" fill="#34d399" opacity="0.2" filter="url(#glow3)"/>
+
+  <g transform="translate(60, 50)">
+    <rect width="680" height="400" rx="16" fill="rgba(255, 255, 255, 0.04)" stroke="rgba(255, 255, 255, 0.16)" stroke-width="1.5"/>
+    <rect width="680" height="44" rx="16" fill="rgba(255, 255, 255, 0.06)"/>
+    <circle cx="28" cy="22" r="5" fill="#ef4444"/>
+    <circle cx="44" cy="22" r="5" fill="#f59e0b"/>
+    <circle cx="60" cy="22" r="5" fill="#10b981"/>
+    <text x="340" y="26" fill="rgba(255, 255, 255, 0.7)" font-family="sans-serif" font-size="11" text-anchor="middle">taskflow.app/board/sprint-q4</text>
+
+    <!-- 3 Kanban Columns -->
+    <!-- Col 1: To Do -->
+    <rect x="35" y="70" width="190" height="300" rx="12" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+    <text x="50" y="95" fill="#a7f3d0" font-family="sans-serif" font-size="12" font-weight="bold">POR HACER (3)</text>
+    <!-- Task card -->
+    <rect x="45" y="110" width="170" height="75" rx="8" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.12)"/>
+    <rect x="55" y="122" width="50" height="14" rx="4" fill="#3b82f6" opacity="0.8"/>
+    <text x="60" y="132" fill="#ffffff" font-family="sans-serif" font-size="9">DISEÑO</text>
+    <rect x="55" y="145" width="120" height="8" rx="4" fill="#ffffff" opacity="0.8"/>
+    <rect x="55" y="160" width="80" height="6" rx="3" fill="#94a3b8"/>
+
+    <rect x="45" y="195" width="170" height="65" rx="8" fill="rgba(255,255,255,0.08)"/>
+    <rect x="55" y="207" width="55" height="14" rx="4" fill="#8b5cf6" opacity="0.8"/>
+    <rect x="55" y="230" width="110" height="8" rx="4" fill="#ffffff" opacity="0.8"/>
+
+    <!-- Col 2: In Progress -->
+    <rect x="245" y="70" width="190" height="300" rx="12" fill="rgba(16, 185, 129, 0.08)" stroke="rgba(16, 185, 129, 0.3)"/>
+    <text x="260" y="95" fill="#34d399" font-family="sans-serif" font-size="12" font-weight="bold">EN PROGRESO (2)</text>
+    <!-- Dragging card with liquid glow -->
+    <rect x="255" y="110" width="170" height="90" rx="8" fill="rgba(16, 185, 129, 0.16)" stroke="#34d399" stroke-width="1.5"/>
+    <rect x="265" y="122" width="60" height="14" rx="4" fill="#10b981"/>
+    <text x="270" y="132" fill="#022c22" font-family="sans-serif" font-size="9" font-weight="bold">CRISTAL UI</text>
+    <text x="265" y="155" fill="#ffffff" font-family="sans-serif" font-size="11" font-weight="bold">Efectos Glassmorphism</text>
+    <rect x="265" y="172" width="110" height="6" rx="3" fill="#6ee7b7"/>
+
+    <!-- Col 3: Done -->
+    <rect x="455" y="70" width="190" height="300" rx="12" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+    <text x="470" y="95" fill="#94a3b8" font-family="sans-serif" font-size="12" font-weight="bold">COMPLETADO (8)</text>
+    <rect x="465" y="110" width="170" height="75" rx="8" fill="rgba(255,255,255,0.06)"/>
+    <circle cx="480" cy="128" r="8" fill="#10b981"/>
+    <path d="M 476 128 L 479 131 L 484 125" stroke="#ffffff" stroke-width="2" fill="none"/>
+    <rect x="495" y="124" width="90" height="8" rx="4" fill="#94a3b8"/>
+    <rect x="475" y="148" width="120" height="6" rx="3" fill="rgba(255,255,255,0.3)"/>
+  </g>
+</svg>

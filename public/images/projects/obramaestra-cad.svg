@@ -1,0 +1,44 @@
+<svg width="800" height="500" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-obra" x1="0" y1="0" x2="800" y2="500" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="60%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+    <filter id="glow-obra" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="40" />
+    </filter>
+  </defs>
+  <rect width="800" height="500" rx="20" fill="url(#bg-obra)"/>
+  <circle cx="240" cy="220" r="150" fill="#f59e0b" opacity="0.2" filter="url(#glow-obra)"/>
+  <circle cx="600" cy="300" r="130" fill="#38bdf8" opacity="0.2" filter="url(#glow-obra)"/>
+
+  <g transform="translate(60, 50)">
+    <rect width="680" height="400" rx="16" fill="rgba(255, 255, 255, 0.04)" stroke="rgba(255, 255, 255, 0.16)" stroke-width="1.5"/>
+    <rect width="680" height="44" rx="16" fill="rgba(255, 255, 255, 0.06)"/>
+    <circle cx="28" cy="22" r="5" fill="#ef4444"/>
+    <circle cx="44" cy="22" r="5" fill="#f59e0b"/>
+    <circle cx="60" cy="22" r="5" fill="#10b981"/>
+    <text x="340" y="26" fill="rgba(255, 255, 255, 0.7)" font-family="sans-serif" font-size="11" text-anchor="middle">obramaestra.app/calculadora/muros-escaleras</text>
+
+    <!-- Structural SVG Showcase -->
+    <rect x="40" y="70" width="280" height="295" rx="14" fill="rgba(255,255,255,0.06)" stroke="rgba(245, 158, 11, 0.4)"/>
+    <!-- Staircase SVG wireframe -->
+    <path d="M80 230 L110 230 L110 200 L140 200 L140 170 L170 170 L170 140 L200 140 L200 110 L230 110" stroke="#f59e0b" stroke-width="3" fill="none"/>
+    <path d="M80 250 L110 250 L110 220 L140 220 L140 190 L170 190 L170 160 L200 160 L200 130 L230 130" stroke="#38bdf8" stroke-width="1.5" fill="none" stroke-dasharray="2 2"/>
+    <text x="60" y="280" fill="#ffffff" font-family="sans-serif" font-size="16" font-weight="bold">+35 Modelos Escalera SVG</text>
+    <text x="60" y="300" fill="#fde68a" font-family="sans-serif" font-size="11">Cálculo Paramétrico según ACI 318</text>
+    <text x="60" y="330" fill="#38bdf8" font-family="sans-serif" font-size="14" font-weight="bold">Descuento exacto de vanos</text>
+
+    <!-- Materials Panel -->
+    <rect x="340" y="70" width="300" height="295" rx="14" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)"/>
+    <text x="365" y="105" fill="#fef3c7" font-family="sans-serif" font-size="14" font-weight="bold">Cuantificación de Materiales</text>
+    <rect x="365" y="125" width="250" height="1" fill="rgba(255,255,255,0.1)"/>
+    <text x="365" y="155" fill="#ffffff" font-family="sans-serif" font-size="12">✓ Bloques de concreto por m²</text>
+    <text x="365" y="185" fill="#ffffff" font-family="sans-serif" font-size="12">✓ Bultos de cemento, arena y grava</text>
+    <text x="365" y="215" fill="#ffffff" font-family="sans-serif" font-size="12">✓ Cimientos corridos y losas armadas</text>
+    <text x="365" y="245" fill="#ffffff" font-family="sans-serif" font-size="12">✓ Exportación de presupuesto editable</text>
+    <rect x="365" y="280" width="250" height="35" rx="8" fill="rgba(245, 158, 11, 0.2)" stroke="#f59e0b"/>
+    <text x="490" y="302" fill="#fbbf24" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle">Ahorro de hasta 18% en Desperdicio</text>
+  </g>
+</svg>

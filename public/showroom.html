@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Liquid Glass Agency — Showroom & Portafolio</title>
+  <style>
+    :root {
+      --bg: #050814;
+      --card: rgba(15, 23, 42, 0.78);
+      --border: rgba(56, 189, 248, 0.28);
+      --cyan: #38bdf8;
+      --indigo: #818cf8;
+      --emerald: #34d399;
+      --amber: #fbbf24;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      background: radial-gradient(circle at 15% 15%, #0f172a 0%, #050814 70%);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 22px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+    }
+    .brand h1 {
+      font-size: 22px;
+      font-weight: 800;
+      background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .brand p { font-size: 13px; color: var(--muted); margin-top: 3px; }
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      background: rgba(52, 211, 153, 0.15);
+      border: 1px solid rgba(52, 211, 153, 0.4);
+      color: var(--emerald);
+    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--emerald); }
+    .main-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .launch-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 22px;
+      border-radius: 22px;
+      background: linear-gradient(145deg, rgba(30, 41, 59, 0.85), rgba(15, 23, 42, 0.92));
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--text);
+      transition: transform 0.15s ease, border-color 0.15s ease;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+    }
+    .launch-card:active { transform: scale(0.98); border-color: var(--cyan); }
+    .launch-card.primary {
+      background: linear-gradient(135deg, rgba(14, 116, 144, 0.45), rgba(30, 27, 75, 0.85));
+      border-color: rgba(56, 189, 248, 0.55);
+    }
+    .launch-card.agency {
+      background: linear-gradient(135deg, rgba(79, 70, 229, 0.42), rgba(15, 23, 42, 0.9));
+      border-color: rgba(129, 140, 248, 0.55);
+    }
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 4px 10px;
+      border-radius: 99px;
+      background: rgba(56, 189, 248, 0.18);
+      color: var(--cyan);
+      margin-bottom: 12px;
+      width: fit-content;
+    }
+    .launch-card h2 { font-size: 20px; margin-bottom: 8px; }
+    .launch-card p { font-size: 13px; color: var(--muted); line-height: 1.45; margin-bottom: 18px; }
+    .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn {
+      flex: 1;
+      text-align: center;
+      padding: 12px 14px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 13px;
+      text-decoration: none;
+      color: #050814;
+      background: var(--cyan);
+    }
+    .btn.secondary {
+      background: rgba(255,255,255,0.1);
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+    .section-title {
+      font-size: 16px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--cyan);
+      margin: 22px 0 12px;
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+    }
+    .price-card {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      padding: 18px;
+    }
+    .price-card.featured {
+      border-color: var(--emerald);
+      background: linear-gradient(160deg, rgba(6, 78, 59, 0.35), rgba(15, 23, 42, 0.9));
+    }
+    .price-card h3 { font-size: 16px; margin-bottom: 4px; }
+    .price { font-size: 26px; font-weight: 900; color: var(--emerald); margin: 6px 0; }
+    .anticipo {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--amber);
+      background: rgba(251, 191, 36, 0.14);
+      padding: 4px 10px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .price-card ul { list-style: none; font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+    .price-card ul li::before { content: "✓ "; color: var(--emerald); font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="brand">
+      <h1>Liquid Glass Digital & AI Agency</h1>
+      <p>Héctor Miguel Palomares Cota • Showroom Comercial Guaymas & San Carlos</p>
+    </div>
+    <div class="status-badge" id="conn-status">
+      <span class="dot"></span>
+      <span id="conn-text">Showroom Listo</span>
+    </div>
+  </div>
+
+  <div class="main-grid">
+    <div class="launch-card primary">
+      <div>
+        <span class="tag">Catálogo Interactivo</span>
+        <h2>🚀 Portafolio 10 Demos en Vivo</h2>
+        <p>Muestra al cliente las 10 propuestas interactivas Liquid Glass por giro comercial (Restaurantes, Clínicas, Inmobiliaria, E-Commerce, Hotel, etc.).</p>
+      </div>
+      <div class="btn-row">
+        <a class="btn" id="btn-portafolio-auto" href="http://127.0.0.1:3220">Abrir por USB</a>
+        <a class="btn secondary" href="http://192.168.100.90:3220">Abrir por Wi-Fi</a>
+      </div>
+    </div>
+
+    <div class="launch-card agency">
+      <div>
+        <span class="tag">Propuesta Comercial</span>
+        <h2>💎 Landing Oficial Agencia</h2>
+        <p>Página comercial de Liquid Glass Digital & AI Agency con paquetes, comparativa de beneficios, flujo de 3 etapas y cierre de ventas.</p>
+      </div>
+      <div class="btn-row">
+        <a class="btn" id="btn-agencia-auto" href="http://127.0.0.1:3210/?view=agencia">Abrir por USB</a>
+        <a class="btn secondary" href="http://192.168.100.90:3210/?view=agencia">Abrir por Wi-Fi</a>
+      </div>
+    </div>
+
+    <div class="launch-card">
+      <div>
+        <span class="tag">Sistema Interno B2B</span>
+        <h2>📡 Radar de Clientes & CRM</h2>
+        <p>Buscador de negocios en Guaymas y San Carlos, Auditoría IA, Mis Leads por C.P. y módulo de Facturación Web & Apps.</p>
+      </div>
+      <div class="btn-row">
+        <a class="btn" href="http://127.0.0.1:3210">Abrir por USB</a>
+        <a class="btn secondary" href="http://192.168.100.90:3210">Abrir por Wi-Fi</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">Catálogo Oficial de Precios (Referencia Rápida Offline)</div>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <h3>Paquete Esencial</h3>
+      <div class="price">$4,900 MXN</div>
+      <div class="anticipo">Anticipo 50%: $2,450 MXN</div>
+      <ul>
+        <li>Landing Page Liquid Glass (4 secciones)</li>
+        <li>1.er año de Hosting y Dominio incluido</li>
+        <li>Botón directo de cierre por WhatsApp</li>
+        <li>Diseño Mobile-First ultra rápido</li>
+      </ul>
+    </div>
+
+    <div class="price-card featured">
+      <h3>Paquete Profesional (Más Vendido)</h3>
+      <div class="price">$8,900 MXN</div>
+      <div class="anticipo">Anticipo 50%: $4,450 MXN</div>
+      <ul>
+        <li>Sitio Web Comercial Completo (6 vistas)</li>
+        <li>Agenda de citas o Pedidos por WhatsApp</li>
+        <li>SEO Local en Google Maps incluido</li>
+        <li>1.er año de Hosting y Dominio gratis</li>
+      </ul>
+    </div>
+
+    <div class="price-card">
+      <h3>Paquete Escalable / App IA</h3>
+      <div class="price">$14,900 MXN</div>
+      <div class="anticipo">Anticipo 50%: $7,450 MXN</div>
+      <ul>
+        <li>Ecosistema Web + App Móvil (PWA)</li>
+        <li>Panel autoadministrable completo</li>
+        <li>Agente IA 24/7 con Google Gemini</li>
+        <li>1.er año de Hosting y Dominio gratis</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    // Detecta automáticamente si responde por túnel USB (127.0.0.1) o por Wi-Fi (192.168.100.90)
+    (function() {
+      var statusText = document.getElementById('conn-text');
+      fetch('http://127.0.0.1:3220', { mode: 'no-cors' })
+        .then(function() {
+          statusText.textContent = 'Conectado por USB Directo';
+        })
+        .catch(function() {
+          fetch('http://192.168.100.90:3220', { mode: 'no-cors' })
+            .then(function() {
+              statusText.textContent = 'Conectado por Wi-Fi Local';
+              document.getElementById('btn-portafolio-auto').href = 'http://192.168.100.90:3220';
+              document.getElementById('btn-agencia-auto').href = 'http://192.168.100.90:3210/?view=agencia';
+            })
+            .catch(function() {
+              statusText.textContent = 'Modo Catálogo Offline';
+            });
+        });
+    })();
+  </script>
+</body>
+</html>
