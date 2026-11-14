@@ -25,6 +25,20 @@ import {
   Award,
   Bot,
   Zap,
+  ,
+  Sun,
+  Flame,
+  Building2,
+  Thermometer,
+  KeyRound,
+  Play,
+  Tv,
+  Stethoscope,
+  MapPin,
+  ShieldCheck,
+  Check,
+  Snowflake,
+  BedDouble
 } from 'lucide-react';
 
 interface InteractiveNicheBocetoProps {
@@ -99,6 +113,49 @@ export default function InteractiveNicheBoceto({
   const [novapayConcept, setNovapayConcept] = useState<string>('web_liquid_glass');
   const [novapaySubtotal, setNovapaySubtotal] = useState<number>(8900);
   const [novapayClient, setNovapayClient] = useState<string>('Mariscos El Rey de Guaymas');
+
+
+  // 11. Radar Clientes State
+  const [radarColonia, setRadarColonia] = useState<string>('85400 Centro Guaymas');
+  const [radarNiche, setRadarNiche] = useState<string>('Restaurantes & Gastronomía');
+  const [radarScanning, setRadarScanning] = useState<boolean>(false);
+
+  // 12. La Olla de Barro State
+  const [ollaGuiso, setOllaGuiso] = useState<string>('Carne con Chile en Cazuela');
+  const [ollaPicante, setOllaPicante] = useState<string>('Medio');
+  const [ollaGuarnicion, setOllaGuarnicion] = useState<string>('Frijoles Puercos + Arroz');
+  const [ollaTortillas, setOllaTortillas] = useState<string>('Maíz Hechas a Mano');
+
+  // 13. DentCare State
+  const [dentService, setDentService] = useState<string>('Limpieza Ultrasónica');
+  const [dentTurno, setDentTurno] = useState<string>('Mañana 11:00 AM');
+  const [dentDoctor, setDentDoctor] = useState<string>('Dr. Carlos Valenzuela');
+
+  // 14. ObraMaestra State
+  const [obraLength, setObraLength] = useState<number>(12);
+  const [obraHeight, setObraHeight] = useState<number>(2.8);
+  const [obraType, setObraType] = useState<string>('Block 15x20x40');
+
+  // 15. AirCon Climas State
+  const [airconArea, setAirconArea] = useState<number>(24);
+  const [airconSun, setAirconSun] = useState<string>('Sol Directo');
+
+  // 16. Luxury Hotel State
+  const [hotelSuite, setHotelSuite] = useState<string>('Ocean Front Master Suite');
+  const [hotelTemp, setHotelTemp] = useState<number>(21);
+  const [hotelKeyActive, setHotelKeyActive] = useState<boolean>(true);
+
+  // 17. LimpiaPro State
+  const [limpiaType, setLimpiaType] = useState<string>('Casa Residencial (2 Pisos)');
+  const [limpiaDeep, setLimpiaDeep] = useState<boolean>(true);
+  const [limpiaWindows, setLimpiaWindows] = useState<boolean>(true);
+
+  // 18. Solartec State
+  const [solarBill, setSolarBill] = useState<number>(6800);
+
+  // 19. CineVault State
+  const [cineMovie, setCineMovie] = useState<string>('Mar de Cortés 4K');
+  const [cinePlaying, setCinePlaying] = useState<boolean>(true);
 
   // WhatsApp quick helper
   const sendWhatsApp = (msg: string) => {
@@ -1473,6 +1530,1161 @@ export default function InteractiveNicheBoceto({
           >
             <CreditCard className="w-4 h-4 fill-slate-950" />
             <span>Solicitar Cuenta de Anticipo (WhatsApp)</span>
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+
+  /* ========================================================
+     11. RADAR DE CLIENTES B2B & AUDITORÍA IA (saas-ia)
+     ======================================================== */
+  if (slug === 'radar-clientes') {
+    const isBoceto = visualMode === 'boceto';
+    const prospects = [
+      { name: 'Mariscos Bahía Azul', status: 'Sin Web Móvil', score: '38/100', opp: 'Alta 🔥' },
+      { name: 'Taller Mecánico El Chato', status: 'Web Lenta / Sin SSL', score: '44/100', opp: 'Crítica ⚠️' },
+      { name: 'Clínica Dental Miramar', status: 'Sin Citas WhatsApp', score: '52/100', opp: 'Media 💡' },
+      { name: 'Hotel & Suites Cortés', status: 'Comisiones 30% Booking', score: '61/100', opp: 'VIP 💎' },
+    ];
+
+    if (isBoceto) {
+      return (
+        <div className="p-3 sm:p-5 rounded-2xl bg-[#09111e] text-slate-100 border-2 border-dashed border-sky-400/50 font-mono text-xs sm:text-sm space-y-4 shadow-2xl relative overflow-hidden bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px]">
+          <div className="flex items-center justify-between pb-2.5 border-b border-sky-400/30 text-[10px] text-sky-400">
+            <div className="flex items-center gap-1.5 font-bold">
+              <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse" />
+              <span>[BOCETO ARQUITECTÓNICO WIREFRAME]</span>
+            </div>
+            <span className="text-slate-400">SPEC: RADAR_AI_ENGINE • GEMINI_FLASH_2_5</span>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-sky-400/20">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-lg bg-sky-950/80 border border-sky-400/40 flex items-center justify-center text-sky-400">
+                <Bot className="w-4 h-4" />
+              </div>
+              <div>
+                <h4 className="font-bold text-sky-300 text-xs sm:text-sm">[MODULE: PROSPECT_RADAR_B2B]</h4>
+                <p className="text-[10px] text-slate-400 font-mono">ZONA: {radarColonia} • NICHO: {radarNiche}</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <select
+                value={radarColonia}
+                onChange={(e) => setRadarColonia(e.target.value)}
+                className="bg-sky-950/80 text-sky-300 border border-sky-400/30 px-2 py-1 rounded text-xs font-mono"
+              >
+                <option value="85400 Centro Guaymas">85400 Centro Guaymas</option>
+                <option value="85440 Las Villas">85440 Las Villas</option>
+                <option value="85506 San Carlos">85506 San Carlos</option>
+                <option value="85420 Petrolera">85420 Petrolera</option>
+              </select>
+            </div>
+          </div>
+
+          {/* Lista de Prospectos Wireframe */}
+          <div className="space-y-2">
+            <span className="text-[10px] text-sky-400/80 font-mono block">/// COMPONENT: DETECTED_LEADS_AUDIT_STREAM</span>
+            {prospects.map((p, idx) => (
+              <div key={idx} className="p-2.5 rounded-xl bg-sky-950/40 border border-dashed border-sky-400/30 flex items-center justify-between gap-2">
+                <div>
+                  <div className="font-bold text-sky-200 text-xs">{p.name}</div>
+                  <div className="text-[10px] text-slate-400 font-mono">{p.status} • Diagnóstico SEO: {p.score}</div>
+                </div>
+                <div className="text-right shrink-0">
+                  <span className="text-[10px] font-mono text-emerald-400 bg-sky-900/60 px-2 py-0.5 rounded border border-sky-400/30">{p.opp}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex items-center justify-between pt-2 border-t border-sky-400/30">
+            <div className="text-[10px] text-slate-400 font-mono">POTENCIAL ESTIMADO: 4 NEGOCIOS CALIFICADOS</div>
+            <button
+              type="button"
+              onClick={() => sendWhatsApp(`¡Hola Miguel! Vi el boceto del Radar de Clientes B2B con IA en tu Portafolio y quiero una auditoría comercial para mi empresa en ${radarColonia}.`)}
+              className="py-2 px-3 rounded bg-sky-500 hover:bg-sky-400 text-slate-950 font-mono font-bold text-xs flex items-center gap-1.5 shadow-md active:scale-95 transition-all"
+            >
+              <Zap className="w-4 h-4 fill-slate-950" />
+              <span>[AUDITAR_CON_GEMINI_IA]</span>
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    // Modo Liquid Glass (Producción)
+    return (
+      <div className="p-3 sm:p-5 rounded-2xl bg-[#0c141e]/95 text-slate-100 border border-cyan-400/40 text-xs sm:text-sm space-y-4 shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_35px_rgba(6,182,212,0.25)] backdrop-blur-2xl ring-1 ring-white/10 relative overflow-hidden">
+        <div className="absolute -top-10 -left-10 w-40 h-40 bg-cyan-500/15 rounded-full blur-[50px] pointer-events-none" />
+        <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-indigo-500/15 rounded-full blur-[50px] pointer-events-none" />
+
+        <div className="flex items-center justify-between pb-3 border-b border-white/10 relative z-10">
+          <div className="flex items-center gap-2.5">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-400 via-indigo-500 to-emerald-400 p-[2px]">
+              <div className="w-full h-full rounded-[10px] bg-slate-950 flex items-center justify-center text-cyan-400 font-bold">
+                <Bot className="w-4 h-4" />
+              </div>
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h4 className="font-black text-white text-sm tracking-tight">RADAR DE CLIENTES B2B &amp; AUDITORÍA IA</h4>
+                <span className="px-2 py-0.5 rounded-full bg-cyan-500/15 text-cyan-300 border border-cyan-400/40 text-[9px] font-extrabold uppercase">
+                  Gemini 2.5 Flash
+                </span>
+              </div>
+              <p className="text-[11px] text-cyan-300/90 font-medium">Prospección en Sonora • Filtro por Código Postal</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-1.5 bg-slate-950/80 px-2.5 py-1 rounded-xl border border-white/15">
+            <span className="text-[10px] text-slate-400">Zona:</span>
+            <select
+              value={radarColonia}
+              onChange={(e) => setRadarColonia(e.target.value)}
+              className="bg-transparent text-cyan-300 font-bold text-xs focus:outline-none"
+            >
+              <option value="85400 Centro Guaymas" className="bg-slate-900 text-white">85400 Centro</option>
+              <option value="85440 Las Villas" className="bg-slate-900 text-white">85440 Las Villas</option>
+              <option value="85506 San Carlos" className="bg-slate-900 text-white">85506 San Carlos</option>
+              <option value="85420 Petrolera" className="bg-slate-900 text-white">85420 Petrolera</option>
+            </select>
+          </div>
+        </div>
+
+        {/* Tarjetas de Prospectos Auditados con IA */}
+        <div className="space-y-2 relative z-10">
+          {prospects.map((p, idx) => (
+            <div key={idx} className="p-3 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-cyan-400/40 transition-all flex items-center justify-between gap-3">
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2">
+                  <span className="font-extrabold text-white text-xs">{p.name}</span>
+                  <span className="text-[9px] font-bold text-rose-300 bg-rose-500/15 border border-rose-400/30 px-1.5 py-0.2 rounded-full">{p.status}</span>
+                </div>
+                <p className="text-[10px] text-slate-400 mt-0.5">Auditoría Lighthouse &amp; SEO Local: <strong className="text-amber-300">{p.score}</strong> • Conversión esperada: +140%</p>
+              </div>
+              <button
+                type="button"
+                onClick={() => sendWhatsApp(`¡Hola Miguel! Quiero ver la auditoría IA de "${p.name}" y cotizar el Paquete Escalable con Radar de Clientes.`)}
+                className="px-3 py-1.5 rounded-lg bg-gradient-to-r from-cyan-400 to-indigo-500 hover:opacity-95 text-slate-950 font-black text-xs shrink-0 shadow-md transition-all active:scale-95 flex items-center gap-1"
+              >
+                <Zap className="w-3 h-3 fill-slate-950" />
+                <span>Auditar</span>
+              </button>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex items-center justify-between pt-2 border-t border-white/10 relative z-10">
+          <div className="text-[11px] text-slate-400">
+            Velocidad IA: <strong className="text-emerald-400">&lt;0.4s</strong> • Precisión: <strong className="text-cyan-300">98.5%</strong>
+          </div>
+          <button
+            type="button"
+            onClick={() => sendWhatsApp(`¡Hola Miguel! Quiero activar el Radar de Clientes B2B con IA Gemini para prospección comercial en Sonora.`)}
+            className="py-2 px-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 hover:to-teal-300 text-slate-950 font-black text-xs flex items-center gap-1.5 shadow-lg active:scale-95 transition-all"
+          >
+            <MessageCircle className="w-4 h-4 fill-slate-950" />
+            <span>Activar Radar para mi Empresa</span>
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  /* ========================================================
+     12. LA OLLA DE BARRO — MENÚ DEL DÍA (gastronomia)
+     ======================================================== */
+  if (slug === 'la-olla-de-barro') {
+    const isBoceto = visualMode === 'boceto';
+    const guisos = [
+      { name: 'Carne con Chile en Cazuela', desc: 'Pulpa de res suave en adobo tatemado de chile colorado con frijoles puercos', tag: 'Favorito 🔥' },
+      { name: 'Costillita en Salsa Verde', desc: 'Costilla dorada en salsa de tomatillo de milpa con cilantro criollo', tag: 'Clásico' },
+      { name: 'Deshebrada Norteña', desc: 'Falda de res deshebrada con jitomate, cebolla blanca y rajas de poblano', tag: 'Casero' },
+      { name: 'Chicharrón Prensado', desc: 'Chicharrón de cerdo en guisado morita con papas en cubitos', tag: 'Tradición' },
+    ];
+
+    if (isBoceto) {
+      return (
+        <div className="p-3 sm:p-5 rounded-2xl bg-[#09111e] text-slate-100 border-2 border-dashed border-sky-400/50 font-mono text-xs sm:text-sm space-y-4 shadow-2xl relative overflow-hidden bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px]">
+          <div className="flex items-center justify-between pb-2.5 border-b border-sky-400/30 text-[10px] text-sky-400">
+            <span className="font-bold">[BOCETO ARQUITECTÓNICO WIREFRAME • MENÚ DEL DÍA]</span>
+            <span className="text-slate-400">SPEC: COMIDA_CORRIDA_QR_V1</span>
+          </div>
+          <div className="flex items-center justify-between pb-2 border-b border-sky-400/20">
+            <div className="flex items-center gap-2">
+              <Utensils className="w-4 h-4 text-amber-400" />
+              <div>
+                <h4 className="font-bold text-amber-300 text-xs sm:text-sm">[HEADER: LA_OLLA_DE_BARRO]</h4>
+                <p className="text-[10px] text-slate-400">PAQUETE 6 TIEMPOS • PRECIO FIJO: $129 MXN</p>
+              </div>
+            </div>
+            <span className="text-xs font-mono text-emerald-400 bg-sky-950 px-2 py-0.5 rounded border border-sky-400/30">$129 MXN</span>
+          </div>
+
+          <div className="space-y-2">
+            <span className="text-[10px] text-sky-400/80 font-mono block">/// COMPONENT: GUISADO_SELECTOR</span>
+            <div className="grid grid-cols-2 gap-2">
+              {guisos.map((g) => (
+                <button
+                  key={g.name}
+                  type="button"
+                  onClick={() => setOllaGuiso(g.name)}
+                  className={`p-2 rounded-lg text-left border text-[11px] font-mono transition-all ${
+                    ollaGuiso === g.name
+                      ? 'bg-sky-500 text-slate-950 font-bold border-sky-400'
+                      : 'bg-sky-950/40 text-slate-300 border-sky-400/30 hover:border-sky-400/60'
+                  }`}
+                >
+                  <div className="font-bold truncate">{g.name}</div>
+                  <div className="text-[9px] opacity-75">{g.tag}</div>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-between gap-2 p-2 rounded-xl bg-sky-950/40 border border-dashed border-sky-400/20 text-xs font-mono">
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] text-sky-400">PICANTE:</span>
+              {['Suave', 'Medio', 'Bravo 🔥'].map((lvl) => (
+                <button
+                  key={lvl}
+                  type="button"
+                  onClick={() => setOllaPicante(lvl)}
+                  className={`px-2 py-0.5 rounded text-[10px] ${
+                    ollaPicante === lvl ? 'bg-amber-400 text-black font-bold' : 'text-slate-400 bg-sky-900/40'
+                  }`}
+                >
+                  {lvl}
+                </button>
+              ))}
+            </div>
+            <div className="text-[10px] text-slate-400">TORTILLAS: {ollaTortillas}</div>
+          </div>
+
+          <div className="flex items-center justify-between pt-2 border-t border-sky-400/30">
+            <div className="text-[10px] text-slate-400 font-mono">COMANDA: {ollaGuiso} (Nivel {ollaPicante})</div>
+            <button
+              type="button"
+              onClick={() => sendWhatsApp(`¡Hola La Olla de Barro! Quiero ordenar el Menú del Día ($129 MXN):
+• Guisado: ${ollaGuiso}
+• Nivel de picante: ${ollaPicante}
+• Guarnición: ${ollaGuarnicion}
+• Tortillas: ${ollaTortillas}`)}
+              className="py-2 px-3 rounded bg-amber-400 hover:bg-amber-300 text-slate-950 font-mono font-bold text-xs flex items-center gap-1.5 shadow-md active:scale-95 transition-all"
+            >
+              <MessageCircle className="w-4 h-4 fill-slate-950" />
+              <span>[ENVIAR_COMANDA_COCINA]</span>
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    // Liquid Glass
+    return (
+      <div className="p-3 sm:p-5 rounded-2xl bg-[#0c141e]/95 text-slate-100 border border-amber-400/40 text-xs sm:text-sm space-y-4 shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_35px_rgba(245,158,11,0.25)] backdrop-blur-2xl ring-1 ring-white/10 relative overflow-hidden">
+        <div className="absolute -top-10 -left-10 w-40 h-40 bg-amber-500/15 rounded-full blur-[50px] pointer-events-none" />
+        <div className="flex items-center justify-between pb-3 border-b border-white/10 relative z-10">
+          <div className="flex items-center gap-2.5">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 to-rose-500 p-[2px]">
+              <div className="w-full h-full rounded-[10px] bg-slate-950 flex items-center justify-center text-amber-400 font-bold">
+                <Utensils className="w-4 h-4" />
+              </div>
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h4 className="font-black text-white text-sm">LA OLLA DE BARRO — MENÚ DEL DÍA</h4>
+                <span className="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-400/40 text-[9px] font-extrabold uppercase">
+                  $129 MXN
+                </span>
+              </div>
+              <p className="text-[11px] text-amber-200/90 font-medium">Guisados en Cazuela Caliente • Tortillas Hechas a Mano</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 relative z-10">
+          {guisos.map((g) => (
+            <div
+              key={g.name}
+              onClick={() => setOllaGuiso(g.name)}
+              className={`p-3 rounded-xl border cursor-pointer transition-all ${
+                ollaGuiso === g.name
+                  ? 'bg-amber-500/20 border-amber-400 shadow-lg shadow-amber-500/20'
+                  : 'bg-white/[0.04] border-white/10 hover:border-amber-400/40'
+              }`}
+            >
+              <div className="flex items-center justify-between">
+                <span className="font-black text-white text-xs">{g.name}</span>
+                <span className="text-[9px] font-bold text-amber-300 bg-amber-500/15 px-1.5 py-0.5 rounded">{g.tag}</span>
+              </div>
+              <p className="text-[10px] text-slate-300 mt-1 line-clamp-2">{g.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex items-center justify-between pt-2 border-t border-white/10 relative z-10">
+          <div>
+            <div className="text-[10px] text-slate-400">Total Menú Completo:</div>
+            <div className="text-base font-black text-emerald-400">$129 MXN</div>
+          </div>
+          <button
+            type="button"
+            onClick={() => sendWhatsApp(`¡Hola La Olla de Barro! Quiero ordenar mi comida corrida de hoy:
+• Guisado: ${ollaGuiso}
+• Picante: ${ollaPicante}
+• Guarnición: ${ollaGuarnicion}
+Total: $129 MXN`)}
+            className="py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:opacity-95 text-slate-950 font-black text-xs flex items-center gap-1.5 shadow-lg active:scale-95 transition-all"
+          >
+            <MessageCircle className="w-4 h-4 fill-slate-950" />
+            <span>Pedir por WhatsApp (Sin Comisiones)</span>
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  /* ========================================================
+     13. DENTCARE — CLÍNICA DENTAL (salud)
+     ======================================================== */
+  if (slug === 'dentcare-clinica') {
+    const isBoceto = visualMode === 'boceto';
+    const services = [
+      { name: 'Limpieza Ultrasónica & Profilaxis', price: 650, time: '40 min' },
+      { name: 'Blanqueamiento Dental Láser', price: 2400, time: '60 min' },
+      { name: 'Resina Estética de Alta Densidad', price: 850, time: '45 min' },
+      { name: 'Valoración Implante & Ortodoncia', price: 400, time: '30 min' },
+    ];
+    const selected = services.find((s) => s.name.startsWith(dentService.slice(0, 10))) || services[0];
+
+    if (isBoceto) {
+      return (
+        <div className="p-3 sm:p-5 rounded-2xl bg-[#09111e] text-slate-100 border-2 border-dashed border-sky-400/50 font-mono text-xs sm:text-sm space-y-4 shadow-2xl relative overflow-hidden bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px]">
+          <div className="flex items-center justify-between pb-2.5 border-b border-sky-400/30 text-[10px] text-sky-400">
+            <span className="font-bold">[BOCETO ARQUITECTÓNICO WIREFRAME • DENTAL CLINIC]</span>
+            <span className="text-slate-400">SPEC: CLINIC_SCHEDULE_V1</span>
+          </div>
+          <div className="flex items-center justify-between pb-2 border-b border-sky-400/20">
+            <div className="flex items-center gap-2">
+              <Stethoscope className="w-4 h-4 text-sky-400" />
+              <div>
+                <h4 className="font-bold text-sky-300 text-xs sm:text-sm">[HEADER: DENTCARE_CLINICA_SONORA]</h4>
+                <p className="text-[10px] text-slate-400">ESPECIALISTA: {dentDoctor} • TURNO: {dentTurno}</p>
+              </div>
+            </div>
+            <span className="text-xs font-mono text-emerald-400 bg-sky-950 px-2 py-0.5 rounded border border-sky-400/30">${selected.price} MXN</span>
+          </div>
+
+          <div className="space-y-2">
+            <span className="text-[10px] text-sky-400/80 font-mono block">/// COMPONENT: APPOINTMENT_SERVICE_PICKER</span>
+            {services.map((s) => (
+              <div
+                key={s.name}
+                onClick={() => setDentService(s.name)}
+                className={`p-2 rounded-lg border text-xs font-mono flex items-center justify-between cursor-pointer ${
+                  dentService === s.name ? 'bg-sky-500 text-slate-950 font-bold border-sky-400' : 'bg-sky-950/40 text-slate-300 border-sky-400/30'
+                }`}
+              >
+                <span>{s.name}</span>
+                <span className="font-bold">${s.price} MXN ({s.time})</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex items-center justify-between pt-2 border-t border-sky-400/30">
+            <div className="text-[10px] text-slate-400 font-mono">ESTIMADO: ${selected.price} MXN ({dentTurno})</div>
+            <button
+              type="button"
+              onClick={() => sendWhatsApp(`¡Hola DentCare! Deseo agendar cita para "${selected.name}" ($${selected.price} MXN) en el turno de ${dentTurno} con ${dentDoctor}.`)}
+              className="py-2 px-3 rounded bg-sky-500 hover:bg-sky-400 text-slate-950 font-mono font-bold text-xs flex items-center gap-1.5 shadow-md active:scale-95 transition-all"
+            >
+              <Calendar className="w-4 h-4 fill-slate-950" />
+              <span>[CONFIRMAR_CITA_WHATSAPP]</span>
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div className="p-3 sm:p-5 rounded-2xl bg-[#0c141e]/95 text-slate-100 border border-teal-400/40 text-xs sm:text-sm space-y-4 shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_35px_rgba(20,184,166,0.25)] backdrop-blur-2xl ring-1 ring-white/10 relative overflow-hidden">
+        <div className="absolute -top-10 -left-10 w-40 h-40 bg-teal-500/15 rounded-full blur-[50px] pointer-events-none" />
+        <div className="flex items-center justify-between pb-3 border-b border-white/10 relative z-10">
+          <div className="flex items-center gap-2.5">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-teal-400 to-cyan-500 p-[2px]">
+              <div className="w-full h-full rounded-[10px] bg-slate-950 flex items-center justify-center text-teal-300 font-bold">
+                <Stethoscope className="w-4 h-4" />
+              </div>
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h4 className="font-black text-white text-sm">DENTCARE — CLÍNICA DENTAL ESPECIALIZADA</h4>
+                <span className="px-2 py-0.5 rounded-full bg-teal-500/20 text-teal-300 border border-teal-400/40 text-[9px] font-extrabold uppercase">
+                  5.0 ★ Google Maps
+                </span>
+              </div>
+              <p className="text-[11px] text-teal-200/90 font-medium">{dentDoctor} • Tecnología Láser &amp; Implantes</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="space-y-2 relative z-10">
+          {services.map((s) => (
+            <div
+              key={s.name}
+              onClick={() => setDentService(s.name)}
+              className={`p-3 rounded-xl border cursor-pointer transition-all flex items-center justify-between ${
+                dentService === s.name
+                  ? 'bg-teal-500/20 border-teal-400 shadow-md shadow-teal-500/20'
+                  : 'bg-white/[0.04] border-white/10 hover:border-teal-400/40'
+              }`}
+            >
+              <div>
+                <span className="font-extrabold text-white text-xs">{s.name}</span>
+                <div className="text-[10px] text-slate-400 mt-0.5">Duración aprox: {s.time} • Diagnóstico digital incluido</div>
+              </div>
+              <span className="text-emerald-400 font-black text-xs">${s.price} MXN</span>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex items-center justify-between pt-2 border-t border-white/10 relative z-10">
+          <div>
+            <div className="text-[10px] text-slate-400">Total Estimado Cita:</div>
+            <div className="text-base font-black text-emerald-400">${selected.price} MXN</div>
+          </div>
+          <button
+            type="button"
+            onClick={() => sendWhatsApp(`¡Hola DentCare! Deseo agendar cita para "${selected.name}" ($${selected.price} MXN) en el turno de ${dentTurno}.`)}
+            className="py-2.5 px-4 rounded-xl bg-gradient-to-r from-teal-400 to-cyan-500 hover:opacity-95 text-slate-950 font-black text-xs flex items-center gap-1.5 shadow-lg active:scale-95 transition-all"
+          >
+            <Calendar className="w-4 h-4 fill-slate-950" />
+            <span>Agendar Cita por WhatsApp</span>
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  /* ========================================================
+     14. OBRAMAESTRA — CALCULADORA CIVIL & CAD (construccion)
+     ======================================================== */
+  if (slug === 'obramaestra-cad') {
+    const isBoceto = visualMode === 'boceto';
+    const area = obraLength * obraHeight;
+    const blocks = Math.round(area * 12.5);
+    const cement = Math.round(area * 0.45);
+    const sand = (area * 0.05).toFixed(1);
+    const costEstimate = Math.round(blocks * 24 + cement * 240 + parseFloat(sand) * 650);
+
+    if (isBoceto) {
+      return (
+        <div className="p-3 sm:p-5 rounded-2xl bg-[#09111e] text-slate-100 border-2 border-dashed border-sky-400/50 font-mono text-xs sm:text-sm space-y-4 shadow-2xl relative overflow-hidden bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px]">
+          <div className="flex items-center justify-between pb-2.5 border-b border-sky-400/30 text-[10px] text-sky-400">
+            <span className="font-bold">[BOCETO ARQUITECTÓNICO WIREFRAME • CAD CALCULATOR]</span>
+            <span className="text-slate-400">SPEC: CIVIL_ENG_SPEC_V1</span>
+          </div>
+          <div className="flex items-center justify-between pb-2 border-b border-sky-400/20">
+            <div className="flex items-center gap-2">
+              <Building2 className="w-4 h-4 text-sky-400" />
+              <div>
+                <h4 className="font-bold text-sky-300 text-xs sm:text-sm">[MODULE: CUANTIFICADOR_MUROS_CIVIL]</h4>
+                <p className="text-[10px] text-slate-400 font-mono">TIPO: {obraType} • ÁREA: {area.toFixed(1)} m²</p>
+              </div>
+            </div>
+            <span className="text-xs font-mono text-amber-400 bg-sky-950 px-2 py-0.5 rounded border border-sky-400/30">${costEstimate.toLocaleString()} MXN</span>
+          </div>
+
+          <div className="grid grid-cols-2 gap-3 p-2.5 rounded-xl bg-sky-950/40 border border-dashed border-sky-400/20 text-xs">
+            <div>
+              <span className="text-[10px] text-sky-400 font-mono block">LONGITUD MURO ({obraLength} m):</span>
+              <input
+                type="range"
+                min="4"
+                max="40"
+                value={obraLength}
+                onChange={(e) => setObraLength(Number(e.target.value))}
+                className="w-full accent-sky-400 cursor-pointer"
+              />
+            </div>
+            <div>
+              <span className="text-[10px] text-sky-400 font-mono block">ALTURA MURO ({obraHeight} m):</span>
+              <input
+                type="range"
+                min="2.0"
+                max="4.5"
+                step="0.1"
+                value={obraHeight}
+                onChange={(e) => setObraHeight(Number(e.target.value))}
+                className="w-full accent-sky-400 cursor-pointer"
+              />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-3 gap-2 text-center font-mono">
+            <div className="p-2 rounded bg-sky-950/70 border border-sky-400/30">
+              <div className="text-[10px] text-slate-400">BLOCKS:</div>
+              <div className="text-sm font-bold text-sky-300">{blocks} pzas</div>
+            </div>
+            <div className="p-2 rounded bg-sky-950/70 border border-sky-400/30">
+              <div className="text-[10px] text-slate-400">CEMENTO:</div>
+              <div className="text-sm font-bold text-sky-300">{cement} sacos</div>
+            </div>
+            <div className="p-2 rounded bg-sky-950/70 border border-sky-400/30">
+              <div className="text-[10px] text-slate-400">ARENA:</div>
+              <div className="text-sm font-bold text-sky-300">{sand} m³</div>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between pt-2 border-t border-sky-400/30">
+            <div className="text-[10px] text-slate-400 font-mono">TOTAL ESTIMADO: ${costEstimate.toLocaleString()} MXN</div>
+            <button
+              type="button"
+              onClick={() => sendWhatsApp(`¡Hola ObraMaestra! Realicé la cuantificación de un muro de ${obraLength}m x ${obraHeight}m (${area.toFixed(1)}m²):
+• Blocks: ${blocks} pzas
+• Cemento: ${cement} sacos
+• Costo estimado: $${costEstimate.toLocaleString()} MXN.
+¿Me pueden enviar el presupuesto formal con mano de obra?`)}
+              className="py-2 px-3 rounded bg-amber-400 hover:bg-amber-300 text-slate-950 font-mono font-bold text-xs flex items-center gap-1.5 shadow-md active:scale-95 transition-all"
+            >
+              <Zap className="w-4 h-4 fill-slate-950" />
+              <span>[COTIZAR_OBRA_CIVIL]</span>
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div className="p-3 sm:p-5 rounded-2xl bg-[#0c141e]/95 text-slate-100 border border-amber-400/40 text-xs sm:text-sm space-y-4 shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_35px_rgba(245,158,11,0.25)] backdrop-blur-2xl ring-1 ring-white/10 relative overflow-hidden">
+        <div className="absolute -top-10 -left-10 w-40 h-40 bg-amber-500/15 rounded-full blur-[50px] pointer-events-none" />
+        <div className="flex items-center justify-between pb-3 border-b border-white/10 relative z-10">
+          <div className="flex items-center gap-2.5">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-400 to-orange-500 p-[2px]">
+              <div className="w-full h-full rounded-[10px] bg-slate-950 flex items-center justify-center text-amber-400 font-bold">
+                <Building2 className="w-4 h-4" />
+              </div>
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h4 className="font-black text-white text-sm">OBRAMAESTRA — CALCULADORA CIVIL &amp; CAD</h4>
+                <span className="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-400/40 text-[9px] font-extrabold uppercase">
+                  Cuantificador en Tiempo Real
+                </span>
+              </div>
+              <p className="text-[11px] text-amber-200/90 font-medium">Cálculo de Materiales de Construcción en Sonora</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="p-3 rounded-xl bg-white/[0.04] border border-white/10 space-y-3 relative z-10">
+          <div className="flex justify-between text-xs">
+            <span>Dimensiones: <strong>{obraLength}m de largo x {obraHeight}m de alto</strong></span>
+            <span className="text-cyan-300 font-bold">Área: {area.toFixed(1)} m²</span>
+          </div>
+          <div className="grid grid-cols-3 gap-2 text-center">
+            <div className="p-2 rounded-lg bg-black/40 border border-white/10">
+              <span className="text-[10px] text-slate-400 block">Blocks 15x20x40</span>
+              <span className="text-sm font-black text-amber-400">{blocks} pzas</span>
+            </div>
+            <div className="p-2 rounded-lg bg-black/40 border border-white/10">
+              <span className="text-[10px] text-slate-400 block">Sacos Cemento</span>
+              <span className="text-sm font-black text-cyan-300">{cement} sacos</span>
+            </div>
+            <div className="p-2 rounded-lg bg-black/40 border border-white/10">
+              <span className="text-[10px] text-slate-400 block">Arena Lavada</span>
+              <span className="text-sm font-black text-emerald-400">{sand} m³</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex items-center justify-between pt-2 border-t border-white/10 relative z-10">
+          <div>
+            <div className="text-[10px] text-slate-400">Presupuesto Estimado Materiales:</div>
+            <div className="text-base font-black text-emerald-400">${costEstimate.toLocaleString()} MXN</div>
+          </div>
+          <button
+            type="button"
+            onClick={() => sendWhatsApp(`¡Hola ObraMaestra! Deseo presupuesto formal para muro de ${area.toFixed(1)}m² (${blocks} blocks y ${cement} sacos).`)}
+            className="py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:opacity-95 text-slate-950 font-black text-xs flex items-center gap-1.5 shadow-lg active:scale-95 transition-all"
+          >
+            <MessageCircle className="w-4 h-4 fill-slate-950" />
+            <span>Solicitar Presupuesto Formal (WhatsApp)</span>
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  /* ========================================================
+     15. AIRCON — CLIMAS & REFRIGERACIÓN SONORA (construccion)
+     ======================================================== */
+  if (slug === 'aircon-climas') {
+    const isBoceto = visualMode === 'boceto';
+    const tons = airconArea <= 16 ? '1.0 Tonelada (12,000 BTU)' : airconArea <= 28 ? '1.5 Toneladas (18,000 BTU)' : '2.0 Toneladas (24,000 BTU)';
+    const price = airconArea <= 16 ? 8900 : airconArea <= 28 ? 12400 : 16800;
+
+    if (isBoceto) {
+      return (
+        <div className="p-3 sm:p-5 rounded-2xl bg-[#09111e] text-slate-100 border-2 border-dashed border-sky-400/50 font-mono text-xs sm:text-sm space-y-4 shadow-2xl relative overflow-hidden bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px]">
+          <div className="flex items-center justify-between pb-2.5 border-b border-sky-400/30 text-[10px] text-sky-400">
+            <span className="font-bold">[BOCETO ARQUITECTÓNICO WIREFRAME • HVAC HVAC_DESERT]</span>
+            <span className="text-slate-400">CLIMATE: SONORA_45C</span>
+          </div>
+          <div className="flex items-center justify-between pb-2 border-b border-sky-400/20">
+            <div className="flex items-center gap-2">
+              <Snowflake className="w-4 h-4 text-cyan-400" />
+              <div>
+                <h4 className="font-bold text-sky-300 text-xs sm:text-sm">[MODULE: CALCULADORA_INVERTER_TONELADAS]</h4>
+                <p className="text-[10px] text-slate-400 font-mono">HABITACIÓN: {airconArea} m² • {airconSun}</p>
+              </div>
+            </div>
+            <span className="text-xs font-mono text-cyan-400 bg-sky-950 px-2 py-0.5 rounded border border-sky-400/30">${price.toLocaleString()} MXN</span>
+          </div>
+
+          <div className="p-2.5 rounded-xl bg-sky-950/40 border border-dashed border-sky-400/20 text-xs space-y-2">
+            <div className="flex justify-between text-[11px] font-mono">
+              <span>ÁREA A ENFRIAR: {airconArea} m²</span>
+              <span className="text-cyan-300 font-bold">{tons}</span>
+            </div>
+            <input
+              type="range"
+              min="10"
+              max="45"
+              value={airconArea}
+              onChange={(e) => setAirconArea(Number(e.target.value))}
+              className="w-full accent-cyan-400 cursor-pointer"
+            />
+          </div>
+
+          <div className="flex items-center justify-between pt-2 border-t border-sky-400/30">
+            <div className="text-[10px] text-slate-400 font-mono">RECOMENDADO: {tons} INVERTER 220V</div>
+            <button
+              type="button"
+              onClick={() => sendWhatsApp(`¡Hola AirCon! Hice el cálculo para climatizar ${airconArea}m² con sol directo en Guaymas/San Carlos. Requiero cotización para ${tons} con instalación incluida.`)}
+              className="py-2 px-3 rounded bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-mono font-bold text-xs flex items-center gap-1.5 shadow-md active:scale-95 transition-all"
+            >
+              <Snowflake className="w-4 h-4" />
+              <span>[COTIZAR_EQUIPO_INSTALACION]</span>
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div className="p-3 sm:p-5 rounded-2xl bg-[#0c141e]/95 text-slate-100 border border-cyan-400/40 text-xs sm:text-sm space-y-4 shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_35px_rgba(6,182,212,0.25)] backdrop-blur-2xl ring-1 ring-white/10 relative overflow-hidden">
+        <div className="absolute -top-10 -left-10 w-40 h-40 bg-cyan-500/15 rounded-full blur-[50px] pointer-events-none" />
+        <div className="flex items-center justify-between pb-3 border-b border-white/10 relative z-10">
+          <div className="flex items-center gap-2.5">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-400 to-sky-600 p-[2px]">
+              <div className="w-full h-full rounded-[10px] bg-slate-950 flex items-center justify-center text-cyan-300 font-bold">
+                <Snowflake className="w-4 h-4" />
+              </div>
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h4 className="font-black text-white text-sm">AIRCON — REFRIGERACIÓN &amp; MINISPLITS SONORA</h4>
+                <span className="px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-400/40 text-[9px] font-extrabold uppercase">
+                  Ahorro CFE Inverter
+                </span>
+              </div>
+              <p className="text-[11px] text-cyan-200/90 font-medium">Equipos de Alta Eficiencia • Garantía 5 Años en Compresor</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="p-3 rounded-xl bg-white/[0.04] border border-white/10 space-y-2 relative z-10">
+          <div className="flex justify-between text-xs">
+            <span>Tamaño de la Habitación: <strong>{airconArea} m²</strong></span>
+            <span className="text-emerald-400 font-bold">{tons}</span>
+          </div>
+          <p className="text-[11px] text-slate-300">
+            Diseñado para clima extremo de 45°C en Guaymas/Hermosillo. Reduce el consumo hasta en un 65% comparado con aires tradicionales.
+          </p>
+        </div>
+
+        <div className="flex items-center justify-between pt-2 border-t border-white/10 relative z-10">
+          <div>
+            <div className="text-[10px] text-slate-400">Equipo + Instalación Básica:</div>
+            <div className="text-base font-black text-emerald-400">${price.toLocaleString()} MXN</div>
+          </div>
+          <button
+            type="button"
+            onClick={() => sendWhatsApp(`¡Hola AirCon! Quiero cotizar ${tons} con instalación para ${airconArea}m² en Guaymas/San Carlos.`)}
+            className="py-2.5 px-4 rounded-xl bg-gradient-to-r from-cyan-400 to-sky-500 hover:opacity-95 text-slate-950 font-black text-xs flex items-center gap-1.5 shadow-lg active:scale-95 transition-all"
+          >
+            <MessageCircle className="w-4 h-4 fill-slate-950" />
+            <span>Agendar Instalación por WhatsApp</span>
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  /* ========================================================
+     16. LUXURY HOTEL & SUITES SAN CARLOS (turismo)
+     ======================================================== */
+  if (slug === 'luxury-hotel-guest-app') {
+    const isBoceto = visualMode === 'boceto';
+    const suites = [
+      { name: 'Ocean Front Master Suite', price: 3850, view: 'Vista directa al Mar de Cortés' },
+      { name: 'Villa Tetakawi Sunset', price: 5400, view: 'Piscina infinity privada y terraza' },
+      { name: 'Presidential Penthouse', price: 8200, view: 'Piso exclusivo con jacuzzi panorámico' },
+    ];
+    const suite = suites.find((s) => s.name === hotelSuite) || suites[0];
+
+    if (isBoceto) {
+      return (
+        <div className="p-3 sm:p-5 rounded-2xl bg-[#09111e] text-slate-100 border-2 border-dashed border-sky-400/50 font-mono text-xs sm:text-sm space-y-4 shadow-2xl relative overflow-hidden bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px]">
+          <div className="flex items-center justify-between pb-2.5 border-b border-sky-400/30 text-[10px] text-sky-400">
+            <span className="font-bold">[BOCETO ARQUITECTÓNICO WIREFRAME • GUEST EXPERIENCE PWA]</span>
+            <span className="text-slate-400">HOTEL: SAN_CARLOS_RESORT</span>
+          </div>
+          <div className="flex items-center justify-between pb-2 border-b border-sky-400/20">
+            <div className="flex items-center gap-2">
+              <BedDouble className="w-4 h-4 text-sky-400" />
+              <div>
+                <h4 className="font-bold text-sky-300 text-xs sm:text-sm">[MODULE: SUITE_ROOM_CONTROL]</h4>
+                <p className="text-[10px] text-slate-400 font-mono">{hotelSuite} • CLIMA: {hotelTemp}°C</p>
+              </div>
+            </div>
+            <span className="text-xs font-mono text-emerald-400 bg-sky-950 px-2 py-0.5 rounded border border-sky-400/30">${suite.price} MXN/noche</span>
+          </div>
+
+          <div className="grid grid-cols-2 gap-2 text-xs font-mono">
+            <div className="p-2 rounded bg-sky-950/40 border border-dashed border-sky-400/30">
+              <span className="text-[10px] text-sky-400 block">LLAVE DIGITAL NFC:</span>
+              <button
+                type="button"
+                onClick={() => setHotelKeyActive(!hotelKeyActive)}
+                className={`mt-1 w-full py-1 rounded text-center font-bold ${
+                  hotelKeyActive ? 'bg-emerald-500 text-slate-950' : 'bg-rose-500/30 text-rose-300'
+                }`}
+              >
+                {hotelKeyActive ? 'PUERTA DESBLOQUEADA' : 'PUERTA BLOQUEADA'}
+              </button>
+            </div>
+            <div className="p-2 rounded bg-sky-950/40 border border-dashed border-sky-400/30">
+              <span className="text-[10px] text-sky-400 block">CLIMA HABITACIÓN:</span>
+              <div className="flex items-center justify-between mt-1">
+                <button type="button" onClick={() => setHotelTemp(Math.max(18, hotelTemp - 1))} className="px-2 py-0.5 bg-sky-900 rounded">-</button>
+                <span className="font-bold text-amber-300">{hotelTemp}°C</span>
+                <button type="button" onClick={() => setHotelTemp(Math.min(26, hotelTemp + 1))} className="px-2 py-0.5 bg-sky-900 rounded">+</button>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between pt-2 border-t border-sky-400/30">
+            <div className="text-[10px] text-slate-400 font-mono">SUITE: {suite.name}</div>
+            <button
+              type="button"
+              onClick={() => sendWhatsApp(`¡Hola Luxury Hotel San Carlos! Deseo reservar la "${suite.name}" ($${suite.price} MXN) y coordinar el traslado desde el aeropuerto.`)}
+              className="py-2 px-3 rounded bg-sky-500 hover:bg-sky-400 text-slate-950 font-mono font-bold text-xs flex items-center gap-1.5 shadow-md active:scale-95 transition-all"
+            >
+              <KeyRound className="w-4 h-4" />
+              <span>[RESERVAR_CONSERJE_WHATSAPP]</span>
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div className="p-3 sm:p-5 rounded-2xl bg-[#0c141e]/95 text-slate-100 border border-amber-400/40 text-xs sm:text-sm space-y-4 shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_35px_rgba(245,158,11,0.25)] backdrop-blur-2xl ring-1 ring-white/10 relative overflow-hidden">
+        <div className="absolute -top-10 -left-10 w-40 h-40 bg-amber-500/15 rounded-full blur-[50px] pointer-events-none" />
+        <div className="flex items-center justify-between pb-3 border-b border-white/10 relative z-10">
+          <div className="flex items-center gap-2.5">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-400 to-rose-500 p-[2px]">
+              <div className="w-full h-full rounded-[10px] bg-slate-950 flex items-center justify-center text-amber-400 font-bold">
+                <BedDouble className="w-4 h-4" />
+              </div>
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h4 className="font-black text-white text-sm">LUXURY HOTEL &amp; SUITES SAN CARLOS</h4>
+                <span className="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-400/40 text-[9px] font-extrabold uppercase">
+                  App de Huésped PWA
+                </span>
+              </div>
+              <p className="text-[11px] text-amber-200/90 font-medium">Frente al Mar de Cortés • Control Inteligente de Habitación</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="space-y-2 relative z-10">
+          {suites.map((s) => (
+            <div
+              key={s.name}
+              onClick={() => setHotelSuite(s.name)}
+              className={`p-3 rounded-xl border cursor-pointer transition-all flex items-center justify-between ${
+                hotelSuite === s.name
+                  ? 'bg-amber-500/20 border-amber-400 shadow-lg shadow-amber-500/20'
+                  : 'bg-white/[0.04] border-white/10 hover:border-amber-400/40'
+              }`}
+            >
+              <div>
+                <span className="font-extrabold text-white text-xs">{s.name}</span>
+                <div className="text-[10px] text-slate-300 mt-0.5">{s.view}</div>
+              </div>
+              <span className="text-emerald-400 font-black text-xs">${s.price} MXN</span>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex items-center justify-between pt-2 border-t border-white/10 relative z-10">
+          <div>
+            <div className="text-[10px] text-slate-400">Tarifa por Noche:</div>
+            <div className="text-base font-black text-emerald-400">${suite.price} MXN</div>
+          </div>
+          <button
+            type="button"
+            onClick={() => sendWhatsApp(`¡Hola Luxury Hotel San Carlos! Deseo reservar la "${suite.name}" ($${suite.price} MXN/noche).`)}
+            className="py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-rose-500 hover:opacity-95 text-slate-950 font-black text-xs flex items-center gap-1.5 shadow-lg active:scale-95 transition-all"
+          >
+            <KeyRound className="w-4 h-4 fill-slate-950" />
+            <span>Reservar con Conserje VIP</span>
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  /* ========================================================
+     17. LIMPIAPRO — COTIZADOR DE LIMPIEZA (servicios)
+     ======================================================== */
+  if (slug === 'limpiapro-servicios') {
+    const isBoceto = visualMode === 'boceto';
+    const basePrice = limpiaType.includes('Loft') ? 650 : limpiaType.includes('2 Pisos') ? 1350 : limpiaType.includes('Villa') ? 1900 : 1600;
+    const extrasPrice = (limpiaDeep ? 450 : 0) + (limpiaWindows ? 350 : 0);
+    const total = basePrice + extrasPrice;
+
+    if (isBoceto) {
+      return (
+        <div className="p-3 sm:p-5 rounded-2xl bg-[#09111e] text-slate-100 border-2 border-dashed border-sky-400/50 font-mono text-xs sm:text-sm space-y-4 shadow-2xl relative overflow-hidden bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px]">
+          <div className="flex items-center justify-between pb-2.5 border-b border-sky-400/30 text-[10px] text-sky-400">
+            <span className="font-bold">[BOCETO ARQUITECTÓNICO WIREFRAME • CLEANING QUOTE]</span>
+            <span className="text-slate-400">SPEC: LIMPIAPRO_SPEC_V1</span>
+          </div>
+          <div className="flex items-center justify-between pb-2 border-b border-sky-400/20">
+            <div className="flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-emerald-400" />
+              <div>
+                <h4 className="font-bold text-sky-300 text-xs sm:text-sm">[MODULE: COTIZADOR_LIMPIEZA_EXPRESS]</h4>
+                <p className="text-[10px] text-slate-400 font-mono">INMUEBLE: {limpiaType}</p>
+              </div>
+            </div>
+            <span className="text-xs font-mono text-emerald-400 bg-sky-950 px-2 py-0.5 rounded border border-sky-400/30">${total} MXN</span>
+          </div>
+
+          <div className="space-y-2 text-xs font-mono">
+            <select
+              value={limpiaType}
+              onChange={(e) => setLimpiaType(e.target.value)}
+              className="w-full bg-sky-950 text-sky-300 border border-sky-400/30 p-2 rounded text-xs font-mono"
+            >
+              <option value="Departamento / Loft">Departamento / Loft ($650 MXN)</option>
+              <option value="Casa Residencial (2 Pisos)">Casa Residencial 2 Pisos ($1,350 MXN)</option>
+              <option value="Villa Turística San Carlos">Villa Turística San Carlos ($1,900 MXN)</option>
+              <option value="Oficina Corporativa">Oficina Corporativa ($1,600 MXN)</option>
+            </select>
+            <div className="flex items-center gap-4 pt-1">
+              <label className="flex items-center gap-1.5 cursor-pointer">
+                <input type="checkbox" checked={limpiaDeep} onChange={(e) => setLimpiaDeep(e.target.checked)} className="accent-sky-400" />
+                <span>Profunda (+450)</span>
+              </label>
+              <label className="flex items-center gap-1.5 cursor-pointer">
+                <input type="checkbox" checked={limpiaWindows} onChange={(e) => setLimpiaWindows(e.target.checked)} className="accent-sky-400" />
+                <span>Ventanas (+350)</span>
+              </label>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between pt-2 border-t border-sky-400/30">
+            <div className="text-[10px] text-slate-400 font-mono">TOTAL ESTIMADO: ${total} MXN</div>
+            <button
+              type="button"
+              onClick={() => sendWhatsApp(`¡Hola LimpiaPro! Deseo agendar servicio para "${limpiaType}" con extras por un total de $${total} MXN.`)}
+              className="py-2 px-3 rounded bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-mono font-bold text-xs flex items-center gap-1.5 shadow-md active:scale-95 transition-all"
+            >
+              <Sparkles className="w-4 h-4 fill-slate-950" />
+              <span>[AGENDAR_CUADRILLA_WHATSAPP]</span>
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div className="p-3 sm:p-5 rounded-2xl bg-[#0c141e]/95 text-slate-100 border border-emerald-400/40 text-xs sm:text-sm space-y-4 shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_35px_rgba(16,185,129,0.25)] backdrop-blur-2xl ring-1 ring-white/10 relative overflow-hidden">
+        <div className="absolute -top-10 -left-10 w-40 h-40 bg-emerald-500/15 rounded-full blur-[50px] pointer-events-none" />
+        <div className="flex items-center justify-between pb-3 border-b border-white/10 relative z-10">
+          <div className="flex items-center gap-2.5">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-400 to-teal-500 p-[2px]">
+              <div className="w-full h-full rounded-[10px] bg-slate-950 flex items-center justify-center text-emerald-400 font-bold">
+                <Sparkles className="w-4 h-4" />
+              </div>
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h4 className="font-black text-white text-sm">LIMPIAPRO — SERVICIOS DE LIMPIEZA PROFESIONAL</h4>
+                <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 text-[9px] font-extrabold uppercase">
+                  100% Garantizado
+                </span>
+              </div>
+              <p className="text-[11px] text-emerald-200/90 font-medium">Personal Confiable • Insumos Biodegradables Incluidos</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="p-3 rounded-xl bg-white/[0.04] border border-white/10 space-y-2 relative z-10">
+          <div className="flex justify-between text-xs">
+            <span>Inmueble Seleccionado: <strong>{limpiaType}</strong></span>
+            <span className="text-emerald-400 font-bold">${basePrice} MXN</span>
+          </div>
+          <div className="flex items-center gap-4 text-xs text-slate-300 pt-1">
+            <label className="flex items-center gap-1.5 cursor-pointer">
+              <input type="checkbox" checked={limpiaDeep} onChange={(e) => setLimpiaDeep(e.target.checked)} className="accent-emerald-400" />
+              <span>Desinfección profunda a vapor (+$450)</span>
+            </label>
+            <label className="flex items-center gap-1.5 cursor-pointer">
+              <input type="checkbox" checked={limpiaWindows} onChange={(e) => setLimpiaWindows(e.target.checked)} className="accent-emerald-400" />
+              <span>Lavado exterior de ventanas (+$350)</span>
+            </label>
+          </div>
+        </div>
+
+        <div className="flex items-center justify-between pt-2 border-t border-white/10 relative z-10">
+          <div>
+            <div className="text-[10px] text-slate-400">Total con Insumos Incluidos:</div>
+            <div className="text-base font-black text-emerald-400">${total} MXN</div>
+          </div>
+          <button
+            type="button"
+            onClick={() => sendWhatsApp(`¡Hola LimpiaPro! Quiero agendar servicio de limpieza para "${limpiaType}" con total de $${total} MXN.`)}
+            className="py-2.5 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-400 hover:opacity-95 text-slate-950 font-black text-xs flex items-center gap-1.5 shadow-lg active:scale-95 transition-all"
+          >
+            <MessageCircle className="w-4 h-4 fill-slate-950" />
+            <span>Agendar Cuadrilla por WhatsApp</span>
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  /* ========================================================
+     18. SOLARTEC — PANELES SOLARES & AHORRO CFE (sustentabilidad)
+     ======================================================== */
+  if (slug === 'solartec-energia') {
+    const isBoceto = visualMode === 'boceto';
+    const panels = Math.max(4, Math.round(solarBill / 850));
+    const newBill = Math.round(solarBill * 0.05 + 110);
+    const savingsAnnual = Math.round((solarBill - newBill) * 6);
+
+    if (isBoceto) {
+      return (
+        <div className="p-3 sm:p-5 rounded-2xl bg-[#09111e] text-slate-100 border-2 border-dashed border-sky-400/50 font-mono text-xs sm:text-sm space-y-4 shadow-2xl relative overflow-hidden bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px]">
+          <div className="flex items-center justify-between pb-2.5 border-b border-sky-400/30 text-[10px] text-sky-400">
+            <span className="font-bold">[BOCETO ARQUITECTÓNICO WIREFRAME • SOLAR CALCULATOR]</span>
+            <span className="text-slate-400">TARIFA: DAC_SONORA_CFE</span>
+          </div>
+          <div className="flex items-center justify-between pb-2 border-b border-sky-400/20">
+            <div className="flex items-center gap-2">
+              <Sun className="w-4 h-4 text-amber-400" />
+              <div>
+                <h4 className="font-bold text-sky-300 text-xs sm:text-sm">[MODULE: CALCULADORA_AHORRO_CFE]</h4>
+                <p className="text-[10px] text-slate-400 font-mono">RECIBO ACTUAL: ${solarBill.toLocaleString()} MXN / BIMESTRE</p>
+              </div>
+            </div>
+            <span className="text-xs font-mono text-emerald-400 bg-sky-950 px-2 py-0.5 rounded border border-sky-400/30">AHORRO: 95%</span>
+          </div>
+
+          <div className="p-2.5 rounded-xl bg-sky-950/40 border border-dashed border-sky-400/20 text-xs space-y-2">
+            <div className="flex justify-between text-[11px] font-mono">
+              <span>AJUSTAR RECIBO CFE ACTUAL:</span>
+              <span className="text-amber-300 font-bold">${solarBill.toLocaleString()} MXN</span>
+            </div>
+            <input
+              type="range"
+              min="2000"
+              max="25000"
+              step="500"
+              value={solarBill}
+              onChange={(e) => setSolarBill(Number(e.target.value))}
+              className="w-full accent-amber-400 cursor-pointer"
+            />
+          </div>
+
+          <div className="grid grid-cols-3 gap-2 text-center font-mono">
+            <div className="p-2 rounded bg-sky-950/70 border border-sky-400/30">
+              <div className="text-[10px] text-slate-400">PANELES TIER 1:</div>
+              <div className="text-sm font-bold text-sky-300">{panels} paneles</div>
+            </div>
+            <div className="p-2 rounded bg-sky-950/70 border border-sky-400/30">
+              <div className="text-[10px] text-slate-400">NUEVO RECIBO:</div>
+              <div className="text-sm font-bold text-emerald-400">${newBill} MXN</div>
+            </div>
+            <div className="p-2 rounded bg-sky-950/70 border border-sky-400/30">
+              <div className="text-[10px] text-slate-400">AHORRO ANUAL:</div>
+              <div className="text-sm font-bold text-amber-300">${savingsAnnual.toLocaleString()}</div>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between pt-2 border-t border-sky-400/30">
+            <div className="text-[10px] text-slate-400 font-mono">SISTEMA REQUERIDO: {panels} PANELES 550W</div>
+            <button
+              type="button"
+              onClick={() => sendWhatsApp(`¡Hola Solartec! Mi recibo CFE bimestral es de $${solarBill.toLocaleString()} MXN. Deseo cotización para sistema solar de ${panels} paneles con trámite de medidor bidireccional.`)}
+              className="py-2 px-3 rounded bg-amber-400 hover:bg-amber-300 text-slate-950 font-mono font-bold text-xs flex items-center gap-1.5 shadow-md active:scale-95 transition-all"
+            >
+              <Sun className="w-4 h-4 fill-slate-950" />
+              <span>[COTIZAR_PANELES_WHATSAPP]</span>
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div className="p-3 sm:p-5 rounded-2xl bg-[#0c141e]/95 text-slate-100 border border-amber-400/40 text-xs sm:text-sm space-y-4 shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_35px_rgba(245,158,11,0.25)] backdrop-blur-2xl ring-1 ring-white/10 relative overflow-hidden">
+        <div className="absolute -top-10 -left-10 w-40 h-40 bg-amber-500/15 rounded-full blur-[50px] pointer-events-none" />
+        <div className="flex items-center justify-between pb-3 border-b border-white/10 relative z-10">
+          <div className="flex items-center gap-2.5">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-400 to-yellow-500 p-[2px]">
+              <div className="w-full h-full rounded-[10px] bg-slate-950 flex items-center justify-center text-amber-400 font-bold">
+                <Sun className="w-4 h-4" />
+              </div>
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h4 className="font-black text-white text-sm">SOLARTEC — PANELES SOLARES &amp; AHORRO CFE</h4>
+                <span className="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-400/40 text-[9px] font-extrabold uppercase">
+                  Ahorro del 95%
+                </span>
+              </div>
+              <p className="text-[11px] text-amber-200/90 font-medium">Trámite CFE Incluido • Paneles Monocristalinos Tier-1</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 gap-3 p-3 rounded-xl bg-white/[0.04] border border-white/10 relative z-10">
+          <div>
+            <span className="text-[10px] text-slate-400 block">Tu Recibo Actual:</span>
+            <span className="text-sm font-black text-rose-400">${solarBill.toLocaleString()} MXN</span>
+          </div>
+          <div>
+            <span className="text-[10px] text-slate-400 block">Tu Recibo con Solartec:</span>
+            <span className="text-sm font-black text-emerald-400">${newBill} MXN / bim</span>
+          </div>
+        </div>
+
+        <div className="flex items-center justify-between pt-2 border-t border-white/10 relative z-10">
+          <div>
+            <div className="text-[10px] text-slate-400">Ahorro Anual Estimado:</div>
+            <div className="text-base font-black text-amber-300">${savingsAnnual.toLocaleString()} MXN</div>
+          </div>
+          <button
+            type="button"
+            onClick={() => sendWhatsApp(`¡Hola Solartec! Quiero eliminar la tarifa DAC de mi recibo CFE ($${solarBill} bimestral) con ${panels} paneles.`)}
+            className="py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500 hover:opacity-95 text-slate-950 font-black text-xs flex items-center gap-1.5 shadow-lg active:scale-95 transition-all"
+          >
+            <Sun className="w-4 h-4 fill-slate-950" />
+            <span>Cotizar Proyecto Solar por WhatsApp</span>
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  /* ========================================================
+     19. CINEVAULT V3 — STREAMING SOCIAL & MEDIA (media)
+     ======================================================== */
+  if (slug === 'cinevault-v3') {
+    const isBoceto = visualMode === 'boceto';
+
+    if (isBoceto) {
+      return (
+        <div className="p-3 sm:p-5 rounded-2xl bg-[#09111e] text-slate-100 border-2 border-dashed border-sky-400/50 font-mono text-xs sm:text-sm space-y-4 shadow-2xl relative overflow-hidden bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px]">
+          <div className="flex items-center justify-between pb-2.5 border-b border-sky-400/30 text-[10px] text-sky-400">
+            <span className="font-bold">[BOCETO ARQUITECTÓNICO WIREFRAME • VIDEO STREAMING PLAYER]</span>
+            <span className="text-slate-400">SPEC: HLS_4K_HDR_V3</span>
+          </div>
+          <div className="flex items-center justify-between pb-2 border-b border-sky-400/20">
+            <div className="flex items-center gap-2">
+              <Tv className="w-4 h-4 text-purple-400" />
+              <div>
+                <h4 className="font-bold text-sky-300 text-xs sm:text-sm">[MODULE: REPRODUCTOR_SOCIAL_MEDIA]</h4>
+                <p className="text-[10px] text-slate-400 font-mono">TÍTULO: {cineMovie} • AUDIO: DOLBY_5_1</p>
+              </div>
+            </div>
+            <span className="text-xs font-mono text-purple-400 bg-sky-950 px-2 py-0.5 rounded border border-sky-400/30">4K HDR</span>
+          </div>
+
+          <div className="h-28 rounded-xl bg-sky-950/60 border border-dashed border-sky-400/30 flex flex-col items-center justify-center relative font-mono">
+            <div className="w-10 h-10 rounded-full bg-sky-500/20 border border-sky-400/60 flex items-center justify-center text-sky-300">
+              <Play className="w-5 h-5 ml-0.5" />
+            </div>
+            <span className="text-[10px] text-slate-400 mt-2">[REPRODUCTOR_CANVAS_4K • STREAM_ONLINE]</span>
+          </div>
+
+          <div className="flex items-center justify-between pt-2 border-t border-sky-400/30">
+            <div className="text-[10px] text-slate-400 font-mono">SALA VIRTUAL: 14 ESPECTADORES EN VIVO</div>
+            <button
+              type="button"
+              onClick={() => sendWhatsApp(`¡Hola CineVault! Vi la plataforma de streaming en tu Portafolio y deseo cotizar una plataforma similar para mis producciones audiovisuales.`)}
+              className="py-2 px-3 rounded bg-purple-500 hover:bg-purple-400 text-white font-mono font-bold text-xs flex items-center gap-1.5 shadow-md active:scale-95 transition-all"
+            >
+              <Tv className="w-4 h-4" />
+              <span>[ENTRAR_A_LA_SALA_VIP]</span>
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div className="p-3 sm:p-5 rounded-2xl bg-[#0c141e]/95 text-slate-100 border border-purple-400/40 text-xs sm:text-sm space-y-4 shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_35px_rgba(168,85,247,0.25)] backdrop-blur-2xl ring-1 ring-white/10 relative overflow-hidden">
+        <div className="absolute -top-10 -left-10 w-40 h-40 bg-purple-500/15 rounded-full blur-[50px] pointer-events-none" />
+        <div className="flex items-center justify-between pb-3 border-b border-white/10 relative z-10">
+          <div className="flex items-center gap-2.5">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-purple-500 to-indigo-500 p-[2px]">
+              <div className="w-full h-full rounded-[10px] bg-slate-950 flex items-center justify-center text-purple-400 font-bold">
+                <Tv className="w-4 h-4" />
+              </div>
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h4 className="font-black text-white text-sm">CINEVAULT V3 — STREAMING SOCIAL &amp; MEDIA</h4>
+                <span className="px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-400/40 text-[9px] font-extrabold uppercase">
+                  Watch Party &amp; 4K
+                </span>
+              </div>
+              <p className="text-[11px] text-purple-200/90 font-medium">Salas de Estreno Privadas • Chat en Vivo Sincronizado</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="h-32 rounded-xl bg-black/60 border border-white/10 flex flex-col items-center justify-center relative overflow-hidden group cursor-pointer z-10">
+          <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-purple-500 to-indigo-500 flex items-center justify-center text-white shadow-lg shadow-purple-500/40 group-hover:scale-110 transition-transform">
+            <Play className="w-5 h-5 ml-0.5" />
+          </div>
+          <span className="text-xs font-bold text-white mt-2">Reproducir &quot;{cineMovie}&quot;</span>
+        </div>
+
+        <div className="flex items-center justify-between pt-2 border-t border-white/10 relative z-10">
+          <div className="text-[11px] text-slate-400">
+            Resolución: <strong className="text-purple-300">4K Ultra HDR</strong> • Audio: <strong className="text-cyan-300">Dolby Atmos</strong>
+          </div>
+          <button
+            type="button"
+            onClick={() => sendWhatsApp(`¡Hola CineVault! Quiero desarrollar una plataforma de streaming y cineclub privado con el Paquete Escalable.`)}
+            className="py-2.5 px-4 rounded-xl bg-gradient-to-r from-purple-500 to-indigo-600 hover:opacity-95 text-white font-black text-xs flex items-center gap-1.5 shadow-lg active:scale-95 transition-all"
+          >
+            <MessageCircle className="w-4 h-4" />
+            <span>Cotizar Plataforma Streaming</span>
           </button>
         </div>
       </div>
