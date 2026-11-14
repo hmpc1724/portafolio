@@ -245,6 +245,7 @@ export default function ShoppableUgcSlider({
   const [selectedDemoModal, setSelectedDemoModal] = useState<DemoSliderItem | null>(null);
   const [viewportMode, setViewportMode] = useState<'desktop' | 'mobile'>('desktop');
   const [simulatorTab, setSimulatorTab] = useState<'boceto_interactivo' | 'boceto_stitch' | 'boceto_svg'>('boceto_interactivo');
+  const [visualMode, setVisualMode] = useState<'boceto' | 'liquid-glass'>('boceto');
   const [copiedKey, setCopiedKey] = useState(false);
   const [copiedStitchPrompt, setCopiedStitchPrompt] = useState(false);
   const [windowWidth, setWindowWidth] = useState<number>(
@@ -320,6 +321,7 @@ export default function ShoppableUgcSlider({
   const openDemoModal = (demo: DemoSliderItem, e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
     setSelectedDemoModal(demo);
+    setVisualMode('boceto'); // Inicialmente siempre arranca en Modo Boceto, como solicitó el usuario
   };
 
   const handleWhatsAppInquiry = (demo: DemoSliderItem) => {
@@ -486,8 +488,12 @@ export default function ShoppableUgcSlider({
                     : 'border-white/15 shadow-2xl hover:border-cyan-400/40'
                 } bg-slate-950 flex flex-col justify-between`}
               >
-                {/* VIDEO DE FONDO / PREVIEW SVG CON POSTER */}
-                <div className="absolute inset-0 w-full h-full bg-slate-950 overflow-hidden">
+                {/* FONDO BOCETO BLUEPRINT / WIREFRAME DE LA TARJETA */}
+                <div className="absolute inset-0 w-full h-full bg-[#060e1b] overflow-hidden">
+                  {/* Rejilla técnica de blueprint */}
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#38bdf8_1.2px,transparent_1.2px)] [background-size:18px_18px] opacity-25" />
+                  
+                  {/* Video de fondo muy sutil en monocromo para dar dinamismo sin opacar el boceto */}
                   <video
                     ref={(el) => {
                       videoRefs.current[idx] = el;
@@ -497,31 +503,45 @@ export default function ShoppableUgcSlider({
                     loop
                     muted
                     playsInline
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover opacity-15 mix-blend-luminosity"
                   />
-                  <img
-                    src={demo.svgPreview}
-                    alt={demo.title}
-                    className="absolute inset-0 w-full h-full object-cover opacity-35 mix-blend-overlay pointer-events-none"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/35 to-slate-950/70 pointer-events-none" />
+
+                  {/* Visualización del Boceto SVG en primer plano con marco técnico */}
+                  <div className="absolute inset-x-3 top-14 bottom-24 rounded-xl border border-dashed border-sky-400/40 bg-sky-950/30 p-2 flex flex-col justify-between overflow-hidden backdrop-blur-sm">
+                    <div className="flex items-center justify-between text-[9px] font-mono text-sky-400 pb-1 border-b border-sky-400/20">
+                      <span>[CAD_VIEW • 12_COL]</span>
+                      <span>STITCH_SPEC_V1</span>
+                    </div>
+                    <div className="flex-1 relative flex items-center justify-center my-1">
+                      <img
+                        src={demo.svgPreview}
+                        alt={demo.title}
+                        className="max-h-full w-auto object-contain drop-shadow-[0_0_12px_rgba(56,189,248,0.3)] filter contrast-125"
+                      />
+                    </div>
+                    <div className="flex items-center justify-between text-[8px] font-mono text-slate-400 pt-1 border-t border-sky-400/20">
+                      <span>RESPONSIVE: PWA</span>
+                      <span>LATENCY: &lt;0.5s</span>
+                    </div>
+                  </div>
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/35 to-slate-950/75 pointer-events-none" />
                 </div>
 
-                {/* BARRA SUPERIOR (Insignia del Demo + Nicho) */}
-                <div className="relative z-20 p-3.5 flex items-center justify-between">
-                  <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-slate-950/75 border border-white/20 backdrop-blur-md shadow-md">
-                    <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
-                    <span className="text-[10px] font-extrabold text-cyan-300 uppercase tracking-wider truncate max-w-[130px]">
-                      {demo.badge}
+                {/* BARRA SUPERIOR (Insignia del Boceto Wireframe + Nicho) */}
+                <div className="relative z-20 p-3 flex items-center justify-between">
+                  <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-slate-950/85 border border-sky-400/40 backdrop-blur-md shadow-md">
+                    <span className="w-2 h-2 rounded-full bg-sky-400 animate-ping" />
+                    <span className="text-[10px] font-mono font-extrabold text-sky-300 uppercase tracking-wider truncate max-w-[130px]">
+                      ✏️ BOCETO: {demo.badge}
                     </span>
                   </div>
                 </div>
 
                 {/* TITULO Y NICHO EN EL CENTRO */}
                 <div className="relative z-20 px-3.5 space-y-1">
-                  <div className="flex items-center gap-1 text-[11px] font-bold bg-slate-950/60 backdrop-blur-md px-2.5 py-0.5 rounded-full text-amber-300 border border-white/10 w-fit">
-                    <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
-                    <span>Demo 100% Funcional</span>
+                  <div className="flex items-center gap-1 text-[10px] font-mono font-bold bg-slate-950/70 backdrop-blur-md px-2 py-0.5 rounded text-sky-300 border border-sky-400/30 w-fit">
+                    <span>[PROTOTIPO_INTERACTIVO]</span>
                   </div>
                   <h3 className="text-base sm:text-lg font-black text-white leading-tight drop-shadow-md">
                     {demo.title}
@@ -540,10 +560,10 @@ export default function ShoppableUgcSlider({
                         e.stopPropagation();
                         openDemoModal(demo, e);
                       }}
-                      className="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-cyan-400 via-teal-400 to-indigo-500 hover:from-cyan-300 hover:to-indigo-400 text-slate-950 font-black text-xs flex items-center justify-center gap-1.5 shadow-[0_0_20px_rgba(6,182,212,0.6)] active:scale-95 transition-all"
+                      className="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-sky-400 via-teal-400 to-indigo-500 hover:from-sky-300 hover:to-indigo-400 text-slate-950 font-black text-xs flex items-center justify-center gap-1.5 shadow-[0_0_20px_rgba(56,189,248,0.6)] active:scale-95 transition-all"
                     >
                       <Zap className="w-3.5 h-3.5 fill-slate-950 text-slate-950" />
-                      <span>⚡ Abrir Boceto & Probar Demo</span>
+                      <span>⚡ Probar Boceto & Demo</span>
                     </button>
                   </div>
                 )}
@@ -651,6 +671,48 @@ export default function ShoppableUgcSlider({
 
             {/* CUERPO DEL MODAL */}
             <div className="space-y-4 relative z-10 overflow-y-auto pr-1">
+              {/* SWITCH MAESTRO DE TRANSFORMACIÓN: BOCETO ⇄ LIQUID GLASS */}
+              <div className="flex flex-wrap items-center justify-between gap-3 p-3 rounded-2xl bg-gradient-to-r from-slate-900/90 via-slate-950/95 to-slate-900/90 border border-white/15 backdrop-blur-2xl shadow-xl relative z-20">
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-mono text-slate-400">
+                    {visualMode === 'boceto' ? '📐 Vista Inicial:' : '💎 Vista Final:'}
+                  </span>
+                  <span className={`text-xs font-black px-2.5 py-1 rounded-full flex items-center gap-1.5 ${
+                    visualMode === 'boceto'
+                      ? 'bg-sky-500/20 text-sky-300 border border-sky-400/50'
+                      : 'bg-gradient-to-r from-cyan-400/30 to-amber-400/30 text-amber-200 border border-amber-400/50 animate-pulse shadow-md shadow-amber-500/20'
+                  }`}>
+                    {visualMode === 'boceto' ? '✏️ Modo Boceto (Wireframe)' : '💎 Modo Liquid Glass (Producción)'}
+                  </span>
+                </div>
+
+                <div className="flex items-center p-1 rounded-xl bg-slate-950 border border-white/10 shadow-inner">
+                  <button
+                    type="button"
+                    onClick={() => setVisualMode('boceto')}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
+                      visualMode === 'boceto'
+                        ? 'bg-sky-500 text-slate-950 font-black shadow-md'
+                        : 'text-slate-400 hover:text-white'
+                    }`}
+                  >
+                    <span>✏️ Modo Boceto</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setVisualMode('liquid-glass')}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
+                      visualMode === 'liquid-glass'
+                        ? 'bg-gradient-to-r from-cyan-400 via-teal-300 to-amber-300 text-slate-950 font-black shadow-lg shadow-cyan-500/40'
+                        : 'text-slate-400 hover:text-white'
+                    }`}
+                  >
+                    <Sparkles className="w-3.5 h-3.5 text-slate-950" />
+                    <span>💎 Activar Liquid Glass</span>
+                  </button>
+                </div>
+              </div>
+
               {/* SECCIÓN 1: BOCETO INTERACTIVO / STITCH / SVG (EN PRIMER PLANO) */}
               <div className="space-y-3 bg-white/[0.02] p-3 sm:p-4 rounded-2xl border border-white/10 shadow-inner">
                 <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3">
@@ -759,6 +821,7 @@ export default function ShoppableUgcSlider({
                       slug={selectedDemoModal.slug}
                       viewportMode={viewportMode}
                       phoneNumber={phoneNumber}
+                      visualMode={visualMode}
                     />
                   </div>
                 )}

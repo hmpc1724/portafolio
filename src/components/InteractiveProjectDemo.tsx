@@ -69,6 +69,9 @@ export default function InteractiveProjectDemo({ project }: InteractiveProjectDe
   const [sqMeters, setSqMeters] = useState<number>(120);
   const [includeDisinfection, setIncludeDisinfection] = useState<boolean>(true);
 
+  // Switch Maestro: Boceto vs Liquid Glass
+  const [visualMode, setVisualMode] = useState<'boceto' | 'liquid-glass'>('boceto');
+
   // Portafolio / Shader Interactive State
   const [glowIntensity, setGlowIntensity] = useState<number>(75);
   const [activeMood, setActiveMood] = useState<'Neón Boreal' | 'Cristal Ámbar' | 'Océano Profundo'>('Neón Boreal');
@@ -80,8 +83,16 @@ export default function InteractiveProjectDemo({ project }: InteractiveProjectDe
   const cleaningPrice = Math.round(sqMeters * 12 + (includeDisinfection ? 450 : 0));
 
   return (
-    <div id="live-demo-simulator" className="glass-panel-elevated p-6 sm:p-8 border border-sky-400/30">
-      <div className="flex flex-wrap items-center justify-between gap-3 pb-4 mb-6 border-b border-slate-200/60 dark:border-white/10">
+    <div
+      id="live-demo-simulator"
+      className={`p-6 sm:p-8 rounded-3xl transition-all duration-500 relative ${
+        visualMode === 'boceto'
+          ? 'bg-[#080f1d] border-2 border-dashed border-sky-400/50 shadow-2xl overflow-hidden bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px]'
+          : 'glass-panel-elevated border border-sky-400/40 shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_35px_rgba(6,182,212,0.25)]'
+      }`}
+    >
+      {/* Barra de simulación de navegador */}
+      <div className="flex flex-wrap items-center justify-between gap-3 pb-4 mb-5 border-b border-slate-200/60 dark:border-white/10">
         <div className="flex items-center gap-2.5">
           <div className="flex items-center gap-1.5">
             <span className="w-3 h-3 rounded-full bg-rose-500" />
@@ -97,6 +108,60 @@ export default function InteractiveProjectDemo({ project }: InteractiveProjectDe
           Demo Interactivo en Vivo ({project.nicheLabel || project.categoryLabel})
         </span>
       </div>
+
+      {/* SWITCH MAESTRO DE TRANSFORMACIÓN: BOCETO ⇄ LIQUID GLASS */}
+      <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-2xl bg-gradient-to-r from-slate-900/90 via-slate-950/95 to-slate-900/90 border border-white/15 backdrop-blur-2xl shadow-xl mb-6">
+        <div className="flex items-center gap-2">
+          <span className="text-xs font-mono text-slate-400">
+            {visualMode === 'boceto' ? '📐 Vista Inicial:' : '💎 Vista Final:'}
+          </span>
+          <span
+            className={`text-xs font-black px-2.5 py-1 rounded-full flex items-center gap-1.5 ${
+              visualMode === 'boceto'
+                ? 'bg-sky-500/20 text-sky-300 border border-sky-400/50'
+                : 'bg-gradient-to-r from-cyan-400/30 to-amber-400/30 text-amber-200 border border-amber-400/50 animate-pulse shadow-md shadow-amber-500/20'
+            }`}
+          >
+            {visualMode === 'boceto' ? '✏️ Modo Boceto (Wireframe)' : '💎 Modo Liquid Glass (Producción)'}
+          </span>
+        </div>
+
+        <div className="flex items-center p-1 rounded-xl bg-slate-950 border border-white/10 shadow-inner">
+          <button
+            type="button"
+            onClick={() => setVisualMode('boceto')}
+            className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
+              visualMode === 'boceto'
+                ? 'bg-sky-500 text-slate-950 font-black shadow-md'
+                : 'text-slate-400 hover:text-white'
+            }`}
+          >
+            <span>✏️ Modo Boceto</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setVisualMode('liquid-glass')}
+            className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
+              visualMode === 'liquid-glass'
+                ? 'bg-gradient-to-r from-cyan-400 via-teal-300 to-amber-300 text-slate-950 font-black shadow-lg shadow-cyan-500/40'
+                : 'text-slate-400 hover:text-white'
+            }`}
+          >
+            <Sparkles className="w-3.5 h-3.5 text-slate-950" />
+            <span>💎 Activar Liquid Glass</span>
+          </button>
+        </div>
+      </div>
+
+      {visualMode === 'boceto' && (
+        <div className="mb-6 p-2.5 rounded-xl bg-sky-950/70 border border-sky-400/30 text-xs font-mono text-sky-300 flex items-center justify-between">
+          <span className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-sky-400 animate-ping" />
+            [ARQUITECTURA DE SOFTWARE • BOCETO WIREFRAME EN GOOGLE STITCH]
+          </span>
+          <span className="text-slate-400 text-[10px] hidden sm:inline">PULSA &quot;ACTIVAR LIQUID GLASS&quot; PARA VER EL RESULTADO FINAL</span>
+        </div>
+      )}
 
       {/* 🍲 1. NICHO GASTRONOMÍA & RESTAURANTES */}
       {project.category === 'gastronomia' && (

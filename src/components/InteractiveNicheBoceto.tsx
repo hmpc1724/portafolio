@@ -31,12 +31,14 @@ interface InteractiveNicheBocetoProps {
   slug: string;
   viewportMode?: 'desktop' | 'mobile';
   phoneNumber?: string;
+  visualMode?: 'boceto' | 'liquid-glass';
 }
 
 export default function InteractiveNicheBoceto({
   slug,
   viewportMode = 'desktop',
   phoneNumber = '526222259974',
+  visualMode = 'boceto',
 }: InteractiveNicheBocetoProps) {
   // 1. Artisan Market State
   const [artisanDishes, setArtisanDishes] = useState<Record<string, number>>({
@@ -107,72 +109,245 @@ export default function InteractiveNicheBoceto({
      1. ARTISAN MARKET (Restaurantes, Cafeterías & Gastronomía)
      ======================================================== */
   if (slug === 'artisan-market') {
-    const dishPrices: Record<string, { name: string; price: number; desc: string }> = {
-      ceviche: { name: 'Ceviche de Camarón Ahogado', price: 195, desc: 'Camarón fresco de la bahía con pepino y cebolla morada' },
-      tacos: { name: 'Tacos Gobernador al Carbón (3)', price: 165, desc: 'Tortilla de maíz nixtamal con queso fundido y camarón' },
-      pescado: { name: 'Pescado Zarandeado a la Leña', price: 290, desc: 'Robalo marinado con adobo sonorense y salsa molcajeteada' },
-      clamato: { name: 'Clamato Preparado con Camarón', price: 95, desc: 'Con carne seca, apio, salsas negras y escarchado' },
+    const isBoceto = visualMode === 'boceto';
+
+    const dishPrices: Record<string, { name: string; price: number; desc: string; img?: string; tag?: string }> = {
+      ceviche: {
+        name: 'Gran Festín Imperial del Rey',
+        price: 485,
+        desc: 'Pulpo zarandeado a la leña, callo de hacha sonorense y camarón en aguachile negro tatemado con chiltepín.',
+        img: '/images/stitch/mariscos-festin-imperial.png',
+        tag: 'Chef Signature 🔥',
+      },
+      molcajete: {
+        name: 'Molcajete Volcánico Mar y Tierra',
+        price: 440,
+        desc: 'Arrachera al carbón de mezquite, camarones jumbo U-15, queso panela asado y salsa verde en piedra hirviendo.',
+        img: '/images/stitch/mariscos-molcajete.png',
+        tag: 'Más Vendido 🌋',
+      },
+      tacos: {
+        name: 'Tacos Gobernador VIP (Orden de 3)',
+        price: 265,
+        desc: 'Tortilla de maíz nixtamal hecha a mano, costra dorada de queso gouda y camarón salteado al ajo.',
+        tag: 'Clásico Sonorense 🌮',
+      },
+      pescado: {
+        name: 'Pescado Zarandeado Entero a la Leña',
+        price: 540,
+        desc: 'Pargo abierto en mariposa (1.2 kg), adobo de chiles secos, mantequilla especiada y cebollitas tatemadas.',
+        tag: 'Pesca del Día 🐟',
+      },
     };
 
     const total = Object.entries(artisanDishes).reduce((acc, [key, qty]) => {
       return acc + (dishPrices[key]?.price || 0) * qty;
     }, 0);
 
-    return (
-      <div className="p-3 sm:p-5 rounded-2xl bg-slate-900/90 text-slate-100 border border-amber-500/30 text-xs sm:text-sm space-y-4">
-        <div className="flex items-center justify-between pb-3 border-b border-white/10">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-xl bg-amber-500/20 border border-amber-400/40 flex items-center justify-center text-amber-400">
-              <Utensils className="w-4 h-4" />
+    if (isBoceto) {
+      return (
+        <div className="p-3 sm:p-5 rounded-2xl bg-[#09111e] text-slate-100 border-2 border-dashed border-sky-400/50 font-mono text-xs sm:text-sm space-y-4 shadow-2xl relative overflow-hidden bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px]">
+          {/* Blueprint Header */}
+          <div className="flex items-center justify-between pb-2.5 border-b border-sky-400/30 text-[10px] text-sky-400">
+            <div className="flex items-center gap-1.5 font-bold">
+              <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse" />
+              <span>[BOCETO ARQUITECTÓNICO WIREFRAME]</span>
             </div>
-            <div>
-              <h4 className="font-extrabold text-white text-sm">Mariscos &amp; Parrilla El Rey</h4>
-              <p className="text-[11px] text-amber-300/80">Menú QR Digital • Guaymas &amp; San Carlos</p>
+            <span className="text-slate-400">SPEC: GOOGLE_STITCH_V1 • 12_COL_GRID</span>
+          </div>
+
+          <div className="flex items-center justify-between pb-3 border-b border-sky-400/20">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-lg bg-sky-950/80 border border-sky-400/40 flex items-center justify-center text-sky-400">
+                <Utensils className="w-4 h-4" />
+              </div>
+              <div>
+                <h4 className="font-bold text-sky-300 text-xs sm:text-sm">[HEADER: MARISCOS_EL_REY]</h4>
+                <p className="text-[10px] text-slate-400 font-mono">LAYOUT: MENÚ_DIGITAL_QR • GUAYMAS_SONORA</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-1.5 bg-sky-950/70 px-2 py-1 rounded border border-sky-400/30">
+              <span className="text-[10px] text-sky-400 font-mono">COMENZAL_MESA:</span>
+              <select
+                value={artisanMesa}
+                onChange={(e) => setArtisanMesa(Number(e.target.value))}
+                className="bg-transparent text-amber-300 font-bold text-xs focus:outline-none font-mono"
+              >
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((m) => (
+                  <option key={m} value={m} className="bg-slate-900 text-white font-mono">Mesa #{m}</option>
+                ))}
+              </select>
             </div>
           </div>
-          <div className="flex items-center gap-1.5 bg-black/40 px-2.5 py-1 rounded-lg border border-white/10">
+
+          {/* Wireframe Platillos */}
+          <div className="space-y-2">
+            <span className="text-[10px] text-sky-400/80 font-mono block">/// COMPONENT: BENTO_DISH_SELECTOR</span>
+            {Object.entries(dishPrices).map(([key, item]) => {
+              const qty = artisanDishes[key] || 0;
+              return (
+                <div
+                  key={key}
+                  className="p-2.5 rounded-xl bg-sky-950/30 border border-dashed border-sky-400/30 flex items-center justify-between gap-3 font-mono"
+                >
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2">
+                      <span className="font-bold text-sky-200 text-xs">{item.name}</span>
+                      <span className="text-emerald-400 font-mono text-xs">${item.price}</span>
+                    </div>
+                    <p className="text-[10px] text-slate-400 line-clamp-1">{item.desc}</p>
+                  </div>
+                  <div className="flex items-center gap-2 bg-slate-950 px-2 py-1 rounded border border-sky-400/30 shrink-0">
+                    <button
+                      type="button"
+                      onClick={() => setArtisanDishes({ ...artisanDishes, [key]: Math.max(0, qty - 1) })}
+                      className="w-5 h-5 rounded flex items-center justify-center bg-sky-900/60 hover:bg-sky-800 text-sky-200"
+                    >
+                      <Minus className="w-3 h-3" />
+                    </button>
+                    <span className="w-4 text-center font-bold text-xs text-sky-300">{qty}</span>
+                    <button
+                      type="button"
+                      onClick={() => setArtisanDishes({ ...artisanDishes, [key]: qty + 1 })}
+                      className="w-5 h-5 rounded flex items-center justify-center bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold"
+                    >
+                      <Plus className="w-3 h-3" />
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Wireframe Salsa Bar */}
+          <div className="flex flex-wrap items-center justify-between gap-2 p-2 rounded-xl bg-sky-950/40 border border-dashed border-sky-400/20 text-xs">
+            <span className="text-[10px] text-sky-300 font-mono">/// MODULE: SALSA_BAR_LEVEL</span>
+            <div className="flex gap-1">
+              {['Chiltepín Silvestre (Nivel 5)', 'Habanero Tatemado (4)', 'Macha Morita (3)'].map((s) => (
+                <button
+                  key={s}
+                  type="button"
+                  onClick={() => setArtisanSalsa(s)}
+                  className={`px-2 py-1 rounded text-[10px] font-mono transition-all ${
+                    artisanSalsa === s
+                      ? 'bg-sky-500 text-slate-950 font-bold'
+                      : 'bg-sky-950/80 text-sky-300 border border-sky-400/20 hover:border-sky-400/50'
+                  }`}
+                >
+                  {s}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Wireframe Resumen */}
+          <div className="flex items-center justify-between pt-2 border-t border-sky-400/30">
+            <div>
+              <div className="text-[10px] text-slate-400 font-mono">TOTAL_CALCULADO (MESA #{artisanMesa}):</div>
+              <div className="text-base font-bold text-sky-300 font-mono">${total} MXN</div>
+            </div>
+            <button
+              type="button"
+              onClick={() =>
+                sendWhatsApp(
+                  `¡Hola Mariscos El Rey! Quiero ordenar desde el Menú QR para la Mesa #${artisanMesa}:\n` +
+                  Object.entries(artisanDishes)
+                    .filter(([, q]) => q > 0)
+                    .map(([k, q]) => `• ${q}x ${dishPrices[k]?.name} ($${(dishPrices[k]?.price || 0) * q})`)
+                    .join('\n') +
+                  `\nSalsa: ${artisanSalsa}\nTotal: $${total} MXN`
+                )
+              }
+              className="py-2 px-3 rounded bg-sky-500 hover:bg-sky-400 text-slate-950 font-mono font-bold text-xs flex items-center gap-1.5 shadow-md active:scale-95 transition-all"
+            >
+              <MessageCircle className="w-4 h-4 fill-slate-950" />
+              <span>[ENVIAR_COMANDA_WHATSAPP]</span>
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    // MODO LIQUID GLASS (ALTA FIDELIDAD CON GOOGLE STITCH)
+    return (
+      <div className="p-3 sm:p-5 rounded-2xl bg-[#0c141e]/95 text-slate-100 border border-cyan-400/40 text-xs sm:text-sm space-y-4 shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_35px_rgba(6,182,212,0.25)] backdrop-blur-2xl ring-1 ring-white/10 relative overflow-hidden">
+        {/* Glows ambientales de fondo */}
+        <div className="absolute -top-10 -left-10 w-40 h-40 bg-cyan-500/15 rounded-full blur-[50px] pointer-events-none" />
+        <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-amber-500/15 rounded-full blur-[50px] pointer-events-none" />
+
+        {/* Header Liquid Glass */}
+        <div className="flex items-center justify-between pb-3 border-b border-white/10 relative z-10">
+          <div className="flex items-center gap-2.5">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-500 to-amber-500 p-[2px]">
+              <div className="w-full h-full rounded-[10px] bg-slate-950 flex items-center justify-center text-cyan-400 font-bold">
+                <Utensils className="w-4 h-4" />
+              </div>
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h4 className="font-black text-white text-sm tracking-tight">MARISCOS &amp; PARRILLA EL REY</h4>
+                <span className="px-2 py-0.5 rounded-full bg-cyan-500/15 text-cyan-300 border border-cyan-400/40 text-[9px] font-extrabold uppercase">
+                  Google Stitch V1
+                </span>
+              </div>
+              <p className="text-[11px] text-amber-300/90 font-medium">Guaymas • Mar de Cortés • Brasas de Mezquite</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-1.5 bg-slate-950/80 px-2.5 py-1 rounded-xl border border-white/15 shadow-sm">
             <span className="text-[10px] text-slate-400">Mesa:</span>
             <select
               value={artisanMesa}
               onChange={(e) => setArtisanMesa(Number(e.target.value))}
-              className="bg-transparent text-amber-300 font-bold text-xs focus:outline-none"
+              className="bg-transparent text-cyan-300 font-bold text-xs focus:outline-none"
             >
               {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((m) => (
-                <option key={m} value={m} className="bg-slate-900 text-white">Mesa #{m}</option>
+                <option key={m} value={m} className="bg-slate-900 text-white">Mesa #{m} - Terraza</option>
               ))}
             </select>
           </div>
         </div>
 
-        {/* Platillos interactivos */}
-        <div className="space-y-2">
+        {/* Platillos interactivos con fotografía real de Google Stitch */}
+        <div className="space-y-2.5 relative z-10">
           {Object.entries(dishPrices).map(([key, item]) => {
             const qty = artisanDishes[key] || 0;
             return (
               <div
                 key={key}
-                className="p-2.5 rounded-xl bg-white/[0.03] border border-white/10 flex items-center justify-between gap-3"
+                className="p-2 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-cyan-400/40 transition-all flex items-center justify-between gap-3"
               >
+                {item.img && (
+                  <div className="w-14 h-14 rounded-lg overflow-hidden border border-white/15 shrink-0 relative bg-black/40">
+                    <img src={item.img} alt={item.name} className="w-full h-full object-cover" />
+                  </div>
+                )}
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">
-                    <span className="font-bold text-white text-xs">{item.name}</span>
-                    <span className="text-emerald-400 font-black text-xs">${item.price}</span>
+                    <span className="font-extrabold text-white text-xs truncate">{item.name}</span>
+                    {item.tag && (
+                      <span className="text-[9px] font-bold text-amber-300 bg-amber-500/15 border border-amber-400/30 px-1.5 py-0.2 rounded-full shrink-0">
+                        {item.tag}
+                      </span>
+                    )}
                   </div>
-                  <p className="text-[10px] text-slate-400 line-clamp-1">{item.desc}</p>
+                  <div className="flex items-center gap-2 mt-0.5">
+                    <span className="text-emerald-400 font-black text-xs">${item.price} MXN</span>
+                    <p className="text-[10px] text-slate-300 line-clamp-1">{item.desc}</p>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2 bg-slate-950 px-2 py-1 rounded-lg border border-white/10 shrink-0">
+                <div className="flex items-center gap-2 bg-slate-950/90 px-2.5 py-1 rounded-xl border border-white/15 shrink-0">
                   <button
                     type="button"
                     onClick={() => setArtisanDishes({ ...artisanDishes, [key]: Math.max(0, qty - 1) })}
-                    className="w-5 h-5 rounded flex items-center justify-center bg-white/10 hover:bg-white/20 text-white"
+                    className="w-5 h-5 rounded-lg flex items-center justify-center bg-white/10 hover:bg-white/20 text-white transition-colors"
                   >
                     <Minus className="w-3 h-3" />
                   </button>
-                  <span className="w-4 text-center font-bold text-xs text-amber-300">{qty}</span>
+                  <span className="w-4 text-center font-black text-xs text-amber-300">{qty}</span>
                   <button
                     type="button"
                     onClick={() => setArtisanDishes({ ...artisanDishes, [key]: qty + 1 })}
-                    className="w-5 h-5 rounded flex items-center justify-center bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold"
+                    className="w-5 h-5 rounded-lg flex items-center justify-center bg-gradient-to-r from-cyan-400 to-amber-400 hover:from-cyan-300 hover:to-amber-300 text-slate-950 font-bold transition-all"
                   >
                     <Plus className="w-3 h-3" />
                   </button>
@@ -182,49 +357,63 @@ export default function InteractiveNicheBoceto({
           })}
         </div>
 
-        {/* Salsa opcional */}
-        <div className="flex flex-wrap items-center justify-between gap-2 p-2 rounded-xl bg-black/40 border border-white/5 text-xs">
-          <span className="text-[11px] text-slate-300 font-medium">Picor de Salsa:</span>
-          <div className="flex gap-1">
-            {['Chiltepín Tradicional', 'Verde Serrano', 'Habanero Bravo'].map((s) => (
+        {/* Salsa Bar interactivo con 5 niveles de picor */}
+        <div className="p-2.5 rounded-xl bg-black/40 border border-white/10 space-y-1.5 relative z-10">
+          <div className="flex items-center justify-between text-xs">
+            <span className="text-[11px] text-amber-300 font-bold flex items-center gap-1">
+              🔥 Exclusivo Salsa Bar Sonorense (5 Niveles):
+            </span>
+            <span className="text-[10px] text-slate-400">Cortesía en tu orden</span>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-1">
+            {[
+              { name: 'Chiltepín Silvestre', level: 'Nivel 5 🔥🔥🔥🔥🔥' },
+              { name: 'Habanero Tatemado', level: 'Nivel 4 🔥🔥🔥🔥' },
+              { name: 'Macha de Morita', level: 'Nivel 3 🔥🔥🔥' },
+              { name: 'Clamato Secreto', level: 'Nivel 2 🔥🔥' },
+              { name: 'Mayonesa Ajo Asado', level: 'Suave 🌿' },
+            ].map((s) => (
               <button
-                key={s}
+                key={s.name}
                 type="button"
-                onClick={() => setArtisanSalsa(s)}
-                className={`px-2 py-1 rounded-lg text-[10px] font-bold transition-all ${
-                  artisanSalsa === s
-                    ? 'bg-amber-500 text-slate-950 shadow-sm'
-                    : 'bg-white/5 text-slate-400 hover:text-white'
+                onClick={() => setArtisanSalsa(s.name)}
+                className={`p-1.5 rounded-lg text-left transition-all text-[10px] ${
+                  artisanSalsa === s.name
+                    ? 'bg-gradient-to-r from-amber-500/30 to-orange-500/30 border border-amber-400/60 text-amber-200 font-bold shadow-sm'
+                    : 'bg-white/[0.03] text-slate-400 border border-white/5 hover:border-white/20'
                 }`}
               >
-                {s}
+                <div className="font-bold text-white truncate">{s.name}</div>
+                <div className="text-[9px] text-amber-300/80">{s.level}</div>
               </button>
             ))}
           </div>
         </div>
 
-        {/* Resumen y Envío a WhatsApp */}
-        <div className="flex items-center justify-between pt-2 border-t border-white/10">
+        {/* Resumen y Envío a WhatsApp en Liquid Glass */}
+        <div className="flex items-center justify-between pt-2 border-t border-white/10 relative z-10">
           <div>
-            <div className="text-[10px] text-slate-400">Total Pedido Mesa #{artisanMesa}:</div>
-            <div className="text-lg font-black text-emerald-400">${total} MXN</div>
+            <div className="text-[10px] text-slate-400 font-medium">Total Comanda Mesa #{artisanMesa}:</div>
+            <div className="text-xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-300">
+              ${total}.00 MXN
+            </div>
           </div>
           <button
             type="button"
             onClick={() =>
               sendWhatsApp(
-                `¡Hola Mariscos El Rey! Quiero ordenar desde el Menú QR para la Mesa #${artisanMesa}:\n` +
+                `¡Hola Mariscos El Rey! Quiero ordenar desde el Menú Digital QR para Mesa #${artisanMesa} (Terraza Mar de Cortés):\n\n` +
                 Object.entries(artisanDishes)
                   .filter(([, q]) => q > 0)
-                  .map(([k, q]) => `• ${q}x ${dishPrices[k]?.name} ($${(dishPrices[k]?.price || 0) * q})`)
+                  .map(([k, q]) => `• ${q}x ${dishPrices[k]?.name} ($${(dishPrices[k]?.price || 0) * q} MXN)`)
                   .join('\n') +
-                `\nSalsa: ${artisanSalsa}\nTotal: $${total} MXN`
+                `\n\n🌶️ Salsa Seleccionada: ${artisanSalsa}\n💰 Total Estimado: $${total}.00 MXN\n\n¡Por favor envíen la orden al fuego de la parrilla!`
               )
             }
-            className="py-2 px-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-black text-xs flex items-center gap-1.5 shadow-lg active:scale-95 transition-all"
+            className="py-2.5 px-4 rounded-xl bg-gradient-to-r from-secondary-container via-amber-500 to-secondary hover:brightness-110 text-slate-950 font-black text-xs flex items-center gap-1.5 shadow-[0_0_20px_rgba(238,152,0,0.35)] active:scale-95 transition-all"
           >
             <MessageCircle className="w-4 h-4 fill-slate-950" />
-            <span>Mandar a Cocina (WhatsApp)</span>
+            <span>Enviar Comanda a Cocina (WhatsApp)</span>
           </button>
         </div>
       </div>
