@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>La Olla de Barro — Cocina Tradicional Sonorense en Cazuela</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            barro: {
+              50: "#fff8f5",
+              100: "#feedde",
+              200: "#fcd7be",
+              300: "#f8b792",
+              400: "#f28b5e",
+              500: "#ea580c",
+              600: "#c2410c",
+              700: "#9a3412",
+              800: "#7c2d12",
+              900: "#431407",
+              950: "#240a04",
+            },
+            adobe: {
+              800: "#2b1810",
+              850: "#20120b",
+              900: "#170c07",
+              950: "#0e0704",
+            },
+            maiz: {
+              400: "#fbbf24",
+              500: "#f59e0b",
+              600: "#d97706",
+            }
+          },
+          fontFamily: {
+            sans: ["'Plus Jakarta Sans'", "sans-serif"],
+            serif: ["'Playfair Display'", "serif"],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #0e0704;
+      color: #fed7aa;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+    .clay-glow {
+      box-shadow: 0 0 50px -10px rgba(234, 88, 12, 0.25);
+    }
+    .amber-gradient-text {
+      background: linear-gradient(135deg, #fed7aa 0%, #fbbf24 50%, #ea580c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    /* Estilo Liquid Glass alternativo */
+    body.liquid-glass-mode {
+      background-color: #050811 !important;
+      color: #e2e8f0 !important;
+    }
+    body.liquid-glass-mode .clay-card {
+      background: rgba(15, 23, 42, 0.75) !important;
+      backdrop-filter: blur(20px) !important;
+      border-color: rgba(56, 189, 248, 0.3) !important;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5) !important;
+    }
+    body.liquid-glass-mode .header-nav {
+      background: rgba(8, 14, 26, 0.85) !important;
+      border-color: rgba(56, 189, 248, 0.2) !important;
+    }
+    body.liquid-glass-mode .amber-gradient-text {
+      background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+    }
+  </style>
+</head>
+<body class="selection:bg-barro-600 selection:text-white transition-colors duration-500">
+
+  <!-- BOTÓN FLOTANTE CONMUTADOR DE MODO: ARTESANAL ⇄ LIQUID GLASS -->
+  <aside aria-label="Selector de Estilo Visual" class="fixed bottom-6 right-6 z-50">
+    <button id="toggle-mode-btn" onclick="toggleMode()" class="flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-gradient-to-r from-barro-600 to-maiz-500 hover:from-barro-500 hover:to-maiz-400 text-white font-bold text-xs shadow-2xl shadow-barro-600/40 border border-white/20 transition-all hover:scale-105 active:scale-95">
+      <span class="material-symbols-outlined text-[18px]" id="mode-icon">auto_awesome</span>
+      <span id="mode-label">Ver en Modo Liquid Glass</span>
+    </button>
+  </aside>
+
+  <!-- NAVEGACIÓN SUPERIOR -->
+  <header class="header-nav fixed top-0 left-0 right-0 z-40 bg-adobe-950/85 backdrop-blur-xl border-b border-barro-900/60 transition-colors duration-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      <!-- Logo de la Olla de Barro -->
+      <a href="#" class="flex items-center gap-3 shrink-0">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-barro-600 to-adobe-900 border border-barro-500/40 flex items-center justify-center shadow-lg shadow-barro-900/40">
+          <span class="material-symbols-outlined text-maiz-400 text-[26px]">soup_kitchen</span>
+        </div>
+        <div>
+          <span class="font-serif font-bold text-lg text-amber-100 tracking-wide block leading-tight">La Olla de Barro</span>
+          <span class="text-[10px] uppercase font-mono tracking-widest text-maiz-400/90">Cocina Tradicional Sonorense</span>
+        </div>
+      </a>
+
+      <!-- Menú Desktop -->
+      <nav class="hidden md:flex items-center gap-6 text-xs font-semibold text-stone-300">
+        <a href="#menu-del-dia" class="hover:text-maiz-400 transition-colors">Menú del Día ($129)</a>
+        <a href="#especialidades" class="hover:text-maiz-400 transition-colors">Cazuelas de Barro</a>
+        <a href="#sobaqueras" class="hover:text-maiz-400 transition-colors">Tortillas Sobaqueras</a>
+        <a href="#armar-orden" class="hover:text-maiz-400 transition-colors">Comanda Rápida</a>
+        <a href="#ubicacion" class="hover:text-maiz-400 transition-colors">Ubicación & Horarios</a>
+      </nav>
+
+      <!-- Botones de Acción -->
+      <div class="flex items-center gap-3">
+        <a href="tel:+526222259974" class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-adobe-850 border border-barro-800/80 text-xs font-medium text-amber-200 hover:bg-adobe-800 transition-all">
+          <span class="material-symbols-outlined text-maiz-400 text-[16px]">call</span>
+          <span>(622) 225-9974</span>
+        </a>
+        <a href="https://wa.me/526222259974?text=Hola%20La%20Olla%20de%20Barro,%20quiero%20hacer%20un%20pedido%20de%20comida%20corrida%20de%20hoy." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-bold text-xs shadow-lg shadow-emerald-950/40 transition-all">
+          <span class="material-symbols-outlined text-[18px]">chat</span>
+          <span>Pedir por WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- SECCIÓN 1: HERO CINEMATOGRÁFICO -->
+  <section class="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden">
+    <!-- Resplandores ambientales cálidos de brasa -->
+    <div class="absolute -top-20 -left-20 w-96 h-96 bg-barro-600/15 rounded-full blur-[140px] pointer-events-none"></div>
+    <div class="absolute top-1/2 -right-32 w-96 h-96 bg-maiz-500/10 rounded-full blur-[140px] pointer-events-none"></div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      <!-- Texto Hero Izquierda -->
+      <div class="lg:col-span-6 space-y-6">
+        <!-- Badges de Certificación Culinaria -->
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-adobe-850 border border-barro-700/60 text-maiz-400 text-xs font-semibold">
+            <span class="w-2 h-2 rounded-full bg-barro-500 animate-ping"></span>
+            Guisados en Cazuela Caliente
+          </span>
+          <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-adobe-850/80 border border-stone-800 text-stone-300 text-xs font-mono">
+            <span class="material-symbols-outlined text-maiz-400 text-[14px]">local_fire_department</span>
+            Leña de Mezquite & Sazón de la Sierra
+          </span>
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-extrabold text-stone-100 leading-[1.1] tracking-tight">
+          El Verdadero Sabor de la Cocina Sonorense en <span class="amber-gradient-text">Cazuelas de Barro</span>
+        </h1>
+
+        <p class="text-stone-300 text-base sm:text-lg leading-relaxed max-w-xl">
+          Guisados tradicionales preparados cada mañana a fuego lento: carne con chile colorado, costillitas en salsa verde, frijoles maneados de la sierra y tortillas de harina sobaqueras recién salidas del comal.
+        </p>
+
+        <!-- Píldora Promoción Menú 6 Tiempos -->
+        <div class="clay-card p-4 rounded-2xl bg-gradient-to-r from-adobe-850 to-adobe-900 border border-barro-700/60 flex items-center justify-between gap-4 shadow-xl">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-xl bg-barro-600/20 border border-barro-500/40 flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-maiz-400 text-[28px]">restaurant</span>
+            </div>
+            <div>
+              <span class="text-xs font-bold text-stone-200 block">Menú Completo del Día (6 Tiempos)</span>
+              <span class="text-[11px] text-stone-400">Entrada + Cazuela + 2 Guarniciones + Sobaqueras + Agua fresca + Postre</span>
+            </div>
+          </div>
+          <div class="text-right shrink-0">
+            <span class="text-xs text-stone-400 line-through block">$165</span>
+            <span class="text-2xl font-black text-maiz-400 font-mono">$129 <span class="text-xs font-normal text-stone-300">MXN</span></span>
+          </div>
+        </div>
+
+        <!-- Botones de Acción -->
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a href="#armar-orden" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-barro-600 to-barro-700 hover:from-barro-500 hover:to-barro-600 text-white font-bold text-sm shadow-xl shadow-barro-950/60 transition-all hover:scale-[1.02] active:scale-95">
+            <span class="material-symbols-outlined text-[20px]">lunch_dining</span>
+            <span>Personalizar mi Menú del Día</span>
+          </a>
+          <a href="#especialidades" class="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-adobe-850 hover:bg-adobe-800 border border-stone-800 text-stone-200 font-semibold text-sm transition-all">
+            <span class="material-symbols-outlined text-maiz-400 text-[20px]">local_fire_department</span>
+            <span>Ver Cazuelas de Hoy</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Imagen Hero Cinematográfica (Generada con IA en Alta Definición) -->
+      <div class="lg:col-span-6">
+        <div class="relative clay-card rounded-3xl overflow-hidden border-2 border-barro-700/50 clay-glow shadow-2xl group">
+          <img
+            src="/images/stitch/la-olla-de-barro-hero.png"
+            alt="Cazuelas de barro tradicionales humeantes en La Olla de Barro Guaymas Sonora"
+            class="w-full h-[420px] sm:h-[480px] object-cover object-center group-hover:scale-105 transition-transform duration-700"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-adobe-950 via-transparent to-transparent"></div>
+
+          <!-- Badge flotante sobre la foto -->
+          <div class="absolute bottom-5 left-5 right-5 p-4 rounded-2xl bg-adobe-950/85 backdrop-blur-md border border-barro-700/60 flex items-center justify-between">
+            <div>
+              <span class="text-xs font-bold text-amber-200 block">Auténtica Cocina de Rancho Sonorense</span>
+              <span class="text-[11px] text-stone-400">Guaymas, Empalme y San Carlos, Sonora</span>
+            </div>
+            <div class="flex items-center gap-1 text-maiz-400 text-xs font-bold bg-adobe-900 px-2.5 py-1 rounded-lg border border-barro-800">
+              <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span>4.9 (980+ opiniones)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 2: ESPECIALIDADES & CAZUELAS DEL DÍA -->
+  <section id="especialidades" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-barro-900/40">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <span class="text-xs uppercase font-mono tracking-widest text-maiz-400 block mb-2">Sabor que no se olvida</span>
+      <h2 class="text-3xl sm:text-4xl font-serif font-extrabold text-stone-100 mb-3">
+        Nuestras Cazuelas Estrella
+      </h2>
+      <p class="text-stone-300 text-sm">
+        Cada guisado se sirve hirviendo en su cazuela de barro tradicional, conservando el calor, los aromas y la esencia de la leña de mezquite.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Tarjeta 1: Platillo Estrella con Fotografía Real -->
+      <div class="clay-card rounded-2xl bg-adobe-900/70 border border-barro-700/50 overflow-hidden shadow-xl hover:border-barro-500 transition-all flex flex-col">
+        <div class="relative h-56 overflow-hidden">
+          <img
+            src="/images/stitch/la-olla-de-barro-carne-con-chile.png"
+            alt="Carne con chile colorado sonorense con frijoles maneados"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+          />
+          <div class="absolute top-3 left-3 bg-barro-600 text-white font-bold text-[10px] px-2.5 py-1 rounded-full uppercase tracking-wider shadow">
+            Firma de la Casa 🔥
+          </div>
+          <div class="absolute bottom-3 right-3 bg-adobe-950/85 backdrop-blur-md px-2.5 py-1 rounded-lg text-maiz-400 font-mono font-bold text-xs border border-barro-800">
+            Cazuela Individual $145 MXN
+          </div>
+        </div>
+        <div class="p-5 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="font-serif font-bold text-xl text-stone-100 mb-1">Carne con Chile Colorado Sonorense</h3>
+            <p class="text-stone-300 text-xs leading-relaxed mb-4">
+              Jugosa pulpa de res suave en adobo tatemado de chile colorado regional, cocinada a fuego lento con especias de la sierra y acompañada de frijoles maneados con queso asadero derretido.
+            </p>
+          </div>
+          <div class="flex items-center justify-between pt-3 border-t border-barro-900/60">
+            <span class="text-[11px] text-stone-400 flex items-center gap-1">
+              <span class="material-symbols-outlined text-[14px] text-barro-500">local_fire_department</span>
+              Picor: Medio Equilibrado
+            </span>
+            <button onclick="seleccionarGuiso('Carne con Chile Colorado')" class="px-3 py-1.5 rounded-lg bg-barro-600 hover:bg-barro-500 text-white font-bold text-xs transition-colors">
+              Pedir en mi Menú
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjeta 2: Costillitas en Salsa Verde -->
+      <div class="clay-card rounded-2xl bg-adobe-900/70 border border-stone-800/80 overflow-hidden shadow-xl hover:border-barro-500 transition-all flex flex-col">
+        <div class="h-56 bg-gradient-to-br from-adobe-850 to-stone-900 flex items-center justify-center relative p-6">
+          <div class="w-20 h-20 rounded-full bg-emerald-950/60 border border-emerald-500/40 flex items-center justify-center">
+            <span class="material-symbols-outlined text-emerald-400 text-[42px]">skillet</span>
+          </div>
+          <div class="absolute top-3 left-3 bg-emerald-700 text-white font-bold text-[10px] px-2.5 py-1 rounded-full uppercase tracking-wider">
+            Receta de la Abuela
+          </div>
+          <div class="absolute bottom-3 right-3 bg-adobe-950/85 backdrop-blur-md px-2.5 py-1 rounded-lg text-maiz-400 font-mono font-bold text-xs border border-stone-800">
+            Cazuela Individual $135 MXN
+          </div>
+        </div>
+        <div class="p-5 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="font-serif font-bold text-xl text-stone-100 mb-1">Costillitas de Cerdo en Salsa Verde</h3>
+            <p class="text-stone-300 text-xs leading-relaxed mb-4">
+              Costillitas de cerdo doradas y tiernas bañadas en salsa verde de tomatillo de milpa con cilantro criollo y rodajas de calabacita tierna.
+            </p>
+          </div>
+          <div class="flex items-center justify-between pt-3 border-t border-barro-900/60">
+            <span class="text-[11px] text-stone-400 flex items-center gap-1">
+              <span class="material-symbols-outlined text-[14px] text-emerald-500">eco</span>
+              Picor: Suave Aromático
+            </span>
+            <button onclick="seleccionarGuiso('Costillitas en Salsa Verde')" class="px-3 py-1.5 rounded-lg bg-barro-600 hover:bg-barro-500 text-white font-bold text-xs transition-colors">
+              Pedir en mi Menú
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjeta 3: Gallina Pinta & Caldo de Queso -->
+      <div class="clay-card rounded-2xl bg-adobe-900/70 border border-stone-800/80 overflow-hidden shadow-xl hover:border-barro-500 transition-all flex flex-col">
+        <div class="h-56 bg-gradient-to-br from-adobe-850 to-stone-900 flex items-center justify-center relative p-6">
+          <div class="w-20 h-20 rounded-full bg-maiz-950/60 border border-maiz-500/40 flex items-center justify-center">
+            <span class="material-symbols-outlined text-maiz-400 text-[42px]">soup_kitchen</span>
+          </div>
+          <div class="absolute top-3 left-3 bg-maiz-600 text-stone-950 font-bold text-[10px] px-2.5 py-1 rounded-full uppercase tracking-wider">
+            De la Sierra de Sonora
+          </div>
+          <div class="absolute bottom-3 right-3 bg-adobe-950/85 backdrop-blur-md px-2.5 py-1 rounded-lg text-maiz-400 font-mono font-bold text-xs border border-stone-800">
+            Cazuela Caliente $139 MXN
+          </div>
+        </div>
+        <div class="p-5 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="font-serif font-bold text-xl text-stone-100 mb-1">Gallina Pinta Tradicional Sonorense</h3>
+            <p class="text-stone-300 text-xs leading-relaxed mb-4">
+              Caldo reconfortante con carne de res con hueso tierno, frijol pinto y maíz nixtamalizado, sazonado con cebolla tatemada y orégano de la sierra.
+            </p>
+          </div>
+          <div class="flex items-center justify-between pt-3 border-t border-barro-900/60">
+            <span class="text-[11px] text-stone-400 flex items-center gap-1">
+              <span class="material-symbols-outlined text-[14px] text-maiz-500">award_star</span>
+              100% Sin Conservadores
+            </span>
+            <button onclick="seleccionarGuiso('Gallina Pinta Sonorense')" class="px-3 py-1.5 rounded-lg bg-barro-600 hover:bg-barro-500 text-white font-bold text-xs transition-colors">
+              Pedir en mi Menú
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 3: EL COMAL DE LAS SOBAQUERAS & SALSAS -->
+  <section id="sobaqueras" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-barro-900/40">
+    <div class="clay-card rounded-3xl bg-gradient-to-r from-adobe-950 via-adobe-900 to-adobe-950 border border-barro-700/50 p-8 sm:p-12 shadow-2xl">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <span class="text-xs uppercase font-mono tracking-widest text-maiz-400 block mb-2">Hechas como manda la tradición</span>
+          <h2 class="text-3xl sm:text-4xl font-serif font-extrabold text-stone-100 mb-4">
+            Tortillas de Harina Sobaqueras Palmeadas al Momento
+          </h2>
+          <p class="text-stone-300 text-sm leading-relaxed mb-6">
+            Aquí no hay tortillas frías de bolsa. En La Olla de Barro estiramos la masa sobre los brazos al estilo del desierto sonorense y las cocinamos en nuestro comal de leña caliente. Delgadas, traslúcidas, calientitas y con ese sabor a mantequilla y sal de mar que solo Sonora conoce.
+          </p>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div class="p-4 rounded-xl bg-adobe-850/80 border border-barro-800">
+              <span class="material-symbols-outlined text-maiz-400 text-[24px] mb-1">bakery_dining</span>
+              <h4 class="font-bold text-stone-100 text-sm">Comal Continuo</h4>
+              <p class="text-[11px] text-stone-400">Tortillas saliendo cada 3 minutos calientes para tu mesa u oficina.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-adobe-850/80 border border-barro-800">
+              <span class="material-symbols-outlined text-barro-500 text-[24px] mb-1">grain</span>
+              <h4 class="font-bold text-stone-100 text-sm">Chiltepín de Palo Fierro</h4>
+              <p class="text-[11px] text-stone-400">Chiltepinero rústico en cada mesa para moler tus bolitas al gusto.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-adobe-850/70 border border-stone-800 space-y-4">
+          <h4 class="font-serif font-bold text-lg text-amber-200 flex items-center gap-2">
+            <span class="material-symbols-outlined text-maiz-400">shelves</span>
+            Nuestras Salsas de la Casa
+          </h4>
+          <ul class="space-y-3 text-xs text-stone-300">
+            <li class="flex items-start gap-2.5">
+              <span class="w-2 h-2 rounded-full bg-rose-500 mt-1 shrink-0"></span>
+              <div>
+                <strong class="text-stone-100">Salsa Macha con Semillas de Girasol y Ajonjolí:</strong> En aceite de oliva y chiles secos de Sonora.
+              </div>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 mt-1 shrink-0"></span>
+              <div>
+                <strong class="text-stone-100">Salsa de Tomatillo Tatemado con Chiltepín:</strong> Asada al carbón de mezquite y molida en molcajete de piedra.
+              </div>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="w-2 h-2 rounded-full bg-amber-500 mt-1 shrink-0"></span>
+              <div>
+                <strong class="text-stone-100">Cebollitas Moradas Curtidas al Orégano:</strong> Con limón persa de huerto y pimienta gorda.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 4: ARMAR COMANDA RÁPIDA (COTIZADOR INTERACTIVO 6 TIEMPOS) -->
+  <section id="armar-orden" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-barro-900/40">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <span class="text-xs uppercase font-mono tracking-widest text-maiz-400 block mb-2">Comanda Directa Sin Comisiones</span>
+      <h2 class="text-3xl sm:text-4xl font-serif font-extrabold text-stone-100 mb-2">
+        Arma tu Menú del Día (6 Tiempos por $129 MXN)
+      </h2>
+      <p class="text-stone-300 text-xs sm:text-sm">
+        Elige cada tiempo a tu gusto y envía tu ticket directo a la cocina por WhatsApp. ¡Listo en 15 minutos!
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <!-- Selectores de los 6 Tiempos (Izquierda) -->
+      <div class="lg:col-span-8 clay-card p-6 sm:p-8 rounded-3xl bg-adobe-900/80 border border-barro-700/60 space-y-6">
+        <!-- Tiempo 1: Entrada -->
+        <div>
+          <label class="text-xs font-mono font-bold text-maiz-400 block mb-2 uppercase">1. Entrada Caliente de la Casa:</label>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+            <button type="button" onclick="setOpcion('entrada', 'Consomé de Pollo de Rancho')" class="opcion-btn entrada-btn p-3 rounded-xl border border-stone-800 bg-adobe-850 text-left text-xs font-medium hover:border-barro-500 transition-all active">
+              Consomé de Rancho con Verduras
+            </button>
+            <button type="button" onclick="setOpcion('entrada', 'Sopa de Fideo Casera')" class="opcion-btn entrada-btn p-3 rounded-xl border border-stone-800 bg-adobe-850 text-left text-xs font-medium hover:border-barro-500 transition-all">
+              Sopa de Fideo Tradicional
+            </button>
+            <button type="button" onclick="setOpcion('entrada', 'Crema de Elote Dulce')" class="opcion-btn entrada-btn p-3 rounded-xl border border-stone-800 bg-adobe-850 text-left text-xs font-medium hover:border-barro-500 transition-all">
+              Crema de Elote Asado
+            </button>
+          </div>
+        </div>
+
+        <!-- Tiempo 2: Cazuela Principal -->
+        <div>
+          <label class="text-xs font-mono font-bold text-maiz-400 block mb-2 uppercase">2. Cazuela de Guisado Principal:</label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5" id="guisos-container">
+            <button type="button" onclick="setOpcion('guiso', 'Carne con Chile Colorado')" class="opcion-btn guiso-btn p-3 rounded-xl border border-barro-500 bg-adobe-850 text-left text-xs font-medium hover:border-barro-500 transition-all active">
+              <span class="font-bold text-stone-100 block">Carne con Chile Colorado</span>
+              <span class="text-[10px] text-stone-400">Pulpa suave en adobo tatemado de chile seco</span>
+            </button>
+            <button type="button" onclick="setOpcion('guiso', 'Costillitas en Salsa Verde')" class="opcion-btn guiso-btn p-3 rounded-xl border border-stone-800 bg-adobe-850 text-left text-xs font-medium hover:border-barro-500 transition-all">
+              <span class="font-bold text-stone-100 block">Costillitas en Salsa Verde</span>
+              <span class="text-[10px] text-stone-400">Con tomatillo de milpa y calabacitas</span>
+            </button>
+            <button type="button" onclick="setOpcion('guiso', 'Gallina Pinta de la Sierra')" class="opcion-btn guiso-btn p-3 rounded-xl border border-stone-800 bg-adobe-850 text-left text-xs font-medium hover:border-barro-500 transition-all">
+              <span class="font-bold text-stone-100 block">Gallina Pinta Sonorense</span>
+              <span class="text-[10px] text-stone-400">Res, frijol pinto, maíz nixtamalizado</span>
+            </button>
+            <button type="button" onclick="setOpcion('guiso', 'Caldo de Queso Sonorense')" class="opcion-btn guiso-btn p-3 rounded-xl border border-stone-800 bg-adobe-850 text-left text-xs font-medium hover:border-barro-500 transition-all">
+              <span class="font-bold text-stone-100 block">Caldo de Queso con Chiltepín</span>
+              <span class="text-[10px] text-stone-400">Papas en cubitos, queso regional y rajas</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Tiempo 3: Guarnición Doble -->
+        <div>
+          <label class="text-xs font-mono font-bold text-maiz-400 block mb-2 uppercase">3. Guarnición de Acompañamiento:</label>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+            <button type="button" onclick="setOpcion('guarnicion', 'Frijoles Maneados + Arroz Rojo')" class="opcion-btn guarnicion-btn p-3 rounded-xl border border-stone-800 bg-adobe-850 text-left text-xs font-medium hover:border-barro-500 transition-all active">
+              Frijoles Maneados + Arroz Rojo
+            </button>
+            <button type="button" onclick="setOpcion('guarnicion', 'Frijoles de la Olla + Ensalada Fresca')" class="opcion-btn guarnicion-btn p-3 rounded-xl border border-stone-800 bg-adobe-850 text-left text-xs font-medium hover:border-barro-500 transition-all">
+              Frijoles de Olla + Ensalada
+            </button>
+            <button type="button" onclick="setOpcion('guarnicion', 'Papas con Rajas + Frijoles')" class="opcion-btn guarnicion-btn p-3 rounded-xl border border-stone-800 bg-adobe-850 text-left text-xs font-medium hover:border-barro-500 transition-all">
+              Papas con Rajas Poblano
+            </button>
+          </div>
+        </div>
+
+        <!-- Tiempo 4: Tortillas -->
+        <div>
+          <label class="text-xs font-mono font-bold text-maiz-400 block mb-2 uppercase">4. Tortillas Calientes:</label>
+          <div class="grid grid-cols-2 gap-2.5">
+            <button type="button" onclick="setOpcion('tortilla', '3 Tortillas de Harina Sobaqueras')" class="opcion-btn tortilla-btn p-3 rounded-xl border border-stone-800 bg-adobe-850 text-left text-xs font-medium hover:border-barro-500 transition-all active">
+              3 Tortillas Sobaqueras Grandes (Harina)
+            </button>
+            <button type="button" onclick="setOpcion('tortilla', '4 Tortillas de Maíz Nixtamal')" class="opcion-btn tortilla-btn p-3 rounded-xl border border-stone-800 bg-adobe-850 text-left text-xs font-medium hover:border-barro-500 transition-all">
+              4 Tortillas de Maíz Palmeadas a Mano
+            </button>
+          </div>
+        </div>
+
+        <!-- Tiempo 5 & 6: Bebida y Postre -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="text-xs font-mono font-bold text-maiz-400 block mb-2 uppercase">5. Bebida Artesanal:</label>
+            <select id="bebida-select" onchange="actualizarTicket()" class="w-full p-3 rounded-xl border border-stone-800 bg-adobe-850 text-stone-100 text-xs font-medium focus:outline-none focus:border-barro-500">
+              <option value="Agua fresca de Cebada Sonorense">Agua Fresca de Cebada Sonorense</option>
+              <option value="Horchata Tradicional con Canela">Horchata Casera con Canela</option>
+              <option value="Agua de Jamaica con Limón">Jamaica Fresca con Limón</option>
+              <option value="Té Helado de Limón">Té Helado Casero</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="text-xs font-mono font-bold text-maiz-400 block mb-2 uppercase">6. Postre de Rancho:</label>
+            <select id="postre-select" onchange="actualizarTicket()" class="w-full p-3 rounded-xl border border-stone-800 bg-adobe-850 text-stone-100 text-xs font-medium focus:outline-none focus:border-barro-500">
+              <option value="Coyota Sonorense de Piloncillo">Coyota Sonorense de Piloncillo</option>
+              <option value="Arroz con Leche Espeso">Arroz con Leche Espeso de Rancho</option>
+              <option value="Dulce de Calabaza en Tacha">Calabaza en Dulce de Piloncillo</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Selector de Cantidad de Comidas -->
+        <div class="flex items-center justify-between pt-4 border-t border-barro-900/60">
+          <span class="text-xs text-stone-300 font-medium">Cantidad de paquetes a pedir:</span>
+          <div class="flex items-center gap-3">
+            <button onclick="cambiarCantidad(-1)" class="w-8 h-8 rounded-lg bg-adobe-850 border border-stone-800 text-stone-100 font-bold hover:bg-adobe-800">-</button>
+            <span id="cantidad-display" class="font-mono font-black text-lg text-maiz-400">1</span>
+            <button onclick="cambiarCantidad(1)" class="w-8 h-8 rounded-lg bg-adobe-850 border border-stone-800 text-stone-100 font-bold hover:bg-adobe-800">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ticket / Resumen de la Comanda (Derecha) -->
+      <div class="lg:col-span-4 clay-card p-6 rounded-3xl bg-adobe-950 border-2 border-barro-700/60 sticky top-28 shadow-2xl space-y-4">
+        <div class="flex items-center justify-between pb-3 border-b border-barro-900/80">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-maiz-400">receipt_long</span>
+            <span class="font-mono font-bold text-xs uppercase tracking-wider text-stone-200">Comanda en Cocina</span>
+          </div>
+          <span class="text-[10px] text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-500/30">Sin Comisión</span>
+        </div>
+
+        <div class="space-y-2 text-xs font-mono">
+          <div class="flex justify-between text-stone-400">
+            <span>Paquete:</span>
+            <span class="text-stone-200 font-semibold">Menú 6 Tiempos</span>
+          </div>
+          <div class="flex justify-between text-stone-400">
+            <span>Guisado:</span>
+            <span id="ticket-guiso" class="text-maiz-400 font-bold text-right">Carne con Chile</span>
+          </div>
+          <div class="flex justify-between text-stone-400">
+            <span>Entrada:</span>
+            <span id="ticket-entrada" class="text-stone-300 text-right">Consomé de Rancho</span>
+          </div>
+          <div class="flex justify-between text-stone-400">
+            <span>Guarnición:</span>
+            <span id="ticket-guarnicion" class="text-stone-300 text-right">Maneados + Arroz</span>
+          </div>
+          <div class="flex justify-between text-stone-400">
+            <span>Tortillas:</span>
+            <span id="ticket-tortilla" class="text-stone-300 text-right">Sobaqueras</span>
+          </div>
+          <div class="flex justify-between text-stone-400">
+            <span>Bebida:</span>
+            <span id="ticket-bebida" class="text-stone-300 text-right">Cebada Sonorense</span>
+          </div>
+          <div class="flex justify-between text-stone-400">
+            <span>Postre:</span>
+            <span id="ticket-postre" class="text-stone-300 text-right">Coyota Piloncillo</span>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-barro-900/80 flex items-center justify-between">
+          <span class="text-xs text-stone-400 font-mono">Total a Pagar:</span>
+          <span id="ticket-total" class="font-mono font-black text-2xl text-maiz-400">$129 MXN</span>
+        </div>
+
+        <div class="p-3 rounded-xl bg-adobe-900 border border-stone-800 text-[11px] text-stone-400">
+          📍 Entrega a domicilio o para pasar a recoger en Calzada García López, Guaymas.
+        </div>
+
+        <button onclick="enviarPedidoWhatsApp()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-xl shadow-emerald-950/60 transition-all hover:scale-[1.02] active:scale-95">
+          <span class="material-symbols-outlined text-[18px]">chat</span>
+          <span>Despachar Orden por WhatsApp</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 5: UBICACIÓN, HORARIOS & OPINIONES -->
+  <footer id="ubicacion" class="py-14 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-barro-900/40 text-stone-400 text-xs">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+      <div>
+        <div class="flex items-center gap-2 text-stone-100 font-serif font-bold text-base mb-2">
+          <span class="material-symbols-outlined text-maiz-400">soup_kitchen</span>
+          <span>La Olla de Barro</span>
+        </div>
+        <p class="leading-relaxed">
+          Tradición culinaria de Sonora en cazuelas de barro calientes. Guaymas, Empalme y San Carlos.
+        </p>
+      </div>
+      <div>
+        <h4 class="font-bold text-stone-200 mb-2 font-mono uppercase">Horarios de Cocina</h4>
+        <p>Lunes a Sábado: 7:30 AM – 5:30 PM</p>
+        <p>Domingos: 8:00 AM – 4:00 PM (Guisados Especiales)</p>
+      </div>
+      <div>
+        <h4 class="font-bold text-stone-200 mb-2 font-mono uppercase">Pedidos & Reservaciones</h4>
+        <p>WhatsApp directo: (622) 225-9974</p>
+        <p>Calzada Agustín García López, Guaymas, Sonora</p>
+      </div>
+    </div>
+    <div class="pt-6 border-t border-stone-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px]">
+      <span>© 2026 La Olla de Barro. Diseñado por Liquid Glass Agency con Google Stitch & Gemini.</span>
+      <a href="/proyecto/la-olla-de-barro" class="text-maiz-400 hover:underline">Volver a Ficha Técnica en Portafolio</a>
+    </div>
+  </footer>
+
+  <!-- SCRIPT INTERACTIVO DEL COTIZADOR Y CONMUTADOR LIQUID GLASS -->
+  <script>
+    let orden = {
+      entrada: 'Consomé de Pollo de Rancho',
+      guiso: 'Carne con Chile Colorado',
+      guarnicion: 'Frijoles Maneados + Arroz Rojo',
+      tortilla: '3 Tortillas de Harina Sobaqueras',
+      bebida: 'Agua fresca de Cebada Sonorense',
+      postre: 'Coyota Sonorense de Piloncillo',
+      cantidad: 1,
+      precioUnitario: 129
+    };
+
+    function setOpcion(tipo, valor) {
+      orden[tipo] = valor;
+      // Actualizar estilos activos de los botones
+      const botones = document.querySelectorAll('.' + tipo + '-btn');
+      botones.forEach(btn => {
+        if (btn.innerText.includes(valor) || btn.innerHTML.includes(valor)) {
+          btn.classList.add('border-barro-500', 'bg-barro-950/60');
+          btn.classList.remove('border-stone-800', 'bg-adobe-850');
+        } else {
+          btn.classList.remove('border-barro-500', 'bg-barro-950/60');
+          btn.classList.add('border-stone-800', 'bg-adobe-850');
+        }
+      });
+      actualizarTicket();
+    }
+
+    function seleccionarGuiso(guiso) {
+      setOpcion('guiso', guiso);
+      const el = document.getElementById('armar-orden');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function cambiarCantidad(delta) {
+      orden.cantidad = Math.max(1, orden.cantidad + delta);
+      document.getElementById('cantidad-display').innerText = orden.cantidad;
+      actualizarTicket();
+    }
+
+    function actualizarTicket() {
+      orden.bebida = document.getElementById('bebida-select').value;
+      orden.postre = document.getElementById('postre-select').value;
+
+      document.getElementById('ticket-guiso').innerText = orden.guiso;
+      document.getElementById('ticket-entrada').innerText = orden.entrada;
+      document.getElementById('ticket-guarnicion').innerText = orden.guarnicion;
+      document.getElementById('ticket-tortilla').innerText = orden.tortilla;
+      document.getElementById('ticket-bebida').innerText = orden.bebida;
+      document.getElementById('ticket-postre').innerText = orden.postre;
+
+      const total = orden.cantidad * orden.precioUnitario;
+      document.getElementById('ticket-total').innerText = '$' + total + ' MXN';
+    }
+
+    function enviarPedidoWhatsApp() {
+      const total = orden.cantidad * orden.precioUnitario;
+      const mensaje = `Hola *La Olla de Barro*, quiero pedir mi orden de *Menú del Día (6 Tiempos)*:
+- Cantidad: ${orden.cantidad} paquete(s)
+- Guisado: ${orden.guiso}
+- Entrada: ${orden.entrada}
+- Guarnición: ${orden.guarnicion}
+- Tortillas: ${orden.tortilla}
+- Bebida: ${orden.bebida}
+- Postre: ${orden.postre}
+- *Total: $${total} MXN*
+¿Me pueden confirmar el tiempo de entrega por favor?`;
+
+      window.open(`https://wa.me/526222259974?text=${encodeURIComponent(mensaje)}`, '_blank');
+    }
+
+    function toggleMode() {
+      const body = document.body;
+      const isGlass = body.classList.toggle('liquid-glass-mode');
+      const label = document.getElementById('mode-label');
+      const icon = document.getElementById('mode-icon');
+
+      if (isGlass) {
+        label.innerText = 'Volver a Modo Artesanal de Barro';
+        icon.innerText = 'soup_kitchen';
+      } else {
+        label.innerText = 'Ver en Modo Liquid Glass';
+        icon.innerText = 'auto_awesome';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -122,7 +122,7 @@ export const PROJECTS: Project[] = [
     packagePrice: '$8,900 MXN',
     description: 'App web gastronómica de comida corrida: menú de 6 tiempos ($129), comanda de cocina y despacho a WhatsApp.',
     longDescription: 'La Olla de Barro es una aplicación web interactiva (PWA) diseñada para negocios gastronómicos tradicionales y dark kitchens. Permite al comensal personalizar su menú del día de 6 tiempos, elegir su guisado en cazuela caliente, indicar el nivel de picante, seleccionar guarniciones y despachar el pedido con ticket formal de cocina directamente al WhatsApp del negocio, evitando comisiones del 30% de plataformas de delivery.',
-    image: '/images/projects/guisos-app.svg',
+    image: '/images/stitch/la-olla-de-barro-hero.png',
     stack: ['React', 'Vite', 'Tailwind CSS', 'Lucide React', 'WhatsApp API'],
     features: [
       'Menú del día rotativo de 6 tiempos a $129 MXN con actualización en segundos',
@@ -131,7 +131,7 @@ export const PROJECTS: Project[] = [
       'Despacho instantáneo de la orden hacia WhatsApp sin cobro de comisiones',
       'Diseño mobile-first ultra ligero adaptado para pantallas de celular'
     ],
-    demoUrl: '/proyecto/la-olla-de-barro?demo=live',
+    demoUrl: '/demos/la-olla-de-barro.html',
     githubUrl: 'https://github.com/abrakza03-jpg',
     clientGoal: 'Eliminar el pago de altas comisiones a apps de delivery y centralizar los pedidos por WhatsApp.',
     metrics: [
