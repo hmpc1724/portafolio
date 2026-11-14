@@ -25,7 +25,6 @@ import {
   Award,
   Bot,
   Zap,
-  ,
   Sun,
   Flame,
   Building2,
