@@ -512,11 +512,15 @@ export default function ShoppableUgcSlider({
                       <span>[CAD_VIEW • 12_COL]</span>
                       <span>STITCH_SPEC_V1</span>
                     </div>
-                    <div className="flex-1 relative flex items-center justify-center my-1">
+                    <div className="flex-1 relative flex items-center justify-center my-1 overflow-hidden rounded-lg bg-black/40">
                       <img
                         src={demo.svgPreview}
                         alt={demo.title}
-                        className="max-h-full w-auto object-contain drop-shadow-[0_0_12px_rgba(56,189,248,0.3)] filter contrast-125"
+                        className={`drop-shadow-[0_0_12px_rgba(56,189,248,0.3)] filter contrast-110 ${
+                          demo.svgPreview.endsWith('.png')
+                            ? 'w-full h-full object-cover object-top'
+                            : 'max-h-full w-auto object-contain'
+                        }`}
                       />
                     </div>
                     <div className="flex items-center justify-between text-[8px] font-mono text-slate-400 pt-1 border-t border-sky-400/20">
@@ -862,6 +866,22 @@ export default function ShoppableUgcSlider({
                     <div className="p-3.5 rounded-xl bg-black/60 border border-white/10 font-mono text-xs text-indigo-100 leading-relaxed max-h-48 overflow-y-auto selection:bg-indigo-500 selection:text-white">
                       {NICHE_STITCH_PROMPTS[selectedDemoModal.slug] || 'Prompt de diseño Liquid Glass para Stitch...'}
                     </div>
+
+                    {selectedDemoModal.svgPreview.endsWith('.png') && (
+                      <div className="rounded-xl overflow-hidden border border-indigo-400/30 bg-black/50 p-2 space-y-2">
+                        <div className="flex items-center justify-between text-[10px] font-mono text-indigo-300">
+                          <span>📸 BOCETO WIREFRAME GENERADO EN GOOGLE STITCH</span>
+                          <span>ALTA FIDELIDAD</span>
+                        </div>
+                        <div className="max-h-64 overflow-y-auto rounded-lg border border-white/10 bg-slate-950 scrollbar-thin">
+                          <img
+                            src={selectedDemoModal.svgPreview}
+                            alt={`Boceto Stitch ${selectedDemoModal.title}`}
+                            className="w-full h-auto object-contain"
+                          />
+                        </div>
+                      </div>
+                    )}
 
                     <div className="flex items-center justify-between text-[11px] text-slate-400 pt-1">
                       <span>💡 Pega este prompt directamente en Stitch para generar variantes visuales al instante.</span>

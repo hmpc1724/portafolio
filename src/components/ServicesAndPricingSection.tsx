@@ -181,9 +181,11 @@ export default function ServicesAndPricingSection() {
 
               <div className="mt-6 pt-4 border-t border-slate-200/50 dark:border-white/10 flex flex-col gap-2">
                 <a
-                  href={`http://${
-                    typeof window !== 'undefined' ? window.location.hostname : '192.168.100.90'
-                  }:3210/?view=agencia&inbound=1&name=${encodeURIComponent(
+                  href={`${
+                    typeof window !== 'undefined' && window.location.hostname === 'localhost'
+                      ? 'http://localhost:3240'
+                      : 'https://agencia-liquid-glass.vercel.app'
+                  }/?inbound=1&name=${encodeURIComponent(
                     `Prospecto ${pkg.name}`
                   )}&tier=${pkg.id}&message=${encodeURIComponent(
                     `Seleccionó ${pkg.name} ($${pkg.priceMxn} MXN) desde el Portafolio Oficial`

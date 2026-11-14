@@ -24,6 +24,7 @@ import {
   Tv,
 } from 'lucide-react';
 import { Project } from '@/types';
+import InteractiveNicheBoceto from './InteractiveNicheBoceto';
 
 interface InteractiveProjectDemoProps {
   project: Project;
@@ -163,8 +164,15 @@ export default function InteractiveProjectDemo({ project }: InteractiveProjectDe
         </div>
       )}
 
+      {/* 🦐 DEMO ESPECIAL: MARISCOS & PARRILLA EL REY */}
+      {project.slug === 'artisan-market' && (
+        <div className="w-full">
+          <InteractiveNicheBoceto slug="artisan-market" visualMode={visualMode} />
+        </div>
+      )}
+
       {/* 🍲 1. NICHO GASTRONOMÍA & RESTAURANTES */}
-      {project.category === 'gastronomia' && (
+      {project.category === 'gastronomia' && project.slug !== 'artisan-market' && (
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
           <div className="md:col-span-7 space-y-4">
             <span className="text-xs font-bold uppercase tracking-wider text-amber-500">

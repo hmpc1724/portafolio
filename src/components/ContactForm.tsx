@@ -289,9 +289,11 @@ export default function ContactForm() {
                 {lastSubmitted && (
                   <>
                     <a
-                      href={`http://${
-                        typeof window !== 'undefined' ? window.location.hostname : '192.168.100.90'
-                      }:3210/?view=agencia&inbound=1&name=${encodeURIComponent(
+                      href={`${
+                        typeof window !== 'undefined' && window.location.hostname === 'localhost'
+                          ? 'http://localhost:3240'
+                          : 'https://agencia-liquid-glass.vercel.app'
+                      }/?inbound=1&name=${encodeURIComponent(
                         lastSubmitted.name
                       )}&tier=${encodeURIComponent(
                         lastSubmitted.packageInterest.toLowerCase().includes('esencial')
@@ -306,7 +308,7 @@ export default function ContactForm() {
                       rel="noopener noreferrer"
                       className="px-5 py-2.5 text-xs sm:text-sm rounded-xl bg-gradient-to-r from-sky-500 to-indigo-600 text-white font-extrabold flex items-center gap-2 shadow-lg transition-all"
                     >
-                      <span>🚀 Enviar a Radar de Clientes (Stitch → Demo)</span>
+                      <span>🚀 Enviar a Agencia Liquid Glass (Stitch → Demo)</span>
                     </a>
                     <a
                       href={`https://wa.me/526222259974?text=${encodeURIComponent(

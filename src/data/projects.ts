@@ -372,32 +372,32 @@ export const PROJECTS: Project[] = [
   {
     id: 'proj-artisan',
     slug: 'artisan-market',
-    title: 'Artisan Market Regional',
-    category: 'ecommerce',
-    categoryLabel: 'E-Commerce & Retail',
-    nicheLabel: 'Marketplaces & Artesanías de Sonora',
+    title: 'Mariscos & Parrilla El Rey',
+    category: 'gastronomia',
+    categoryLabel: 'Restaurantes & Mariscos',
+    nicheLabel: 'Marisquerías, Restaurantes & Parrilla',
     suggestedPackage: 'Paquete Profesional',
     packagePrice: '$8,900 MXN',
-    description: 'Marketplace para artesanos y diseñadores independientes con split de pagos y trazabilidad de piezas únicas.',
-    longDescription: 'Una plataforma de comercio que conecta a maestros artesanos con coleccionistas globales. Cada producto incluye un certificado digital de autenticidad, cálculo dinámico de costes de importación y una experiencia de compra táctil donde cada tarjeta refleja texturas y destellos líquidos que resaltan el valor manual de las piezas.',
-    image: '/images/projects/artisan-market.svg',
-    stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Algolia Search', 'Zustand'],
+    description: 'Menú digital interactivo en alta definición, comanda directa por WhatsApp para mesas, fotos de platillos y valoraciones locales en Google Maps.',
+    longDescription: 'Mariscos & Parrilla El Rey es una plataforma web gastronómica de alta conversión diseñada para restaurantes y marisquerías de Guaymas y Sonora. Permite a los comensales visualizar el menú digital QR desde su mesa o celular, ordenar con fotos reales generadas y bocetadas en Google Stitch, seleccionar salsas artesanales con chiltepín sonorense y despachar comandas completas con número de mesa directo a WhatsApp, ahorrando comisiones de plataformas de delivery.',
+    image: '/images/stitch/mariscos-el-rey-full.png',
+    stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Google Stitch UI', 'WhatsApp API'],
     features: [
-      'Búsqueda facetada instantánea por técnica ancestral, material y procedencia',
-      'Muro interactivo de historias de artesanos con micro-documentales en video',
-      'Checkout con distribución automática de comisiones hacia las cuentas de artesanos',
-      'Reseñas verificadas con subida de fotos de compradores y valoraciones por estrellas',
-      'Puntos de recogida locales y cálculo de huella de carbono neutralizada'
+      'Menú digital interactivo con comanda por número de mesa en tiempo real',
+      'Platillos emblemáticos con fotografía en alta definición: Festín Imperial y Molcajete Volcánico',
+      'Barra de salsas regional con niveles de picante (Chiltepín Silvestre, Habanero Tatemado)',
+      'Despacho automático de pedidos y comandas directamente hacia WhatsApp',
+      'SEO Local en Google Maps para captar turismo en Guaymas y San Carlos'
     ],
     demoUrl: '/proyecto/artisan-market?demo=live',
-    githubUrl: 'https://github.com/abrakza03-jpg',
-    clientGoal: 'Empoderar a comunidades artesanales facilitando ventas internacionales sin intermediarios abusivos.',
+    githubUrl: 'https://github.com/hmpc1724',
+    clientGoal: 'Multiplicar las comandas en mesa y pedidos para llevar sin pagar comisiones de apps externas.',
     metrics: [
-      { label: 'Creadores activos', value: '1.200+' },
-      { label: 'Países destino', value: '34' },
-      { label: 'Satisfacción', value: '4.9/5' }
+      { label: 'Tiempo de pedido', value: '< 45s' },
+      { label: 'Ticket promedio', value: '+35%' },
+      { label: 'Calificación Google', value: '4.9/5' }
     ],
-    featured: false,
+    featured: true,
     accentColor: '#f59e0b'
   },
 
@@ -657,9 +657,9 @@ export const PROFILE_INFO = {
   whatsappUrl: 'https://wa.me/526222259974?text=Hola%20Hector,%20vi%20tu%20portafolio%20Liquid%20Glass%20y%20me%20gustar%C3%ADa%20ver%20un%20boceto%20en%20Stitch%20para%20mi%20negocio',
   cvUrl: '/cv-hector-palomares.pdf',
   radarUrl:
-    typeof window !== 'undefined'
-      ? `http://${window.location.hostname}:3210/agencia`
-      : 'http://192.168.100.90:3210/agencia',
+    typeof window !== 'undefined' && window.location.hostname === 'localhost'
+      ? 'http://localhost:3240'
+      : 'https://agencia-liquid-glass.vercel.app',
   status: 'Disponible para nuevos proyectos',
   email: 'abrakza03@gmail.com',
   social: {
