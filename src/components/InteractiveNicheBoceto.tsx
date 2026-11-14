@@ -23,6 +23,7 @@ import {
   DollarSign,
   TrendingUp,
   Award,
+  ExternalLink,
   Bot,
   Zap,
   Sun,
@@ -1698,84 +1699,136 @@ export default function InteractiveNicheBoceto({
   if (slug === 'la-olla-de-barro') {
     const isBoceto = visualMode === 'boceto';
     const guisos = [
-      { name: 'Carne con Chile en Cazuela', desc: 'Pulpa de res suave en adobo tatemado de chile colorado con frijoles puercos', tag: 'Favorito 🔥' },
-      { name: 'Costillita en Salsa Verde', desc: 'Costilla dorada en salsa de tomatillo de milpa con cilantro criollo', tag: 'Clásico' },
-      { name: 'Deshebrada Norteña', desc: 'Falda de res deshebrada con jitomate, cebolla blanca y rajas de poblano', tag: 'Casero' },
-      { name: 'Chicharrón Prensado', desc: 'Chicharrón de cerdo en guisado morita con papas en cubitos', tag: 'Tradición' },
+      {
+        name: 'Carne con Chile en Cazuela',
+        desc: 'Pulpa de res suave en adobo tatemado de chile colorado con frijoles maneados de la sierra y queso regional.',
+        tag: 'Firma de la Casa 🔥',
+        img: '/images/stitch/la-olla-de-barro-carne-con-chile.png',
+      },
+      {
+        name: 'Costillita en Salsa Verde de Milpa',
+        desc: 'Costilla de cerdo dorada en salsa de tomatillo asado con cilantro criollo y calabacitas tiernas.',
+        tag: 'Receta de la Abuela',
+        img: '/images/stitch/la-olla-de-barro-hero.png',
+      },
+      {
+        name: 'Gallina Pinta Tradicional',
+        desc: 'Carne de res con hueso tierno, frijol pinto, maíz nixtamalizado y orégano de la sierra sonorense.',
+        tag: 'Tradición Serrana',
+      },
+      {
+        name: 'Caldo de Queso con Chiltepín',
+        desc: 'Papas en cubos, queso fresco regional derretido, rajas de chile verde y chiltepín al gusto.',
+        tag: 'Clásico Sonorense',
+      },
     ];
 
     if (isBoceto) {
       return (
-        <div className="p-3 sm:p-5 rounded-2xl bg-[#09111e] text-slate-100 border-2 border-dashed border-sky-400/50 font-mono text-xs sm:text-sm space-y-4 shadow-2xl relative overflow-hidden bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px]">
-          <div className="flex items-center justify-between pb-2.5 border-b border-sky-400/30 text-[10px] text-sky-400">
-            <span className="font-bold">[BOCETO ARQUITECTÓNICO WIREFRAME • MENÚ DEL DÍA]</span>
-            <span className="text-slate-400">SPEC: COMIDA_CORRIDA_QR_V1</span>
+        <div className="p-3 sm:p-5 rounded-2xl bg-[#140b07] text-stone-100 border-2 border-dashed border-orange-500/50 font-mono text-xs sm:text-sm space-y-4 shadow-2xl relative overflow-hidden bg-[radial-gradient(#ea580c_1px,transparent_1px)] [background-size:16px_16px]">
+          {/* Header Blueprint */}
+          <div className="flex items-center justify-between pb-2.5 border-b border-orange-500/30 text-[10px] text-orange-400">
+            <span className="font-bold">[BOCETO ARQUITECTÓNICO • LA OLLA DE BARRO • SONORA]</span>
+            <a
+              href="/demos/la-olla-de-barro.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-amber-300 hover:text-white underline font-bold flex items-center gap-1"
+            >
+              <span>Ver Landing Web Completa</span>
+              <ExternalLink className="w-3 h-3" />
+            </a>
           </div>
-          <div className="flex items-center justify-between pb-2 border-b border-sky-400/20">
+
+          <div className="flex items-center justify-between pb-2 border-b border-orange-500/20">
             <div className="flex items-center gap-2">
               <Utensils className="w-4 h-4 text-amber-400" />
               <div>
-                <h4 className="font-bold text-amber-300 text-xs sm:text-sm">[HEADER: LA_OLLA_DE_BARRO]</h4>
-                <p className="text-[10px] text-slate-400">PAQUETE 6 TIEMPOS • PRECIO FIJO: $129 MXN</p>
+                <h4 className="font-bold text-amber-300 text-xs sm:text-sm">LA OLLA DE BARRO — GUISADOS</h4>
+                <p className="text-[10px] text-stone-400">MENÚ 6 TIEMPOS • PRECIO FIJO: $129 MXN • SIN COMISIÓN</p>
               </div>
             </div>
-            <span className="text-xs font-mono text-emerald-400 bg-sky-950 px-2 py-0.5 rounded border border-sky-400/30">$129 MXN</span>
+            <span className="text-xs font-mono text-amber-300 bg-orange-950/80 px-2 py-0.5 rounded border border-orange-500/40">$129 MXN</span>
           </div>
 
+          {/* Dish Grid with Real Food Photos */}
           <div className="space-y-2">
-            <span className="text-[10px] text-sky-400/80 font-mono block">/// COMPONENT: GUISADO_SELECTOR</span>
-            <div className="grid grid-cols-2 gap-2">
+            <span className="text-[10px] text-orange-400 font-mono block">/// CAZUELAS DEL DÍA (SELECCIONAR GUISADO):</span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               {guisos.map((g) => (
                 <button
                   key={g.name}
                   type="button"
                   onClick={() => setOllaGuiso(g.name)}
-                  className={`p-2 rounded-lg text-left border text-[11px] font-mono transition-all ${
+                  className={`p-2.5 rounded-xl text-left border text-[11px] font-mono transition-all flex items-start gap-2.5 ${
                     ollaGuiso === g.name
-                      ? 'bg-sky-500 text-slate-950 font-bold border-sky-400'
-                      : 'bg-sky-950/40 text-slate-300 border-sky-400/30 hover:border-sky-400/60'
+                      ? 'bg-orange-600 text-white font-bold border-orange-400 shadow-lg shadow-orange-950/60'
+                      : 'bg-stone-900/80 text-stone-300 border-stone-800 hover:border-orange-500/60'
                   }`}
                 >
-                  <div className="font-bold truncate">{g.name}</div>
-                  <div className="text-[9px] opacity-75">{g.tag}</div>
+                  {g.img && (
+                    <img
+                      src={g.img}
+                      alt={g.name}
+                      className="w-12 h-12 rounded-lg object-cover shrink-0 border border-white/10"
+                    />
+                  )}
+                  <div className="min-w-0 flex-1">
+                    <div className="font-bold truncate">{g.name}</div>
+                    <div className="text-[9px] opacity-80 line-clamp-1">{g.desc}</div>
+                    <div className="text-[8px] text-amber-300 mt-0.5">{g.tag}</div>
+                  </div>
                 </button>
               ))}
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center justify-between gap-2 p-2 rounded-xl bg-sky-950/40 border border-dashed border-sky-400/20 text-xs font-mono">
+          <div className="flex flex-wrap items-center justify-between gap-2 p-2.5 rounded-xl bg-stone-900/70 border border-dashed border-orange-500/30 text-xs font-mono">
             <div className="flex items-center gap-2">
-              <span className="text-[10px] text-sky-400">PICANTE:</span>
+              <span className="text-[10px] text-orange-400">PICANTE:</span>
               {['Suave', 'Medio', 'Bravo 🔥'].map((lvl) => (
                 <button
                   key={lvl}
                   type="button"
                   onClick={() => setOllaPicante(lvl)}
                   className={`px-2 py-0.5 rounded text-[10px] ${
-                    ollaPicante === lvl ? 'bg-amber-400 text-black font-bold' : 'text-slate-400 bg-sky-900/40'
+                    ollaPicante === lvl ? 'bg-orange-500 text-white font-bold' : 'text-stone-400 bg-stone-800'
                   }`}
                 >
                   {lvl}
                 </button>
               ))}
             </div>
-            <div className="text-[10px] text-slate-400">TORTILLAS: {ollaTortillas}</div>
+            <div className="text-[10px] text-stone-300">TORTILLAS: 3 Sobaqueras Palmeadas</div>
           </div>
 
-          <div className="flex items-center justify-between pt-2 border-t border-sky-400/30">
-            <div className="text-[10px] text-slate-400 font-mono">COMANDA: {ollaGuiso} (Nivel {ollaPicante})</div>
-            <button
-              type="button"
-              onClick={() => sendWhatsApp(`¡Hola La Olla de Barro! Quiero ordenar el Menú del Día ($129 MXN):
+          <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-orange-500/30">
+            <div className="text-[10px] text-stone-400 font-mono">
+              COMANDA: <span className="text-amber-300 font-bold">{ollaGuiso}</span> (Nivel {ollaPicante})
+            </div>
+            <div className="flex items-center gap-2">
+              <a
+                href="/demos/la-olla-de-barro.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="py-2 px-3 rounded-xl bg-stone-800 hover:bg-stone-700 text-amber-200 font-mono text-[11px] flex items-center gap-1 border border-stone-700"
+              >
+                <span>Ver Web Completa</span>
+                <ExternalLink className="w-3 h-3" />
+              </a>
+              <button
+                type="button"
+                onClick={() => sendWhatsApp(`¡Hola La Olla de Barro! Quiero ordenar el Menú del Día ($129 MXN):
 • Guisado: ${ollaGuiso}
 • Nivel de picante: ${ollaPicante}
 • Guarnición: ${ollaGuarnicion}
 • Tortillas: ${ollaTortillas}`)}
-              className="py-2 px-3 rounded bg-amber-400 hover:bg-amber-300 text-slate-950 font-mono font-bold text-xs flex items-center gap-1.5 shadow-md active:scale-95 transition-all"
-            >
-              <MessageCircle className="w-4 h-4 fill-slate-950" />
-              <span>[ENVIAR_COMANDA_COCINA]</span>
-            </button>
+                className="py-2 px-3.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-mono font-bold text-xs flex items-center gap-1.5 shadow-md active:scale-95 transition-all"
+              >
+                <MessageCircle className="w-4 h-4 fill-white" />
+                <span>[DESPACHAR_A_COCINA_WHATSAPP]</span>
+              </button>
+            </div>
           </div>
         </div>
       );
@@ -1802,24 +1855,42 @@ export default function InteractiveNicheBoceto({
               <p className="text-[11px] text-amber-200/90 font-medium">Guisados en Cazuela Caliente • Tortillas Hechas a Mano</p>
             </div>
           </div>
+          <a
+            href="/demos/la-olla-de-barro.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-bold text-amber-200 transition-colors"
+          >
+            <span>Ver Web Completa</span>
+            <ExternalLink className="w-3.5 h-3.5" />
+          </a>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 relative z-10">
           {guisos.map((g) => (
             <div
               key={g.name}
               onClick={() => setOllaGuiso(g.name)}
-              className={`p-3 rounded-xl border cursor-pointer transition-all ${
+              className={`p-3 rounded-xl border cursor-pointer transition-all flex items-start gap-3 ${
                 ollaGuiso === g.name
                   ? 'bg-amber-500/20 border-amber-400 shadow-lg shadow-amber-500/20'
                   : 'bg-white/[0.04] border-white/10 hover:border-amber-400/40'
               }`}
             >
-              <div className="flex items-center justify-between">
-                <span className="font-black text-white text-xs">{g.name}</span>
-                <span className="text-[9px] font-bold text-amber-300 bg-amber-500/15 px-1.5 py-0.5 rounded">{g.tag}</span>
+              {g.img && (
+                <img
+                  src={g.img}
+                  alt={g.name}
+                  className="w-14 h-14 rounded-lg object-cover shrink-0 border border-white/15"
+                />
+              )}
+              <div className="min-w-0 flex-1">
+                <div className="flex items-center justify-between">
+                  <span className="font-black text-white text-xs truncate">{g.name}</span>
+                  <span className="text-[9px] font-bold text-amber-300 bg-amber-500/15 px-1.5 py-0.5 rounded shrink-0">{g.tag}</span>
+                </div>
+                <p className="text-[10px] text-slate-300 mt-1 line-clamp-2">{g.desc}</p>
               </div>
-              <p className="text-[10px] text-slate-300 mt-1 line-clamp-2">{g.desc}</p>
             </div>
           ))}
         </div>

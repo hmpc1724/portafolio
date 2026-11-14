@@ -1,0 +1,47 @@
+<svg width="800" height="500" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg4" x1="0" y1="0" x2="800" y2="500" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1f0a14"/>
+      <stop offset="50%" stop-color="#4c0519"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <filter id="glow4" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="45" />
+    </filter>
+  </defs>
+  <rect width="800" height="500" rx="20" fill="url(#bg4)"/>
+  <circle cx="250" cy="200" r="170" fill="#f43f5e" opacity="0.3" filter="url(#glow4)"/>
+  <circle cx="550" cy="300" r="150" fill="#fb7185" opacity="0.25" filter="url(#glow4)"/>
+
+  <g transform="translate(60, 50)">
+    <rect width="680" height="400" rx="16" fill="rgba(255, 255, 255, 0.04)" stroke="rgba(255, 255, 255, 0.16)" stroke-width="1.5"/>
+    <rect width="680" height="44" rx="16" fill="rgba(255, 255, 255, 0.06)"/>
+    <circle cx="28" cy="22" r="5" fill="#ef4444"/>
+    <circle cx="44" cy="22" r="5" fill="#f59e0b"/>
+    <circle cx="60" cy="22" r="5" fill="#10b981"/>
+    <text x="340" y="26" fill="rgba(255, 255, 255, 0.7)" font-family="sans-serif" font-size="11" text-anchor="middle">studioveloce.agency/consulting-book</text>
+
+    <!-- Agency Hero Section inside mock -->
+    <text x="50" y="115" fill="#f43f5e" font-family="sans-serif" font-size="12" font-weight="700" letter-spacing="2">DIGITAL EXCELLENCE</text>
+    <text x="50" y="160" fill="#ffffff" font-family="sans-serif" font-size="32" font-weight="800">Diseñamos marcas que dominan el futuro.</text>
+    
+    <!-- Step Calculator Panel -->
+    <rect x="50" y="200" width="360" height="160" rx="12" fill="rgba(255,255,255,0.07)" stroke="rgba(244, 63, 94, 0.4)"/>
+    <text x="70" y="230" fill="#ffffff" font-family="sans-serif" font-size="14" font-weight="bold">Cotizador Interactivo de Proyecto</text>
+    <rect x="70" y="248" width="80" height="28" rx="6" fill="#f43f5e"/>
+    <text x="110" y="266" fill="#ffffff" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="middle">Branding</text>
+    <rect x="160" y="248" width="80" height="28" rx="6" fill="rgba(255,255,255,0.1)"/>
+    <text x="200" y="266" fill="#ffffff" font-family="sans-serif" font-size="11" text-anchor="middle">Web 3D</text>
+    <rect x="250" y="248" width="80" height="28" rx="6" fill="rgba(255,255,255,0.1)"/>
+    <text x="290" y="266" fill="#ffffff" font-family="sans-serif" font-size="11" text-anchor="middle">Full Stack</text>
+
+    <text x="70" y="315" fill="#fda4af" font-family="sans-serif" font-size="11">Estimación inmediata: $12.500 USD • Plazo: 4 semanas</text>
+    <rect x="70" y="325" width="160" height="24" rx="6" fill="rgba(255,255,255,0.15)"/>
+    <text x="150" y="341" fill="#ffffff" font-family="sans-serif" font-size="10" font-weight="bold" text-anchor="middle">Agendar Discovery Call →</text>
+
+    <!-- Visual 3D sphere representation -->
+    <circle cx="530" cy="260" r="85" fill="none" stroke="rgba(244, 63, 94, 0.6)" stroke-width="2"/>
+    <ellipse cx="530" cy="260" rx="85" ry="30" fill="none" stroke="#fb7185" stroke-width="1.5"/>
+    <ellipse cx="530" cy="260" rx="35" ry="85" fill="none" stroke="#f43f5e" stroke-width="1.5"/>
+  </g>
+</svg>
