@@ -5,8 +5,6 @@ import {
   Sparkles,
   CheckCircle2,
   Wand2,
-  Eye,
-  Rocket,
   MessageCircle,
   Clock,
   ShieldCheck,
@@ -51,62 +49,16 @@ export default function ServicesAndPricingSection() {
       <div className="flex flex-col items-center text-center mb-12">
         <div className="glass-pill mb-4 text-sky-600 dark:text-sky-300 border-sky-400/30">
           <Sparkles className="w-3.5 h-3.5" />
-          <span>Servicios, Paquetes & Flujo Stitch → Antigravity</span>
+          <span>Paquetes &amp; Pólizas Oficiales</span>
         </div>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
           Precios transparentes,{' '}
           <span className="text-gradient-liquid">cero riesgo para ti</span>
         </h2>
         <p className="mt-3 text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed">
-          Primero te enseño un <strong>boceto visual en Google Stitch</strong> y un{' '}
-          <strong>demo funcional</strong>. Solo cuando decides avanzar iniciamos la construcción en{' '}
-          <strong>Google Antigravity</strong>.
+          Todos los paquetes incluyen <strong>1.er año de Hosting, Dominio y SSL gratis</strong>. Inicias con el{' '}
+          <strong>50% de anticipo</strong> y liquidas al recibir tu proyecto terminado.
         </p>
-      </div>
-
-      {/* 3-Step Guarantee Banner */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
-        <div className="glass-panel p-5 flex items-start gap-3.5 border-l-4 border-l-sky-500">
-          <div className="w-9 h-9 rounded-xl bg-sky-500/15 text-sky-500 flex items-center justify-center shrink-0 font-bold text-sm">
-            <Wand2 className="w-4 h-4" />
-          </div>
-          <div>
-            <h3 className="text-sm font-bold text-slate-900 dark:text-white">
-              1. Boceto en Google Stitch
-            </h3>
-            <p className="text-xs text-slate-600 dark:text-slate-300 mt-1 leading-relaxed">
-              Diseñamos el boceto visual de tu página con los colores y giro de tu negocio sin costo inicial.
-            </p>
-          </div>
-        </div>
-
-        <div className="glass-panel p-5 flex items-start gap-3.5 border-l-4 border-l-indigo-500">
-          <div className="w-9 h-9 rounded-xl bg-indigo-500/15 text-indigo-500 flex items-center justify-center shrink-0 font-bold text-sm">
-            <Eye className="w-4 h-4" />
-          </div>
-          <div>
-            <h3 className="text-sm font-bold text-slate-900 dark:text-white">
-              2. Demo Interactivo en Vivo
-            </h3>
-            <p className="text-xs text-slate-600 dark:text-slate-300 mt-1 leading-relaxed">
-              Pruebas cómo se siente tu plataforma en celular y computadora antes de tomar tu decisión.
-            </p>
-          </div>
-        </div>
-
-        <div className="glass-panel p-5 flex items-start gap-3.5 border-l-4 border-l-emerald-500">
-          <div className="w-9 h-9 rounded-xl bg-emerald-500/15 text-emerald-500 flex items-center justify-center shrink-0 font-bold text-sm">
-            <Rocket className="w-4 h-4" />
-          </div>
-          <div>
-            <h3 className="text-sm font-bold text-slate-900 dark:text-white">
-              3. Producción en Antigravity
-            </h3>
-            <p className="text-xs text-slate-600 dark:text-slate-300 mt-1 leading-relaxed">
-              Al confirmar con el 50% de anticipo, se construye tu sistema completo con 1.er año de Hosting y Dominio gratis.
-            </p>
-          </div>
-        </div>
       </div>
 
       {/* 3 Main Packages Grid */}
