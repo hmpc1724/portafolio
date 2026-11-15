@@ -3,146 +3,333 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SolarTec Sonora — Paneles Solares &amp; Ahorro CFE</title>
+  <title>SolarTec Sonora — Paneles Solares &amp; Ahorro CFE 95%</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body { background: #0c0903; color: #fef3c7; font-family: 'Plus Jakarta Sans', sans-serif; transition: background 0.35s ease; }
-    .demo-card { background: rgba(28, 20, 7, 0.86); border: 1px solid rgba(251, 191, 36, 0.25); transition: all 0.35s ease; }
-    .header-nav { background: rgba(12, 9, 3, 0.9); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(251, 191, 36, 0.25); }
-    body.liquid-glass-mode { background: radial-gradient(circle at top right, #451a03 0%, #030712 55%, #0c4a6e 100%) !important; color: #e2e8f0 !important; }
+    :root { --accent: #fbbf24; --accent2: #f97316; }
+    body { background: #0c0903; color: #f1f5f9; font-family: 'Plus Jakarta Sans', sans-serif; transition: background 0.35s ease; }
+    .demo-card { background: rgba(28, 20, 7, 0.88); border: 1px solid rgba(255, 255, 255, 0.12); transition: all 0.35s ease; }
+    .demo-card:hover { border-color: rgba(255, 255, 255, 0.25); }
+    .header-nav { background: rgba(6, 10, 20, 0.88); backdrop-filter: blur(18px); border-bottom: 1px solid rgba(255, 255, 255, 0.12); }
+    body.liquid-glass-mode { background: radial-gradient(circle at top right, #082f49 0%, #030712 55%, #0f172a 100%) !important; }
     body.liquid-glass-mode .demo-card {
-      background: rgba(15, 23, 42, 0.56) !important;
-      backdrop-filter: blur(22px) saturate(160%) !important;
-      border-color: rgba(56, 189, 248, 0.4) !important;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.14) !important;
+      background: rgba(12, 24, 48, 0.54) !important;
+      backdrop-filter: blur(22px) saturate(165%) !important;
+      border-color: rgba(103, 232, 249, 0.42) !important;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
     }
     body.liquid-glass-mode .header-nav {
-      background: rgba(8, 16, 30, 0.72) !important;
+      background: rgba(8, 18, 36, 0.72) !important;
       backdrop-filter: blur(24px) !important;
-      border-color: rgba(56, 189, 248, 0.35) !important;
+      border-color: rgba(103, 232, 249, 0.35) !important;
     }
   </style>
 </head>
 <body class="min-h-screen antialiased">
-  <div class="fixed inset-0 pointer-events-none -z-10">
-    <div class="absolute -top-24 left-10 w-96 h-96 bg-amber-500/20 rounded-full blur-[130px]"></div>
-    <div class="absolute bottom-0 right-10 w-96 h-96 bg-orange-500/15 rounded-full blur-[130px]"></div>
+  <div class="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
+    <div class="absolute -top-32 -left-24 w-96 h-96 rounded-full blur-[130px] opacity-25" style="background:#fbbf24"></div>
+    <div class="absolute top-1/2 -right-24 w-96 h-96 rounded-full blur-[130px] opacity-20" style="background:#f97316"></div>
   </div>
 
+  <!-- NAVBAR -->
   <header class="header-nav sticky top-0 z-50">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
       <div class="flex items-center gap-2.5">
-        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-400 to-orange-500 flex items-center justify-center text-slate-950 font-black">
+        <div class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-950 font-black shadow-lg" style="background: linear-gradient(135deg, #fbbf24, #f97316)">
           <span class="material-symbols-outlined text-xl">solar_power</span>
         </div>
-        <span class="font-bold text-white text-base tracking-tight">SolarTec Sonora</span>
+        <div>
+          <span class="font-extrabold text-white text-base tracking-tight">SolarTec Sonora</span>
+          <span class="hidden sm:inline-block ml-2 px-2 py-0.5 rounded-full text-[10px] font-bold bg-white/10 text-cyan-200 border border-white/15">DEMO LIVE</span>
+        </div>
       </div>
+
+      <nav class="hidden md:flex items-center gap-6 text-xs font-semibold text-slate-300">
+        <a href="#simulador" class="hover:text-white transition-colors">Cotizador</a>
+        <a href="#catalogo" class="hover:text-white transition-colors">Servicios</a>
+        <a href="#diferenciador" class="hover:text-white transition-colors">Ventajas</a>
+        <a href="#resenas" class="hover:text-white transition-colors">Reseñas</a>
+      </nav>
+
       <div class="flex items-center gap-2">
-        <button id="glass-toggle-btn" onclick="toggleLiquidGlass()" class="px-3.5 py-2 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 border border-amber-400/40 text-amber-200 font-bold text-xs transition-all">
+        <button id="glass-toggle-btn" onclick="toggleLiquidGlass()" class="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/15 border border-cyan-400/40 text-cyan-200 font-bold text-xs transition-all shadow-lg">
           <span>💎 Activar Liquid Glass</span>
         </button>
-        <button onclick="sendWhatsApp()" class="hidden sm:flex px-4 py-2 rounded-xl bg-gradient-to-r from-amber-400 to-orange-500 text-slate-950 font-black text-xs items-center gap-1.5">
-          <span>Cotizar Estudio Solar</span>
+        <button onclick="sendWhatsApp('header')" class="hidden sm:flex px-4 py-2 rounded-xl text-slate-950 font-black text-xs items-center gap-1.5 shadow-lg hover:brightness-110 transition-all" style="background: linear-gradient(135deg, #fbbf24, #f97316)">
+          <span class="material-symbols-outlined text-base">chat</span>
+          <span>Cotizar Ahora</span>
         </button>
       </div>
     </div>
   </header>
 
-  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-10 space-y-10">
-    <section class="grid lg:grid-cols-12 gap-8 items-center">
-      <div class="lg:col-span-6 space-y-5">
-        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/15 border border-amber-400/30 text-amber-300 text-xs font-bold">
-          <span>SOLAR EN GUAYMAS, SAN CARLOS &amp; HERMOSILLO</span>
-        </span>
-        <h1 class="text-4xl sm:text-5xl font-black text-white leading-tight">
-          Reduce tu recibo de <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-orange-400">CFE hasta un 95%</span> en tarifa DAC y 1F.
-        </h1>
-        <p class="text-slate-300 text-base leading-relaxed">
-          Aprovecha la radiación solar de Sonora con paneles monocristalinos Tier-1 de 585W, garantía de 25 años y gestión completa de interconexión ante CFE.
-        </p>
-        <div class="grid grid-cols-3 gap-3">
-          <div class="demo-card rounded-2xl p-3.5 text-center">
-            <div class="text-xl font-black text-amber-300">95%</div>
-            <div class="text-[11px] text-slate-400">Ahorro en CFE</div>
+  <main class="space-y-16 pb-16">
+    <!-- 1. HERO FULL-BLEED CINEMATOGRÁFICO -->
+    <section class="relative overflow-hidden border-b border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 grid lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-6 space-y-6 relative z-10">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs font-extrabold tracking-wider uppercase" style="color:#fbbf24">
+            <span class="w-2 h-2 rounded-full animate-ping" style="background:#fbbf24"></span>
+            <span>ENERGÍA SOLAR EN GUAYMAS, SAN CARLOS &amp; HERMOSILLO</span>
           </div>
-          <div class="demo-card rounded-2xl p-3.5 text-center">
-            <div class="text-xl font-black text-emerald-400">2.8 años</div>
-            <div class="text-[11px] text-slate-400">Retorno Inversión</div>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.08] tracking-tight">
+            Reduce tu recibo de <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-orange-400">CFE hasta un 95%</span> en tarifa DAC y 1F.
+          </h1>
+          <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-xl">
+            Aprovecha la radiación solar de Sonora con paneles monocristalinos Tier-1 de 585W, microinversores inteligentes y trámite completo de medidor bidireccional ante CFE.
+          </p>
+          <div class="flex flex-wrap gap-3 pt-1">
+            <a href="#simulador" class="px-6 py-3.5 rounded-2xl text-slate-950 font-black text-sm shadow-xl hover:scale-[1.02] transition-all flex items-center gap-2" style="background: linear-gradient(135deg, #fbbf24, #f97316)">
+              <span class="material-symbols-outlined text-lg">calculate</span>
+              <span>Probar Simulador en Vivo</span>
+            </a>
+            <button onclick="sendWhatsApp('hero')" class="px-6 py-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/15 text-white font-bold text-sm transition-all flex items-center gap-2">
+              <span class="material-symbols-outlined text-lg">chat</span>
+              <span>Hablar por WhatsApp</span>
+            </button>
           </div>
-          <div class="demo-card rounded-2xl p-3.5 text-center">
-            <div class="text-xl font-black text-cyan-300">25 años</div>
-            <div class="text-[11px] text-slate-400">Garantía Panel</div>
+          <div class="grid grid-cols-3 gap-3 pt-4">
+            <div class="demo-card rounded-2xl p-3.5 text-center"><div class="text-lg sm:text-xl font-black text-white">95%</div><div class="text-[11px] text-slate-400">Ahorro en Recibo CFE</div></div>
+<div class="demo-card rounded-2xl p-3.5 text-center"><div class="text-lg sm:text-xl font-black text-white">2.7 años</div><div class="text-[11px] text-slate-400">Retorno de Inversión</div></div>
+<div class="demo-card rounded-2xl p-3.5 text-center"><div class="text-lg sm:text-xl font-black text-white">25 años</div><div class="text-[11px] text-slate-400">Garantía de Potencia</div></div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6 relative">
+          <div class="demo-card rounded-3xl p-2.5 shadow-2xl overflow-hidden">
+            <img src="/images/stitch/solartec-energia-hero.webp" alt="SolarTec Sonora" class="w-full h-[280px] sm:h-[380px] object-cover rounded-2xl bg-slate-950" />
+            <div class="p-4 flex items-center justify-between text-xs">
+              <span class="font-bold text-white flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-base" style="color:#fbbf24">verified</span>
+                <span>Estándar Google Stitch + Liquid Glass</span>
+              </span>
+              <span class="text-slate-400 font-mono">Guaymas • San Carlos</span>
+            </div>
           </div>
         </div>
       </div>
+    </section>
 
-      <div class="lg:col-span-6 demo-card rounded-3xl p-6 space-y-5">
-        <div class="flex items-center justify-between border-b border-white/10 pb-3">
+    <!-- 2. WIDGET SIMULADOR / COTIZADOR INTERACTIVO -->
+    <section id="simulador" class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="demo-card rounded-3xl p-6 sm:p-10 space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-5">
           <div>
-            <h2 class="font-extrabold text-white text-lg">Calculadora de Ahorro CFE</h2>
-            <p class="text-xs text-amber-300">Desliza el monto promedio de tu recibo bimestral</p>
+            <span class="text-xs font-extrabold uppercase tracking-widest" style="color:#fbbf24">Herramienta Interactiva en Tiempo Real</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white mt-1">Calculadora de Ahorro Bimestral CFE</h2>
+            <p class="text-xs sm:text-sm text-slate-400 mt-1">Desliza cuánto pagas hoy a CFE y descubre tu ahorro anual estimado</p>
           </div>
-          <span class="px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-300 text-xs font-bold">585W Tier-1</span>
-        </div>
-
-        <div class="space-y-2">
-          <div class="flex justify-between text-xs font-bold">
-            <span class="text-slate-300">Recibo Bimestral CFE:</span>
-            <span id="cfe-label" class="text-amber-300 text-base font-black">$6,500 MXN</span>
-          </div>
-          <input id="cfe-slider" type="range" min="1800" max="25000" step="200" value="6500" oninput="calcSolar()" class="w-full accent-amber-400 cursor-pointer" />
-        </div>
-
-        <div class="grid grid-cols-2 gap-3">
-          <div class="p-4 rounded-2xl bg-slate-950/70 border border-white/10">
-            <span class="text-xs text-slate-400 block">Paneles Sugeridos</span>
-            <span id="panels-count" class="text-2xl font-black text-white">8 Paneles</span>
-            <span id="kw-size" class="text-[11px] text-amber-300 block">4.68 kWp instalados</span>
-          </div>
-          <div class="p-4 rounded-2xl bg-slate-950/70 border border-white/10">
-            <span class="text-xs text-slate-400 block">Ahorro Anual Estimado</span>
-            <span id="annual-save" class="text-2xl font-black text-emerald-400">$37,050</span>
-            <span class="text-[11px] text-emerald-300 block">MXN libres al año</span>
+          <div class="px-5 py-3 rounded-2xl bg-black/40 border border-white/10 text-right">
+            <span class="text-[11px] text-slate-400 block">Ahorro Anual Estimado (MXN/año)</span>
+            <span id="sim-result" class="text-2xl sm:text-3xl font-black" style="color:#fbbf24"></span>
           </div>
         </div>
 
-        <button onclick="sendWhatsApp()" class="w-full py-3 rounded-xl bg-gradient-to-r from-amber-400 to-orange-500 text-slate-950 font-black text-sm flex items-center justify-center gap-2 shadow-lg hover:brightness-110 transition-all">
-          <span class="material-symbols-outlined text-lg">solar_power</span>
-          <span>Recibir Cotización Solar por WhatsApp</span>
-        </button>
+        <div class="grid md:grid-cols-12 gap-6 items-center">
+          <div class="md:col-span-7 space-y-3">
+            <div class="flex justify-between text-sm font-bold">
+              <span class="text-slate-200">Pago Bimestral Actual a CFE (MXN)</span>
+              <span id="sim-input-val" class="font-black" style="color:#fbbf24"></span>
+            </div>
+            <input id="sim-slider" type="range" min="1800" max="28000" step="200" value="6500" oninput="updateSim()" class="w-full h-2 rounded-lg cursor-pointer accent-cyan-400" />
+            <div class="flex justify-between text-[11px] text-slate-400 font-mono">
+              <span>Mín: 1,800 MXN</span>
+              <span>Máx: 28,000 MXN</span>
+            </div>
+          </div>
+          <div class="md:col-span-5">
+            <button onclick="sendWhatsApp('sim')" class="w-full py-4 px-5 rounded-2xl text-slate-950 font-black text-sm flex items-center justify-center gap-2 shadow-xl hover:brightness-110 transition-all" style="background: linear-gradient(135deg, #fbbf24, #f97316)">
+              <span class="material-symbols-outlined text-xl">send</span>
+              <span>Enviar Simulación a WhatsApp</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. CATÁLOGO DE SERVICIOS / PRODUCTOS ESTRELLA -->
+    <section id="catalogo" class="max-w-7xl mx-auto px-4 sm:px-6 space-y-8">
+      <div class="text-center max-w-2xl mx-auto space-y-2">
+        <span class="text-xs font-extrabold uppercase tracking-widest" style="color:#fbbf24">Catálogo Oficial</span>
+        <h2 class="text-3xl sm:text-4xl font-black text-white">Kits Fotovoltaicos para Clima Extremo</h2>
+        <p class="text-sm text-slate-400">Ingeniería certificada contra salitre costero y temperaturas superiores a 45°C.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="demo-card rounded-3xl p-5 flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <span class="inline-block px-2.5 py-0.5 rounded-full bg-white/10 text-[10px] font-bold uppercase tracking-wider" style="color:#fbbf24">Residencial</span>
+            <h3 class="font-extrabold text-white text-base">Kit Hogar Fresco (6 Paneles)</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">Ideal para casas con 2 minisplits Inverter. Reduce recibos de $4,500 a menos de $150 MXN.</p>
+          </div>
+          <div class="pt-3 border-t border-white/10 flex items-center justify-between gap-2">
+            <span class="font-black text-sm" style="color:#fbbf24">$68,500 MXN</span>
+            <button onclick="selectCatalogItem('Kit Hogar Fresco (6 Paneles)', '$68,500 MXN')" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-all">Cotizar</button>
+          </div>
+        </div>
+<div class="demo-card rounded-3xl p-5 flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <span class="inline-block px-2.5 py-0.5 rounded-full bg-white/10 text-[10px] font-bold uppercase tracking-wider" style="color:#fbbf24">Más Vendido</span>
+            <h3 class="font-extrabold text-white text-base">Kit San Carlos VIP (10 Paneles)</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">Para residencias con alberca y clima central. Cobertura total en tarifa DAC.</p>
+          </div>
+          <div class="pt-3 border-t border-white/10 flex items-center justify-between gap-2">
+            <span class="font-black text-sm" style="color:#fbbf24">$109,000 MXN</span>
+            <button onclick="selectCatalogItem('Kit San Carlos VIP (10 Paneles)', '$109,000 MXN')" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-all">Cotizar</button>
+          </div>
+        </div>
+<div class="demo-card rounded-3xl p-5 flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <span class="inline-block px-2.5 py-0.5 rounded-full bg-white/10 text-[10px] font-bold uppercase tracking-wider" style="color:#fbbf24">Comercial</span>
+            <h3 class="font-extrabold text-white text-base">Kit Comercio / Oficina (16 Paneles)</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">Deducible al 100% de ISR en el primer año. Retorno acelerado para negocios.</p>
+          </div>
+          <div class="pt-3 border-t border-white/10 flex items-center justify-between gap-2">
+            <span class="font-black text-sm" style="color:#fbbf24">$169,000 MXN</span>
+            <button onclick="selectCatalogItem('Kit Comercio / Oficina (16 Paneles)', '$169,000 MXN')" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-all">Cotizar</button>
+          </div>
+        </div>
+<div class="demo-card rounded-3xl p-5 flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <span class="inline-block px-2.5 py-0.5 rounded-full bg-white/10 text-[10px] font-bold uppercase tracking-wider" style="color:#fbbf24">Respaldo</span>
+            <h3 class="font-extrabold text-white text-base">Batería Respaldo Híbrida</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">Mantén tus aires y refrigeradores encendidos incluso durante apagones.</p>
+          </div>
+          <div class="pt-3 border-t border-white/10 flex items-center justify-between gap-2">
+            <span class="font-black text-sm" style="color:#fbbf24">Desde $42,000 MXN</span>
+            <button onclick="selectCatalogItem('Batería Respaldo Híbrida', 'Desde $42,000 MXN')" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-all">Cotizar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. DIFERENCIADOR EXCLUSIVO DEL GIRO -->
+    <section id="diferenciador" class="max-w-7xl mx-auto px-4 sm:px-6 space-y-8">
+      <div class="demo-card rounded-3xl p-6 sm:p-10 space-y-8">
+        <div class="max-w-2xl space-y-2">
+          <span class="text-xs font-extrabold uppercase tracking-widest" style="color:#fbbf24">Ingeniería &amp; Calidad</span>
+          <h2 class="text-2xl sm:text-4xl font-black text-white">Ingeniería preparada para la costa de Sonora</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-5">
+          <div class="p-5 rounded-2xl bg-black/35 border border-white/10 space-y-2">
+          <span class="material-symbols-outlined text-2xl" style="color:#fbbf24">wb_sunny</span>
+          <h3 class="font-bold text-white text-base">Paneles Bifaciales 585W Tier-1</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">Mayor captación energética incluso en días nublados o techos con alta temperatura.</p>
+        </div>
+<div class="p-5 rounded-2xl bg-black/35 border border-white/10 space-y-2">
+          <span class="material-symbols-outlined text-2xl" style="color:#fbbf24">handyman</span>
+          <h3 class="font-bold text-white text-base">Herraje de Aluminio Anodizado</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">Cero oxidación frente a la brisa marina de Miramar, Bahía de Guaymas y San Carlos.</p>
+        </div>
+<div class="p-5 rounded-2xl bg-black/35 border border-white/10 space-y-2">
+          <span class="material-symbols-outlined text-2xl" style="color:#fbbf24">fact_check</span>
+          <h3 class="font-bold text-white text-base">Gestión 100% ante CFE</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">Nos encargamos de planos, UVIE y cambio a medidor bidireccional sin filas.</p>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. TESTIMONIOS DE CLIENTES EN SONORA -->
+    <section id="resenas" class="max-w-7xl mx-auto px-4 sm:px-6 space-y-8">
+      <div class="text-center max-w-2xl mx-auto space-y-2">
+        <span class="text-xs font-extrabold uppercase tracking-widest" style="color:#fbbf24">Prueba Social Verificada</span>
+        <h2 class="text-3xl sm:text-4xl font-black text-white">Clientes satisfechos en Sonora</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-5">
+        <div class="demo-card rounded-3xl p-6 space-y-3">
+          <div class="flex text-amber-400 text-sm">★★★★★</div>
+          <p class="text-sm text-slate-200 leading-relaxed">"Pagábamos $11,400 bimestrales en verano; el último recibo llegó de $98 pesos. Excelente instalación."</p>
+          <div class="pt-2 border-t border-white/10">
+            <div class="font-bold text-white text-xs">Arq. Fernando Tapia</div>
+            <div class="text-[11px] text-slate-400">San Carlos, Sonora</div>
+          </div>
+        </div>
+<div class="demo-card rounded-3xl p-6 space-y-3">
+          <div class="flex text-amber-400 text-sm">★★★★★</div>
+          <p class="text-sm text-slate-200 leading-relaxed">"Súper limpios en el techo y la app en el celular te deja ver cuánta energía produces cada hora."</p>
+          <div class="pt-2 border-t border-white/10">
+            <div class="font-bold text-white text-xs">Marisela Campoy</div>
+            <div class="text-[11px] text-slate-400">Las Villas, Guaymas</div>
+          </div>
+        </div>
+<div class="demo-card rounded-3xl p-6 space-y-3">
+          <div class="flex text-amber-400 text-sm">★★★★★</div>
+          <p class="text-sm text-slate-200 leading-relaxed">"La inversión se pagó prácticamente sola con el ahorro en refrigeración y aires."</p>
+          <div class="pt-2 border-t border-white/10">
+            <div class="font-bold text-white text-xs">Restaurante El Muelle</div>
+            <div class="text-[11px] text-slate-400">Centro Guaymas</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. UBICACIÓN, HORARIOS Y CTA FINAL -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="demo-card rounded-3xl p-6 sm:p-10 grid md:grid-cols-12 gap-8 items-center">
+        <div class="md:col-span-7 space-y-3">
+          <span class="text-xs font-extrabold uppercase tracking-widest" style="color:#fbbf24">Contacto Directo</span>
+          <h2 class="text-2xl sm:text-3xl font-black text-white">SolarTec Sonora</h2>
+          <p class="text-sm text-slate-300 flex items-center gap-2">
+            <span class="material-symbols-outlined text-lg" style="color:#fbbf24">location_on</span>
+            <span>Blvd. Benito Juárez • Guaymas &amp; San Carlos, Sonora</span>
+          </p>
+          <p class="text-sm text-slate-300 flex items-center gap-2">
+            <span class="material-symbols-outlined text-lg" style="color:#fbbf24">schedule</span>
+            <span>Lunes a Sábado 8:30 AM – 6:30 PM • Levantamiento sin costo</span>
+          </p>
+        </div>
+        <div class="md:col-span-5 flex flex-col sm:flex-row md:flex-col gap-3">
+          <button onclick="sendWhatsApp('final')" class="w-full py-3.5 px-5 rounded-2xl text-slate-950 font-black text-sm flex items-center justify-center gap-2 shadow-xl hover:brightness-110 transition-all" style="background: linear-gradient(135deg, #fbbf24, #f97316)">
+            <span class="material-symbols-outlined text-lg">chat</span>
+            <span>Quiero una Web Así para mi Negocio</span>
+          </button>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="border-t border-white/10 py-8 text-center text-xs text-slate-400">
-    Demo interactiva desarrollada por <strong class="text-amber-300">HP Digital &amp; AI Agency</strong> • Guaymas, Sonora
+    <p>Demo interactiva de alto impacto desarrollada por <strong class="text-white">HP Digital &amp; AI Agency</strong> • Guaymas, Sonora • Flujo Google Stitch → Demo → Antigravity</p>
   </footer>
 
   <script>
-    function calcSolar() {
-      const cfe = Number(document.getElementById('cfe-slider').value);
-      const panels = Math.max(4, Math.round(cfe / 820));
-      const kw = (panels * 0.585).toFixed(2);
-      const annual = Math.round(cfe * 6 * 0.95);
-      document.getElementById('cfe-label').innerText = '$' + cfe.toLocaleString('es-MX') + ' MXN';
-      document.getElementById('panels-count').innerText = panels + ' Paneles';
-      document.getElementById('kw-size').innerText = kw + ' kWp instalados';
-      document.getElementById('annual-save').innerText = '$' + annual.toLocaleString('es-MX');
+    const SIM_MULT = 5.7;
+    const SIM_UNIT = "MXN";
+    const BRAND_NAME = "SolarTec Sonora";
+
+    function updateSim() {
+      const val = Number(document.getElementById('sim-slider').value);
+      const out = Math.round(val * SIM_MULT);
+      document.getElementById('sim-input-val').innerText = val.toLocaleString('es-MX') + ' ' + SIM_UNIT;
+      document.getElementById('sim-result').innerText = out.toLocaleString('es-MX') + (SIM_UNIT === 'm²' ? ' BTU' : ' MXN');
     }
-    function toggleLiquidGlass() {
-      const isGlass = document.body.classList.toggle('liquid-glass-mode');
-      document.getElementById('glass-toggle-btn').innerHTML = isGlass ? '<span>✨ Volver a Estilo Original</span>' : '<span>💎 Activar Liquid Glass</span>';
-    }
-    function sendWhatsApp() {
-      const cfe = document.getElementById('cfe-label').innerText;
-      const panels = document.getElementById('panels-count').innerText;
-      const msg = `¡Hola Miguel! Probé la calculadora de SolarTec:\n• Recibo CFE: ${cfe}\n• Sistema sugerido: ${panels}\nQuiero cotizar una web/cotizador similar para mi negocio.`;
+
+    function selectCatalogItem(itemTitle, itemPrice) {
+      const msg = `¡Hola Miguel! Vi en la demo de ${BRAND_NAME} el paquete "${itemTitle}" (${itemPrice}) y quiero cotizar una plataforma así para mi negocio.`;
       window.open(`https://wa.me/526222259974?text=${encodeURIComponent(msg)}`, '_blank');
     }
+
+    function toggleLiquidGlass() {
+      const isGlass = document.body.classList.toggle('liquid-glass-mode');
+      document.getElementById('glass-toggle-btn').innerHTML = isGlass
+        ? '<span>✨ Volver a Estilo Original</span>'
+        : '<span>💎 Activar Liquid Glass</span>';
+    }
+
+    function sendWhatsApp(source) {
+      const simIn = document.getElementById('sim-input-val').innerText;
+      const simOut = document.getElementById('sim-result').innerText;
+      const msg = source === 'sim'
+        ? `¡Hola Miguel! Probé el simulador de ${BRAND_NAME} (${simIn} → ${simOut}) y quiero implementar una web con este nivel para mi empresa.`
+        : `¡Hola Miguel! Vi la demo completa de ${BRAND_NAME} con Modo Liquid Glass y quiero cotizar un proyecto así.`;
+      window.open(`https://wa.me/526222259974?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    updateSim();
   </script>
 </body>
 </html>

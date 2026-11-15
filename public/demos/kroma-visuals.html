@@ -3,121 +3,333 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kroma Visuals — Producción Audiovisual, Drones 4K &amp; Reels</title>
+  <title>Kroma Visuals — Producción 4K, Drone FPV &amp; Reels Comerciales</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body { background: #0c050c; color: #fae8ff; font-family: 'Plus Jakarta Sans', sans-serif; transition: background 0.35s ease; }
-    .demo-card { background: rgba(28, 12, 28, 0.86); border: 1px solid rgba(232, 121, 249, 0.25); transition: all 0.35s ease; }
-    .header-nav { background: rgba(12, 5, 12, 0.9); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(232, 121, 249, 0.25); }
-    body.liquid-glass-mode { background: radial-gradient(circle at top right, #701a75 0%, #030712 55%, #0c4a6e 100%) !important; }
+    :root { --accent: #e879f9; --accent2: #fb923c; }
+    body { background: #0c050c; color: #f1f5f9; font-family: 'Plus Jakarta Sans', sans-serif; transition: background 0.35s ease; }
+    .demo-card { background: rgba(28, 12, 28, 0.88); border: 1px solid rgba(255, 255, 255, 0.12); transition: all 0.35s ease; }
+    .demo-card:hover { border-color: rgba(255, 255, 255, 0.25); }
+    .header-nav { background: rgba(6, 10, 20, 0.88); backdrop-filter: blur(18px); border-bottom: 1px solid rgba(255, 255, 255, 0.12); }
+    body.liquid-glass-mode { background: radial-gradient(circle at top right, #082f49 0%, #030712 55%, #0f172a 100%) !important; }
     body.liquid-glass-mode .demo-card {
-      background: rgba(15, 23, 42, 0.56) !important;
-      backdrop-filter: blur(22px) saturate(160%) !important;
-      border-color: rgba(103, 232, 249, 0.45) !important;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.14) !important;
+      background: rgba(12, 24, 48, 0.54) !important;
+      backdrop-filter: blur(22px) saturate(165%) !important;
+      border-color: rgba(103, 232, 249, 0.42) !important;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
     }
     body.liquid-glass-mode .header-nav {
-      background: rgba(10, 18, 34, 0.72) !important;
+      background: rgba(8, 18, 36, 0.72) !important;
       backdrop-filter: blur(24px) !important;
       border-color: rgba(103, 232, 249, 0.35) !important;
     }
   </style>
 </head>
 <body class="min-h-screen antialiased">
-  <div class="fixed inset-0 pointer-events-none -z-10">
-    <div class="absolute -top-24 right-10 w-96 h-96 bg-fuchsia-500/20 rounded-full blur-[130px]"></div>
-    <div class="absolute bottom-0 left-10 w-80 h-80 bg-orange-500/15 rounded-full blur-[120px]"></div>
+  <div class="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
+    <div class="absolute -top-32 -left-24 w-96 h-96 rounded-full blur-[130px] opacity-25" style="background:#e879f9"></div>
+    <div class="absolute top-1/2 -right-24 w-96 h-96 rounded-full blur-[130px] opacity-20" style="background:#fb923c"></div>
   </div>
 
+  <!-- NAVBAR -->
   <header class="header-nav sticky top-0 z-50">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
       <div class="flex items-center gap-2.5">
-        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-fuchsia-500 to-orange-400 flex items-center justify-center text-white font-black">
+        <div class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-950 font-black shadow-lg" style="background: linear-gradient(135deg, #e879f9, #fb923c)">
           <span class="material-symbols-outlined text-xl">videocam</span>
         </div>
-        <span class="font-extrabold text-white text-base tracking-tight">Kroma Visuals</span>
+        <div>
+          <span class="font-extrabold text-white text-base tracking-tight">Kroma Visuals</span>
+          <span class="hidden sm:inline-block ml-2 px-2 py-0.5 rounded-full text-[10px] font-bold bg-white/10 text-cyan-200 border border-white/15">DEMO LIVE</span>
+        </div>
       </div>
+
+      <nav class="hidden md:flex items-center gap-6 text-xs font-semibold text-slate-300">
+        <a href="#simulador" class="hover:text-white transition-colors">Cotizador</a>
+        <a href="#catalogo" class="hover:text-white transition-colors">Servicios</a>
+        <a href="#diferenciador" class="hover:text-white transition-colors">Ventajas</a>
+        <a href="#resenas" class="hover:text-white transition-colors">Reseñas</a>
+      </nav>
+
       <div class="flex items-center gap-2">
-        <button id="glass-toggle-btn" onclick="toggleLiquidGlass()" class="px-3.5 py-2 rounded-xl bg-fuchsia-500/15 hover:bg-fuchsia-500/25 border border-fuchsia-400/40 text-fuchsia-200 font-bold text-xs transition-all">
+        <button id="glass-toggle-btn" onclick="toggleLiquidGlass()" class="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/15 border border-cyan-400/40 text-cyan-200 font-bold text-xs transition-all shadow-lg">
           <span>💎 Activar Liquid Glass</span>
         </button>
-        <button onclick="sendWhatsApp()" class="hidden sm:flex px-4 py-2 rounded-xl bg-gradient-to-r from-fuchsia-500 to-orange-400 text-slate-950 font-black text-xs items-center gap-1.5">
-          <span>Reservar Rodaje</span>
+        <button onclick="sendWhatsApp('header')" class="hidden sm:flex px-4 py-2 rounded-xl text-slate-950 font-black text-xs items-center gap-1.5 shadow-lg hover:brightness-110 transition-all" style="background: linear-gradient(135deg, #e879f9, #fb923c)">
+          <span class="material-symbols-outlined text-base">chat</span>
+          <span>Cotizar Ahora</span>
         </button>
       </div>
     </div>
   </header>
 
-  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-10 space-y-10">
-    <section class="grid lg:grid-cols-12 gap-8 items-center">
-      <div class="lg:col-span-6 space-y-5">
-        <span class="inline-flex px-3 py-1 rounded-full bg-fuchsia-500/15 border border-fuchsia-400/30 text-fuchsia-300 text-xs font-bold">CINE 4K • DRONE FPV • REELS DE ALTA CONVERSIÓN</span>
-        <h1 class="text-4xl sm:text-5xl font-black text-white leading-tight">Producción visual que <span class="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-300 to-orange-300">multiplica tus ventas</span> en redes.</h1>
-        <p class="text-slate-300 text-base leading-relaxed">Configura tu paquete de grabación con cámaras Sony FX3, dron 4K en San Carlos/Guaymas y edición vertical lista para Instagram, TikTok y Meta Ads.</p>
+  <main class="space-y-16 pb-16">
+    <!-- 1. HERO FULL-BLEED CINEMATOGRÁFICO -->
+    <section class="relative overflow-hidden border-b border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 grid lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-6 space-y-6 relative z-10">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs font-extrabold tracking-wider uppercase" style="color:#e879f9">
+            <span class="w-2 h-2 rounded-full animate-ping" style="background:#e879f9"></span>
+            <span>CINE 4K • DRONE FPV • REELS DE ALTA CONVERSIÓN</span>
+          </div>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.08] tracking-tight">
+            Producción visual que <span class="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-300 to-orange-300">multiplica tus ventas</span> en redes.
+          </h1>
+          <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-xl">
+            Grabación cinematográfica con cámaras Sony FX3, vuelos con dron FPV sobre mar y ciudad, y edición vertical dinámica lista para pauta en Instagram y TikTok.
+          </p>
+          <div class="flex flex-wrap gap-3 pt-1">
+            <a href="#simulador" class="px-6 py-3.5 rounded-2xl text-slate-950 font-black text-sm shadow-xl hover:scale-[1.02] transition-all flex items-center gap-2" style="background: linear-gradient(135deg, #e879f9, #fb923c)">
+              <span class="material-symbols-outlined text-lg">calculate</span>
+              <span>Probar Simulador en Vivo</span>
+            </a>
+            <button onclick="sendWhatsApp('hero')" class="px-6 py-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/15 text-white font-bold text-sm transition-all flex items-center gap-2">
+              <span class="material-symbols-outlined text-lg">chat</span>
+              <span>Hablar por WhatsApp</span>
+            </button>
+          </div>
+          <div class="grid grid-cols-3 gap-3 pt-4">
+            <div class="demo-card rounded-2xl p-3.5 text-center"><div class="text-lg sm:text-xl font-black text-white">4K 120fps</div><div class="text-[11px] text-slate-400">Cámaras Sony FX3</div></div>
+<div class="demo-card rounded-2xl p-3.5 text-center"><div class="text-lg sm:text-xl font-black text-white">FPV</div><div class="text-[11px] text-slate-400">Drones Certificados</div></div>
+<div class="demo-card rounded-2xl p-3.5 text-center"><div class="text-lg sm:text-xl font-black text-white">48 hrs</div><div class="text-[11px] text-slate-400">Entrega Express</div></div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6 relative">
+          <div class="demo-card rounded-3xl p-2.5 shadow-2xl overflow-hidden">
+            <img src="/images/stitch/kroma-visuals-hero.webp" alt="Kroma Visuals" class="w-full h-[280px] sm:h-[380px] object-cover rounded-2xl bg-slate-950" />
+            <div class="p-4 flex items-center justify-between text-xs">
+              <span class="font-bold text-white flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-base" style="color:#e879f9">verified</span>
+                <span>Estándar Google Stitch + Liquid Glass</span>
+              </span>
+              <span class="text-slate-400 font-mono">Guaymas • San Carlos</span>
+            </div>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="lg:col-span-6 demo-card rounded-3xl p-6 space-y-5">
-        <div class="flex items-center justify-between border-b border-white/10 pb-3">
+    <!-- 2. WIDGET SIMULADOR / COTIZADOR INTERACTIVO -->
+    <section id="simulador" class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="demo-card rounded-3xl p-6 sm:p-10 space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-5">
           <div>
-            <h2 class="font-extrabold text-white text-lg">Configurador de Producción 4K</h2>
-            <p class="text-xs text-fuchsia-300">Calcula entregables y presupuesto al instante</p>
+            <span class="text-xs font-extrabold uppercase tracking-widest" style="color:#e879f9">Herramienta Interactiva en Tiempo Real</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white mt-1">Calculadora de Producción Mensual de Reels</h2>
+            <p class="text-xs sm:text-sm text-slate-400 mt-1">Selecciona cuántos Reels profesionales necesita tu negocio al mes</p>
           </div>
-          <span class="px-2.5 py-1 rounded-full bg-fuchsia-500/15 text-fuchsia-300 text-xs font-bold">SONY FX3</span>
-        </div>
-
-        <div class="space-y-4">
-          <div>
-            <label class="text-xs font-bold text-slate-300 block mb-1.5">Paquete de Rodaje</label>
-            <select id="kroma-pkg" onchange="calcKroma()" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950/80 border border-white/15 text-sm text-white">
-              <option value="5900">Pack 8 Reels Comerciales + Fotos ($5,900 MXN)</option>
-              <option value="9500">Video Corporativo + Tomas Drone 4K ($9,500 MXN)</option>
-              <option value="14500">Cobertura Full Day + Campaña Ads ($14,500 MXN)</option>
-            </select>
-          </div>
-
-          <label class="flex items-center justify-between p-3 rounded-xl bg-slate-950/60 border border-white/10 cursor-pointer">
-            <span class="text-xs font-semibold text-slate-200">+ Piloto Drone FPV Cinematográfico (+$2,200 MXN)</span>
-            <input id="drone-check" type="checkbox" onchange="calcKroma()" class="w-4 h-4 accent-fuchsia-400" />
-          </label>
-
-          <div class="p-4 rounded-2xl bg-slate-950/80 border border-white/10 flex items-center justify-between">
-            <span class="text-sm font-bold text-slate-300">Inversión Estimada:</span>
-            <span id="kroma-total" class="text-2xl font-black text-fuchsia-300">$5,900 MXN</span>
+          <div class="px-5 py-3 rounded-2xl bg-black/40 border border-white/10 text-right">
+            <span class="text-[11px] text-slate-400 block">Inversión Estimada del Paquete (MXN)</span>
+            <span id="sim-result" class="text-2xl sm:text-3xl font-black" style="color:#e879f9"></span>
           </div>
         </div>
 
-        <button onclick="sendWhatsApp()" class="w-full py-3 rounded-xl bg-gradient-to-r from-fuchsia-500 to-orange-400 text-slate-950 font-black text-sm flex items-center justify-center gap-2 shadow-lg hover:brightness-110">
-          <span class="material-symbols-outlined text-lg">movie</span>
-          <span>Apartar Fecha de Rodaje por WhatsApp</span>
-        </button>
+        <div class="grid md:grid-cols-12 gap-6 items-center">
+          <div class="md:col-span-7 space-y-3">
+            <div class="flex justify-between text-sm font-bold">
+              <span class="text-slate-200">Cantidad de Reels 4K Mensuales</span>
+              <span id="sim-input-val" class="font-black" style="color:#e879f9"></span>
+            </div>
+            <input id="sim-slider" type="range" min="4" max="24" step="2" value="8" oninput="updateSim()" class="w-full h-2 rounded-lg cursor-pointer accent-cyan-400" />
+            <div class="flex justify-between text-[11px] text-slate-400 font-mono">
+              <span>Mín: 4 reels</span>
+              <span>Máx: 24 reels</span>
+            </div>
+          </div>
+          <div class="md:col-span-5">
+            <button onclick="sendWhatsApp('sim')" class="w-full py-4 px-5 rounded-2xl text-slate-950 font-black text-sm flex items-center justify-center gap-2 shadow-xl hover:brightness-110 transition-all" style="background: linear-gradient(135deg, #e879f9, #fb923c)">
+              <span class="material-symbols-outlined text-xl">send</span>
+              <span>Enviar Simulación a WhatsApp</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. CATÁLOGO DE SERVICIOS / PRODUCTOS ESTRELLA -->
+    <section id="catalogo" class="max-w-7xl mx-auto px-4 sm:px-6 space-y-8">
+      <div class="text-center max-w-2xl mx-auto space-y-2">
+        <span class="text-xs font-extrabold uppercase tracking-widest" style="color:#e879f9">Catálogo Oficial</span>
+        <h2 class="text-3xl sm:text-4xl font-black text-white">Paquetes de Rodaje &amp; Contenido Mensual</h2>
+        <p class="text-sm text-slate-400">Todo lo que tu marca necesita para destacar frente a la competencia local.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="demo-card rounded-3xl p-5 flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <span class="inline-block px-2.5 py-0.5 rounded-full bg-white/10 text-[10px] font-bold uppercase tracking-wider" style="color:#e879f9">Redes</span>
+            <h3 class="font-extrabold text-white text-base">Pack 8 Reels Comerciales</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">1 jornada de grabación, guion de ganchos virales, colorización y subtítulos.</p>
+          </div>
+          <div class="pt-3 border-t border-white/10 flex items-center justify-between gap-2">
+            <span class="font-black text-sm" style="color:#e879f9">$5,900 MXN</span>
+            <button onclick="selectCatalogItem('Pack 8 Reels Comerciales', '$5,900 MXN')" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-all">Cotizar</button>
+          </div>
+        </div>
+<div class="demo-card rounded-3xl p-5 flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <span class="inline-block px-2.5 py-0.5 rounded-full bg-white/10 text-[10px] font-bold uppercase tracking-wider" style="color:#e879f9">Empresas</span>
+            <h3 class="font-extrabold text-white text-base">Video Corporativo + Drone 4K</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">Pieza principal de 90 seg con tomas aéreas en Guaymas/San Carlos y locución.</p>
+          </div>
+          <div class="pt-3 border-t border-white/10 flex items-center justify-between gap-2">
+            <span class="font-black text-sm" style="color:#e879f9">$9,500 MXN</span>
+            <button onclick="selectCatalogItem('Video Corporativo + Drone 4K', '$9,500 MXN')" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-all">Cotizar</button>
+          </div>
+        </div>
+<div class="demo-card rounded-3xl p-5 flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <span class="inline-block px-2.5 py-0.5 rounded-full bg-white/10 text-[10px] font-bold uppercase tracking-wider" style="color:#e879f9">Campaña</span>
+            <h3 class="font-extrabold text-white text-base">Cobertura Full Day + Ads</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">Banco completo de video y 30 fotografías editoriales para todo el trimestre.</p>
+          </div>
+          <div class="pt-3 border-t border-white/10 flex items-center justify-between gap-2">
+            <span class="font-black text-sm" style="color:#e879f9">$14,500 MXN</span>
+            <button onclick="selectCatalogItem('Cobertura Full Day + Ads', '$14,500 MXN')" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-all">Cotizar</button>
+          </div>
+        </div>
+<div class="demo-card rounded-3xl p-5 flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <span class="inline-block px-2.5 py-0.5 rounded-full bg-white/10 text-[10px] font-bold uppercase tracking-wider" style="color:#e879f9">Add-on</span>
+            <h3 class="font-extrabold text-white text-base">Vuelo Drone FPV Interior</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">Toma continua espectacular recorriendo tu restaurante, hotel o agencia.</p>
+          </div>
+          <div class="pt-3 border-t border-white/10 flex items-center justify-between gap-2">
+            <span class="font-black text-sm" style="color:#e879f9">+$2,200 MXN</span>
+            <button onclick="selectCatalogItem('Vuelo Drone FPV Interior', '+$2,200 MXN')" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-all">Cotizar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. DIFERENCIADOR EXCLUSIVO DEL GIRO -->
+    <section id="diferenciador" class="max-w-7xl mx-auto px-4 sm:px-6 space-y-8">
+      <div class="demo-card rounded-3xl p-6 sm:p-10 space-y-8">
+        <div class="max-w-2xl space-y-2">
+          <span class="text-xs font-extrabold uppercase tracking-widest" style="color:#e879f9">Ingeniería &amp; Calidad</span>
+          <h2 class="text-2xl sm:text-4xl font-black text-white">Videos pensados para retener atención y vender</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-5">
+          <div class="p-5 rounded-2xl bg-black/35 border border-white/10 space-y-2">
+          <span class="material-symbols-outlined text-2xl" style="color:#e879f9">movie_edit</span>
+          <h3 class="font-bold text-white text-base">Edición con Ritmo Cinematográfico</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">Diseño sonoro inmersivo y color grading profesional que eleva la percepción de tu marca.</p>
+        </div>
+<div class="p-5 rounded-2xl bg-black/35 border border-white/10 space-y-2">
+          <span class="material-symbols-outlined text-2xl" style="color:#e879f9">flight</span>
+          <h3 class="font-bold text-white text-base">Tomas Aéreas en Costa y Desierto</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">Pilotos experimentados para hoteles, yates, desarrollos inmobiliarios y restaurantes.</p>
+        </div>
+<div class="p-5 rounded-2xl bg-black/35 border border-white/10 space-y-2">
+          <span class="material-symbols-outlined text-2xl" style="color:#e879f9">trending_up</span>
+          <h3 class="font-bold text-white text-base">Formatos 9:16 y 16:9 Incluidos</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">Recibe tus piezas adaptadas para Reels, TikTok, YouTube y tu página web.</p>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. TESTIMONIOS DE CLIENTES EN SONORA -->
+    <section id="resenas" class="max-w-7xl mx-auto px-4 sm:px-6 space-y-8">
+      <div class="text-center max-w-2xl mx-auto space-y-2">
+        <span class="text-xs font-extrabold uppercase tracking-widest" style="color:#e879f9">Prueba Social Verificada</span>
+        <h2 class="text-3xl sm:text-4xl font-black text-white">Clientes satisfechos en Sonora</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-5">
+        <div class="demo-card rounded-3xl p-6 space-y-3">
+          <div class="flex text-amber-400 text-sm">★★★★★</div>
+          <p class="text-sm text-slate-200 leading-relaxed">"El reel del molcajete hirviendo con toma FPV nos trajo mesas llenas todo el fin de semana."</p>
+          <div class="pt-2 border-t border-white/10">
+            <div class="font-bold text-white text-xs">Mariscos El Rey</div>
+            <div class="text-[11px] text-slate-400">Guaymas, Sonora</div>
+          </div>
+        </div>
+<div class="demo-card rounded-3xl p-6 space-y-3">
+          <div class="flex text-amber-400 text-sm">★★★★★</div>
+          <p class="text-sm text-slate-200 leading-relaxed">"Las tomas aéreas al atardecer vendieron dos departamentos antes de terminar la obra."</p>
+          <div class="pt-2 border-t border-white/10">
+            <div class="font-bold text-white text-xs">Marina Real Estate</div>
+            <div class="text-[11px] text-slate-400">San Carlos, Sonora</div>
+          </div>
+        </div>
+<div class="demo-card rounded-3xl p-6 space-y-3">
+          <div class="flex text-amber-400 text-sm">★★★★★</div>
+          <p class="text-sm text-slate-200 leading-relaxed">"Entregan súper rápido y la calidad de imagen parece comercial de televisión."</p>
+          <div class="pt-2 border-t border-white/10">
+            <div class="font-bold text-white text-xs">FitClub Sonora</div>
+            <div class="text-[11px] text-slate-400">Hermosillo, Sonora</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. UBICACIÓN, HORARIOS Y CTA FINAL -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="demo-card rounded-3xl p-6 sm:p-10 grid md:grid-cols-12 gap-8 items-center">
+        <div class="md:col-span-7 space-y-3">
+          <span class="text-xs font-extrabold uppercase tracking-widest" style="color:#e879f9">Contacto Directo</span>
+          <h2 class="text-2xl sm:text-3xl font-black text-white">Kroma Visuals</h2>
+          <p class="text-sm text-slate-300 flex items-center gap-2">
+            <span class="material-symbols-outlined text-lg" style="color:#e879f9">location_on</span>
+            <span>Guaymas, San Carlos &amp; Hermosillo, Sonora</span>
+          </p>
+          <p class="text-sm text-slate-300 flex items-center gap-2">
+            <span class="material-symbols-outlined text-lg" style="color:#e879f9">schedule</span>
+            <span>Rodajes Lunes a Sábado (Golden Hour &amp; Nocturnos)</span>
+          </p>
+        </div>
+        <div class="md:col-span-5 flex flex-col sm:flex-row md:flex-col gap-3">
+          <button onclick="sendWhatsApp('final')" class="w-full py-3.5 px-5 rounded-2xl text-slate-950 font-black text-sm flex items-center justify-center gap-2 shadow-xl hover:brightness-110 transition-all" style="background: linear-gradient(135deg, #e879f9, #fb923c)">
+            <span class="material-symbols-outlined text-lg">chat</span>
+            <span>Quiero una Web Así para mi Negocio</span>
+          </button>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="border-t border-white/10 py-8 text-center text-xs text-slate-400">
-    Demo interactiva desarrollada por <strong class="text-fuchsia-300">HP Digital &amp; AI Agency</strong> • Guaymas, Sonora
+    <p>Demo interactiva de alto impacto desarrollada por <strong class="text-white">HP Digital &amp; AI Agency</strong> • Guaymas, Sonora • Flujo Google Stitch → Demo → Antigravity</p>
   </footer>
 
   <script>
-    function calcKroma() {
-      const base = Number(document.getElementById('kroma-pkg').value);
-      const drone = document.getElementById('drone-check').checked ? 2200 : 0;
-      document.getElementById('kroma-total').innerText = '$' + (base + drone).toLocaleString('es-MX') + ' MXN';
+    const SIM_MULT = 735;
+    const SIM_UNIT = "reels";
+    const BRAND_NAME = "Kroma Visuals";
+
+    function updateSim() {
+      const val = Number(document.getElementById('sim-slider').value);
+      const out = Math.round(val * SIM_MULT);
+      document.getElementById('sim-input-val').innerText = val.toLocaleString('es-MX') + ' ' + SIM_UNIT;
+      document.getElementById('sim-result').innerText = out.toLocaleString('es-MX') + (SIM_UNIT === 'm²' ? ' BTU' : ' MXN');
     }
-    function toggleLiquidGlass() {
-      const isGlass = document.body.classList.toggle('liquid-glass-mode');
-      document.getElementById('glass-toggle-btn').innerHTML = isGlass ? '<span>✨ Volver a Estilo Original</span>' : '<span>💎 Activar Liquid Glass</span>';
-    }
-    function sendWhatsApp() {
-      const pkg = document.getElementById('kroma-pkg').options[document.getElementById('kroma-pkg').selectedIndex].text;
-      const total = document.getElementById('kroma-total').innerText;
-      const msg = `¡Hola Miguel! Probé Kroma Visuals (${pkg}, ${total}) y quiero cotizar una web audiovisual con configurador.`;
+
+    function selectCatalogItem(itemTitle, itemPrice) {
+      const msg = `¡Hola Miguel! Vi en la demo de ${BRAND_NAME} el paquete "${itemTitle}" (${itemPrice}) y quiero cotizar una plataforma así para mi negocio.`;
       window.open(`https://wa.me/526222259974?text=${encodeURIComponent(msg)}`, '_blank');
     }
+
+    function toggleLiquidGlass() {
+      const isGlass = document.body.classList.toggle('liquid-glass-mode');
+      document.getElementById('glass-toggle-btn').innerHTML = isGlass
+        ? '<span>✨ Volver a Estilo Original</span>'
+        : '<span>💎 Activar Liquid Glass</span>';
+    }
+
+    function sendWhatsApp(source) {
+      const simIn = document.getElementById('sim-input-val').innerText;
+      const simOut = document.getElementById('sim-result').innerText;
+      const msg = source === 'sim'
+        ? `¡Hola Miguel! Probé el simulador de ${BRAND_NAME} (${simIn} → ${simOut}) y quiero implementar una web con este nivel para mi empresa.`
+        : `¡Hola Miguel! Vi la demo completa de ${BRAND_NAME} con Modo Liquid Glass y quiero cotizar un proyecto así.`;
+      window.open(`https://wa.me/526222259974?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    updateSim();
   </script>
 </body>
 </html>

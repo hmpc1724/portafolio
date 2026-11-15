@@ -3,145 +3,333 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lumina Store — E-Commerce Boutique &amp; Catálogo Flash</title>
+  <title>Lumina Store — E-Commerce Boutique &amp; Moda Resort</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body { background: #0f070c; color: #fdf2f8; font-family: 'Plus Jakarta Sans', sans-serif; transition: background 0.35s ease; }
-    .font-serif-display { font-family: 'Playfair Display', serif; }
-    .demo-card { background: rgba(30, 12, 24, 0.86); border: 1px solid rgba(244, 114, 182, 0.25); transition: all 0.35s ease; }
-    .header-nav { background: rgba(15, 7, 12, 0.9); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(244, 114, 182, 0.25); }
-    body.liquid-glass-mode { background: radial-gradient(circle at top right, #500724 0%, #030712 55%, #0c4a6e 100%) !important; }
+    :root { --accent: #f472b6; --accent2: #fb7185; }
+    body { background: #0f070c; color: #f1f5f9; font-family: 'Plus Jakarta Sans', sans-serif; transition: background 0.35s ease; }
+    .demo-card { background: rgba(30, 12, 24, 0.88); border: 1px solid rgba(255, 255, 255, 0.12); transition: all 0.35s ease; }
+    .demo-card:hover { border-color: rgba(255, 255, 255, 0.25); }
+    .header-nav { background: rgba(6, 10, 20, 0.88); backdrop-filter: blur(18px); border-bottom: 1px solid rgba(255, 255, 255, 0.12); }
+    body.liquid-glass-mode { background: radial-gradient(circle at top right, #082f49 0%, #030712 55%, #0f172a 100%) !important; }
     body.liquid-glass-mode .demo-card {
-      background: rgba(15, 23, 42, 0.56) !important;
-      backdrop-filter: blur(22px) saturate(160%) !important;
-      border-color: rgba(103, 232, 249, 0.45) !important;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.14) !important;
+      background: rgba(12, 24, 48, 0.54) !important;
+      backdrop-filter: blur(22px) saturate(165%) !important;
+      border-color: rgba(103, 232, 249, 0.42) !important;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
     }
     body.liquid-glass-mode .header-nav {
-      background: rgba(10, 18, 34, 0.72) !important;
+      background: rgba(8, 18, 36, 0.72) !important;
       backdrop-filter: blur(24px) !important;
       border-color: rgba(103, 232, 249, 0.35) !important;
     }
   </style>
 </head>
 <body class="min-h-screen antialiased">
-  <div class="fixed inset-0 pointer-events-none -z-10">
-    <div class="absolute -top-24 right-10 w-96 h-96 bg-pink-500/20 rounded-full blur-[130px]"></div>
-    <div class="absolute bottom-0 left-10 w-80 h-80 bg-rose-500/15 rounded-full blur-[120px]"></div>
+  <div class="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
+    <div class="absolute -top-32 -left-24 w-96 h-96 rounded-full blur-[130px] opacity-25" style="background:#f472b6"></div>
+    <div class="absolute top-1/2 -right-24 w-96 h-96 rounded-full blur-[130px] opacity-20" style="background:#fb7185"></div>
   </div>
 
+  <!-- NAVBAR -->
   <header class="header-nav sticky top-0 z-50">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
       <div class="flex items-center gap-2.5">
-        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-pink-400 to-rose-500 flex items-center justify-center text-slate-950 font-black">
+        <div class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-950 font-black shadow-lg" style="background: linear-gradient(135deg, #f472b6, #fb7185)">
           <span class="material-symbols-outlined text-xl">shopping_bag</span>
         </div>
-        <span class="font-serif-display font-bold text-white text-lg">Lumina Boutique</span>
+        <div>
+          <span class="font-extrabold text-white text-base tracking-tight">Lumina Boutique</span>
+          <span class="hidden sm:inline-block ml-2 px-2 py-0.5 rounded-full text-[10px] font-bold bg-white/10 text-cyan-200 border border-white/15">DEMO LIVE</span>
+        </div>
       </div>
+
+      <nav class="hidden md:flex items-center gap-6 text-xs font-semibold text-slate-300">
+        <a href="#simulador" class="hover:text-white transition-colors">Cotizador</a>
+        <a href="#catalogo" class="hover:text-white transition-colors">Servicios</a>
+        <a href="#diferenciador" class="hover:text-white transition-colors">Ventajas</a>
+        <a href="#resenas" class="hover:text-white transition-colors">Reseñas</a>
+      </nav>
+
       <div class="flex items-center gap-2">
-        <button id="glass-toggle-btn" onclick="toggleLiquidGlass()" class="px-3.5 py-2 rounded-xl bg-pink-500/15 hover:bg-pink-500/25 border border-pink-400/40 text-pink-200 font-bold text-xs transition-all">
+        <button id="glass-toggle-btn" onclick="toggleLiquidGlass()" class="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/15 border border-cyan-400/40 text-cyan-200 font-bold text-xs transition-all shadow-lg">
           <span>💎 Activar Liquid Glass</span>
         </button>
-        <div class="px-3 py-2 rounded-xl bg-white/10 text-xs font-bold text-white flex items-center gap-1.5">
-          <span class="material-symbols-outlined text-base text-pink-300">shopping_cart</span>
-          <span id="cart-count">0</span>
-        </div>
+        <button onclick="sendWhatsApp('header')" class="hidden sm:flex px-4 py-2 rounded-xl text-slate-950 font-black text-xs items-center gap-1.5 shadow-lg hover:brightness-110 transition-all" style="background: linear-gradient(135deg, #f472b6, #fb7185)">
+          <span class="material-symbols-outlined text-base">chat</span>
+          <span>Cotizar Ahora</span>
+        </button>
       </div>
     </div>
   </header>
 
-  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-10 space-y-8">
-    <div class="text-center max-w-2xl mx-auto space-y-3">
-      <span class="inline-flex px-3 py-1 rounded-full bg-pink-500/15 border border-pink-400/30 text-pink-300 text-xs font-bold">E-COMMERCE BOUTIQUE • CHECKOUT DIRECTO WHATSAPP</span>
-      <h1 class="font-serif-display text-4xl sm:text-5xl font-bold text-white">Nueva Colección Resort Sonora</h1>
-      <p class="text-slate-300 text-sm">Agrega prendas a tu bolsa y envía tu pedido con tallas directo a WhatsApp o pago con tarjeta.</p>
-    </div>
+  <main class="space-y-16 pb-16">
+    <!-- 1. HERO FULL-BLEED CINEMATOGRÁFICO -->
+    <section class="relative overflow-hidden border-b border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 grid lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-6 space-y-6 relative z-10">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs font-extrabold tracking-wider uppercase" style="color:#f472b6">
+            <span class="w-2 h-2 rounded-full animate-ping" style="background:#f472b6"></span>
+            <span>E-COMMERCE BOUTIQUE • CHECKOUT DIRECTO WHATSAPP</span>
+          </div>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.08] tracking-tight">
+            Nueva Colección <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-300 to-rose-300">Resort Sonora</span> lista para envío.
+          </h1>
+          <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-xl">
+            Tienda online de alta conversión diseñada para boutiques de moda, accesorios y skincare. Carga instantánea, selector de tallas y pedidos directos a WhatsApp o tarjeta.
+          </p>
+          <div class="flex flex-wrap gap-3 pt-1">
+            <a href="#simulador" class="px-6 py-3.5 rounded-2xl text-slate-950 font-black text-sm shadow-xl hover:scale-[1.02] transition-all flex items-center gap-2" style="background: linear-gradient(135deg, #f472b6, #fb7185)">
+              <span class="material-symbols-outlined text-lg">calculate</span>
+              <span>Probar Simulador en Vivo</span>
+            </a>
+            <button onclick="sendWhatsApp('hero')" class="px-6 py-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/15 text-white font-bold text-sm transition-all flex items-center gap-2">
+              <span class="material-symbols-outlined text-lg">chat</span>
+              <span>Hablar por WhatsApp</span>
+            </button>
+          </div>
+          <div class="grid grid-cols-3 gap-3 pt-4">
+            <div class="demo-card rounded-2xl p-3.5 text-center"><div class="text-lg sm:text-xl font-black text-white">24h</div><div class="text-[11px] text-slate-400">Envío Local Express</div></div>
+<div class="demo-card rounded-2xl p-3.5 text-center"><div class="text-lg sm:text-xl font-black text-white">100%</div><div class="text-[11px] text-slate-400">Lino &amp; Algodón</div></div>
+<div class="demo-card rounded-2xl p-3.5 text-center"><div class="text-lg sm:text-xl font-black text-white">0%</div><div class="text-[11px] text-slate-400">Comisión Marketplace</div></div>
+          </div>
+        </div>
 
-    <div class="grid md:grid-cols-3 gap-5">
-      <div class="demo-card rounded-3xl p-5 flex flex-col justify-between space-y-4">
-        <div class="h-44 rounded-2xl bg-gradient-to-br from-rose-900/60 via-pink-900/30 to-slate-900 border border-white/10 flex flex-col items-center justify-center">
-          <span class="material-symbols-outlined text-5xl text-pink-300">styler</span>
-          <span class="text-xs text-pink-200 mt-2 font-semibold">Edición Limitada</span>
-        </div>
-        <div>
-          <h3 class="font-extrabold text-white text-base">Vestido Lino Bahía Sunset</h3>
-          <p class="text-xs text-slate-400 mt-1">100% lino fresco orgánico • Tallas S / M / L</p>
-        </div>
-        <div class="flex items-center justify-between pt-2 border-t border-white/10">
-          <span class="text-lg font-black text-pink-300">$1,290 MXN</span>
-          <button onclick="addItem('Vestido Lino Bahía Sunset', 1290)" class="px-3.5 py-2 rounded-xl bg-gradient-to-r from-pink-400 to-rose-500 text-slate-950 font-black text-xs hover:brightness-110">Agregar +</button>
+        <div class="lg:col-span-6 relative">
+          <div class="demo-card rounded-3xl p-2.5 shadow-2xl overflow-hidden">
+            <img src="/images/stitch/lumina-store-hero.webp" alt="Lumina Boutique" class="w-full h-[280px] sm:h-[380px] object-cover rounded-2xl bg-slate-950" />
+            <div class="p-4 flex items-center justify-between text-xs">
+              <span class="font-bold text-white flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-base" style="color:#f472b6">verified</span>
+                <span>Estándar Google Stitch + Liquid Glass</span>
+              </span>
+              <span class="text-slate-400 font-mono">Guaymas • San Carlos</span>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="demo-card rounded-3xl p-5 flex flex-col justify-between space-y-4">
-        <div class="h-44 rounded-2xl bg-gradient-to-br from-amber-900/50 via-rose-900/30 to-slate-900 border border-white/10 flex flex-col items-center justify-center">
-          <span class="material-symbols-outlined text-5xl text-amber-300">eyeglasses</span>
-          <span class="text-xs text-amber-200 mt-2 font-semibold">UV400 Polarizado</span>
+    <!-- 2. WIDGET SIMULADOR / COTIZADOR INTERACTIVO -->
+    <section id="simulador" class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="demo-card rounded-3xl p-6 sm:p-10 space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-5">
+          <div>
+            <span class="text-xs font-extrabold uppercase tracking-widest" style="color:#f472b6">Herramienta Interactiva en Tiempo Real</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white mt-1">Calculadora Rápida de Pedido Boutique</h2>
+            <p class="text-xs sm:text-sm text-slate-400 mt-1">Elige cuántas prendas deseas cotizar (Envío gratis arriba de $2,000 MXN)</p>
+          </div>
+          <div class="px-5 py-3 rounded-2xl bg-black/40 border border-white/10 text-right">
+            <span class="text-[11px] text-slate-400 block">Subtotal Estimado de Compra (MXN)</span>
+            <span id="sim-result" class="text-2xl sm:text-3xl font-black" style="color:#f472b6"></span>
+          </div>
         </div>
-        <div>
-          <h3 class="font-extrabold text-white text-base">Lentes Sol San Carlos Gold</h3>
-          <p class="text-xs text-slate-400 mt-1">Armazón acetato italiano + estuche rígido</p>
-        </div>
-        <div class="flex items-center justify-between pt-2 border-t border-white/10">
-          <span class="text-lg font-black text-pink-300">$890 MXN</span>
-          <button onclick="addItem('Lentes Sol San Carlos Gold', 890)" class="px-3.5 py-2 rounded-xl bg-gradient-to-r from-pink-400 to-rose-500 text-slate-950 font-black text-xs hover:brightness-110">Agregar +</button>
+
+        <div class="grid md:grid-cols-12 gap-6 items-center">
+          <div class="md:col-span-7 space-y-3">
+            <div class="flex justify-between text-sm font-bold">
+              <span class="text-slate-200">Cantidad de Prendas en tu Bolsa</span>
+              <span id="sim-input-val" class="font-black" style="color:#f472b6"></span>
+            </div>
+            <input id="sim-slider" type="range" min="1" max="10" step="1" value="2" oninput="updateSim()" class="w-full h-2 rounded-lg cursor-pointer accent-cyan-400" />
+            <div class="flex justify-between text-[11px] text-slate-400 font-mono">
+              <span>Mín: 1 prendas</span>
+              <span>Máx: 10 prendas</span>
+            </div>
+          </div>
+          <div class="md:col-span-5">
+            <button onclick="sendWhatsApp('sim')" class="w-full py-4 px-5 rounded-2xl text-slate-950 font-black text-sm flex items-center justify-center gap-2 shadow-xl hover:brightness-110 transition-all" style="background: linear-gradient(135deg, #f472b6, #fb7185)">
+              <span class="material-symbols-outlined text-xl">send</span>
+              <span>Enviar Simulación a WhatsApp</span>
+            </button>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="demo-card rounded-3xl p-5 flex flex-col justify-between space-y-4">
-        <div class="h-44 rounded-2xl bg-gradient-to-br from-purple-900/50 via-pink-900/30 to-slate-900 border border-white/10 flex flex-col items-center justify-center">
-          <span class="material-symbols-outlined text-5xl text-purple-300">work</span>
-          <span class="text-xs text-purple-200 mt-2 font-semibold">Piel Vegana</span>
+    <!-- 3. CATÁLOGO DE SERVICIOS / PRODUCTOS ESTRELLA -->
+    <section id="catalogo" class="max-w-7xl mx-auto px-4 sm:px-6 space-y-8">
+      <div class="text-center max-w-2xl mx-auto space-y-2">
+        <span class="text-xs font-extrabold uppercase tracking-widest" style="color:#f472b6">Catálogo Oficial</span>
+        <h2 class="text-3xl sm:text-4xl font-black text-white">Piezas Destacadas de Temporada</h2>
+        <p class="text-sm text-slate-400">Edición limitada diseñada para el clima cálido y elegante del Pacífico mexicano.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="demo-card rounded-3xl p-5 flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <span class="inline-block px-2.5 py-0.5 rounded-full bg-white/10 text-[10px] font-bold uppercase tracking-wider" style="color:#f472b6">Nuevo</span>
+            <h3 class="font-extrabold text-white text-base">Vestido Lino Bahía Sunset</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">100% lino fresco transpirable en tono arena y coral. Tallas S, M y L.</p>
+          </div>
+          <div class="pt-3 border-t border-white/10 flex items-center justify-between gap-2">
+            <span class="font-black text-sm" style="color:#f472b6">$1,290 MXN</span>
+            <button onclick="selectCatalogItem('Vestido Lino Bahía Sunset', '$1,290 MXN')" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-all">Cotizar</button>
+          </div>
         </div>
-        <div>
-          <h3 class="font-extrabold text-white text-base">Bolso Tote Perla Marina</h3>
-          <p class="text-xs text-slate-400 mt-1">Compartimento térmico + correa desmontable</p>
+<div class="demo-card rounded-3xl p-5 flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <span class="inline-block px-2.5 py-0.5 rounded-full bg-white/10 text-[10px] font-bold uppercase tracking-wider" style="color:#f472b6">Top Ventas</span>
+            <h3 class="font-extrabold text-white text-base">Lentes Sol San Carlos Gold</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">Armazón acetato italiano con protección UV400 polarizada.</p>
+          </div>
+          <div class="pt-3 border-t border-white/10 flex items-center justify-between gap-2">
+            <span class="font-black text-sm" style="color:#f472b6">$890 MXN</span>
+            <button onclick="selectCatalogItem('Lentes Sol San Carlos Gold', '$890 MXN')" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-all">Cotizar</button>
+          </div>
         </div>
-        <div class="flex items-center justify-between pt-2 border-t border-white/10">
-          <span class="text-lg font-black text-pink-300">$1,450 MXN</span>
-          <button onclick="addItem('Bolso Tote Perla Marina', 1450)" class="px-3.5 py-2 rounded-xl bg-gradient-to-r from-pink-400 to-rose-500 text-slate-950 font-black text-xs hover:brightness-110">Agregar +</button>
+<div class="demo-card rounded-3xl p-5 flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <span class="inline-block px-2.5 py-0.5 rounded-full bg-white/10 text-[10px] font-bold uppercase tracking-wider" style="color:#f472b6">Exclusivo</span>
+            <h3 class="font-extrabold text-white text-base">Bolso Tote Perla Marina</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">Piel vegana estructurada con bolsillo térmico interior.</p>
+          </div>
+          <div class="pt-3 border-t border-white/10 flex items-center justify-between gap-2">
+            <span class="font-black text-sm" style="color:#f472b6">$1,450 MXN</span>
+            <button onclick="selectCatalogItem('Bolso Tote Perla Marina', '$1,450 MXN')" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-all">Cotizar</button>
+          </div>
+        </div>
+<div class="demo-card rounded-3xl p-5 flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <span class="inline-block px-2.5 py-0.5 rounded-full bg-white/10 text-[10px] font-bold uppercase tracking-wider" style="color:#f472b6">Resort</span>
+            <h3 class="font-extrabold text-white text-base">Set Pareo + Sombrero Palma</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">Tejido artesanal mexicano con cinta bordada a mano.</p>
+          </div>
+          <div class="pt-3 border-t border-white/10 flex items-center justify-between gap-2">
+            <span class="font-black text-sm" style="color:#f472b6">$950 MXN</span>
+            <button onclick="selectCatalogItem('Set Pareo + Sombrero Palma', '$950 MXN')" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-all">Cotizar</button>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="demo-card rounded-3xl p-6 flex flex-wrap items-center justify-between gap-4">
-      <div>
-        <span class="text-xs text-slate-400 block">Resumen de tu Bolsa</span>
-        <div id="cart-summary" class="text-lg font-black text-white">0 artículos • $0 MXN</div>
+    <!-- 4. DIFERENCIADOR EXCLUSIVO DEL GIRO -->
+    <section id="diferenciador" class="max-w-7xl mx-auto px-4 sm:px-6 space-y-8">
+      <div class="demo-card rounded-3xl p-6 sm:p-10 space-y-8">
+        <div class="max-w-2xl space-y-2">
+          <span class="text-xs font-extrabold uppercase tracking-widest" style="color:#f472b6">Ingeniería &amp; Calidad</span>
+          <h2 class="text-2xl sm:text-4xl font-black text-white">Tu tienda online vendiendo 24/7 sin pagar rentas caras</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-5">
+          <div class="p-5 rounded-2xl bg-black/35 border border-white/10 space-y-2">
+          <span class="material-symbols-outlined text-2xl" style="color:#f472b6">local_shipping</span>
+          <h3 class="font-bold text-white text-base">Envíos a Todo México</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">Entrega el mismo día en Guaymas/San Carlos y envío aéreo 24-48h nacional.</p>
+        </div>
+<div class="p-5 rounded-2xl bg-black/35 border border-white/10 space-y-2">
+          <span class="material-symbols-outlined text-2xl" style="color:#f472b6">chat</span>
+          <h3 class="font-bold text-white text-base">Asesoría de Tallas por WhatsApp</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">Resuelve dudas al instante y cierra la venta sin que el cliente abandone el carrito.</p>
+        </div>
+<div class="p-5 rounded-2xl bg-black/35 border border-white/10 space-y-2">
+          <span class="material-symbols-outlined text-2xl" style="color:#f472b6">credit_card</span>
+          <h3 class="font-bold text-white text-base">Pagos con Tarjeta o Transferencia</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">Integración directa con Stripe y comprobante inmediato.</p>
+        </div>
+        </div>
       </div>
-      <button onclick="sendWhatsApp()" class="px-6 py-3 rounded-xl bg-gradient-to-r from-pink-400 to-rose-500 text-slate-950 font-black text-sm flex items-center gap-2 shadow-lg hover:brightness-110">
-        <span class="material-symbols-outlined text-lg">shopping_cart_checkout</span>
-        <span>Finalizar Pedido por WhatsApp</span>
-      </button>
-    </div>
+    </section>
+
+    <!-- 5. TESTIMONIOS DE CLIENTES EN SONORA -->
+    <section id="resenas" class="max-w-7xl mx-auto px-4 sm:px-6 space-y-8">
+      <div class="text-center max-w-2xl mx-auto space-y-2">
+        <span class="text-xs font-extrabold uppercase tracking-widest" style="color:#f472b6">Prueba Social Verificada</span>
+        <h2 class="text-3xl sm:text-4xl font-black text-white">Clientes satisfechos en Sonora</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-5">
+        <div class="demo-card rounded-3xl p-6 space-y-3">
+          <div class="flex text-amber-400 text-sm">★★★★★</div>
+          <p class="text-sm text-slate-200 leading-relaxed">"Compré el vestido de lino para una boda en San Carlos y me llegó esa misma tarde."</p>
+          <div class="pt-2 border-t border-white/10">
+            <div class="font-bold text-white text-xs">Daniela Córdova</div>
+            <div class="text-[11px] text-slate-400">Guaymas, Sonora</div>
+          </div>
+        </div>
+<div class="demo-card rounded-3xl p-6 space-y-3">
+          <div class="flex text-amber-400 text-sm">★★★★★</div>
+          <p class="text-sm text-slate-200 leading-relaxed">"La página se ve de revista y fue facilísimo pedir mi talla por WhatsApp."</p>
+          <div class="pt-2 border-t border-white/10">
+            <div class="font-bold text-white text-xs">Renata Salcido</div>
+            <div class="text-[11px] text-slate-400">Hermosillo, Sonora</div>
+          </div>
+        </div>
+<div class="demo-card rounded-3xl p-6 space-y-3">
+          <div class="flex text-amber-400 text-sm">★★★★★</div>
+          <p class="text-sm text-slate-200 leading-relaxed">"Excelente calidad de telas y empaque hermoso para regalo."</p>
+          <div class="pt-2 border-t border-white/10">
+            <div class="font-bold text-white text-xs">Paola Espinoza</div>
+            <div class="text-[11px] text-slate-400">Obregón, Sonora</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. UBICACIÓN, HORARIOS Y CTA FINAL -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="demo-card rounded-3xl p-6 sm:p-10 grid md:grid-cols-12 gap-8 items-center">
+        <div class="md:col-span-7 space-y-3">
+          <span class="text-xs font-extrabold uppercase tracking-widest" style="color:#f472b6">Contacto Directo</span>
+          <h2 class="text-2xl sm:text-3xl font-black text-white">Lumina Boutique</h2>
+          <p class="text-sm text-slate-300 flex items-center gap-2">
+            <span class="material-symbols-outlined text-lg" style="color:#f472b6">location_on</span>
+            <span>Plaza Marina San Carlos &amp; Envíos a Todo México</span>
+          </p>
+          <p class="text-sm text-slate-300 flex items-center gap-2">
+            <span class="material-symbols-outlined text-lg" style="color:#f472b6">schedule</span>
+            <span>Tienda Online 24/7 • Atención Boutique 10:00 AM – 8:00 PM</span>
+          </p>
+        </div>
+        <div class="md:col-span-5 flex flex-col sm:flex-row md:flex-col gap-3">
+          <button onclick="sendWhatsApp('final')" class="w-full py-3.5 px-5 rounded-2xl text-slate-950 font-black text-sm flex items-center justify-center gap-2 shadow-xl hover:brightness-110 transition-all" style="background: linear-gradient(135deg, #f472b6, #fb7185)">
+            <span class="material-symbols-outlined text-lg">chat</span>
+            <span>Quiero una Web Así para mi Negocio</span>
+          </button>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="border-t border-white/10 py-8 text-center text-xs text-slate-400">
-    Demo interactiva desarrollada por <strong class="text-pink-300">HP Digital &amp; AI Agency</strong> • Guaymas, Sonora
+    <p>Demo interactiva de alto impacto desarrollada por <strong class="text-white">HP Digital &amp; AI Agency</strong> • Guaymas, Sonora • Flujo Google Stitch → Demo → Antigravity</p>
   </footer>
 
   <script>
-    const cart = [];
-    function addItem(name, price) {
-      cart.push({ name, price });
-      const total = cart.reduce((s, i) => s + i.price, 0);
-      document.getElementById('cart-count').innerText = cart.length;
-      document.getElementById('cart-summary').innerText = `${cart.length} artículo(s) • $${total.toLocaleString('es-MX')} MXN`;
+    const SIM_MULT = 1290;
+    const SIM_UNIT = "prendas";
+    const BRAND_NAME = "Lumina Boutique";
+
+    function updateSim() {
+      const val = Number(document.getElementById('sim-slider').value);
+      const out = Math.round(val * SIM_MULT);
+      document.getElementById('sim-input-val').innerText = val.toLocaleString('es-MX') + ' ' + SIM_UNIT;
+      document.getElementById('sim-result').innerText = out.toLocaleString('es-MX') + (SIM_UNIT === 'm²' ? ' BTU' : ' MXN');
     }
-    function toggleLiquidGlass() {
-      const isGlass = document.body.classList.toggle('liquid-glass-mode');
-      document.getElementById('glass-toggle-btn').innerHTML = isGlass ? '<span>✨ Volver a Estilo Original</span>' : '<span>💎 Activar Liquid Glass</span>';
-    }
-    function sendWhatsApp() {
-      const list = cart.length ? cart.map(i => `• ${i.name} ($${i.price})`).join('\n') : '• Consulta de tienda e-commerce boutique';
-      const total = cart.reduce((s, i) => s + i.price, 0);
-      const msg = `¡Hola Miguel! Probé la tienda Lumina Store:\n${list}\nTotal: $${total} MXN\nQuiero cotizar una tienda online así para mi marca.`;
+
+    function selectCatalogItem(itemTitle, itemPrice) {
+      const msg = `¡Hola Miguel! Vi en la demo de ${BRAND_NAME} el paquete "${itemTitle}" (${itemPrice}) y quiero cotizar una plataforma así para mi negocio.`;
       window.open(`https://wa.me/526222259974?text=${encodeURIComponent(msg)}`, '_blank');
     }
+
+    function toggleLiquidGlass() {
+      const isGlass = document.body.classList.toggle('liquid-glass-mode');
+      document.getElementById('glass-toggle-btn').innerHTML = isGlass
+        ? '<span>✨ Volver a Estilo Original</span>'
+        : '<span>💎 Activar Liquid Glass</span>';
+    }
+
+    function sendWhatsApp(source) {
+      const simIn = document.getElementById('sim-input-val').innerText;
+      const simOut = document.getElementById('sim-result').innerText;
+      const msg = source === 'sim'
+        ? `¡Hola Miguel! Probé el simulador de ${BRAND_NAME} (${simIn} → ${simOut}) y quiero implementar una web con este nivel para mi empresa.`
+        : `¡Hola Miguel! Vi la demo completa de ${BRAND_NAME} con Modo Liquid Glass y quiero cotizar un proyecto así.`;
+      window.open(`https://wa.me/526222259974?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    updateSim();
   </script>
 </body>
 </html>

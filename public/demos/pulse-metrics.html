@@ -3,182 +3,289 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PulseMetrics AI — Suite Analítica MRR en Tiempo Real</title>
+  <title>PulseMetrics AI — Suite Analítica MRR &amp; BI en Tiempo Real</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ["'Plus Jakarta Sans'", 'sans-serif'],
-            display: ["'Space Grotesk'", 'sans-serif'],
-          },
-        },
-      },
-    };
-  </script>
   <style>
-    body { background: #050816; color: #e2e8f0; font-family: 'Plus Jakarta Sans', sans-serif; transition: background 0.35s ease; }
-    .demo-card { background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(56, 189, 248, 0.22); transition: all 0.35s ease; }
-    .header-nav { background: rgba(5, 8, 22, 0.88); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(56, 189, 248, 0.2); }
+    :root { --accent: #22d3ee; --accent2: #6366f1; }
+    body { background: #050816; color: #f1f5f9; font-family: 'Plus Jakarta Sans', sans-serif; transition: background 0.35s ease; }
+    .demo-card { background: rgba(13, 21, 42, 0.86); border: 1px solid rgba(255, 255, 255, 0.12); transition: all 0.35s ease; }
+    .demo-card:hover { border-color: rgba(255, 255, 255, 0.25); }
+    .header-nav { background: rgba(6, 10, 20, 0.88); backdrop-filter: blur(18px); border-bottom: 1px solid rgba(255, 255, 255, 0.12); }
     body.liquid-glass-mode { background: radial-gradient(circle at top right, #082f49 0%, #030712 55%, #0f172a 100%) !important; }
     body.liquid-glass-mode .demo-card {
-      background: rgba(12, 24, 48, 0.55) !important;
-      backdrop-filter: blur(22px) saturate(160%) !important;
-      border-color: rgba(103, 232, 249, 0.4) !important;
-      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.14) !important;
+      background: rgba(12, 24, 48, 0.54) !important;
+      backdrop-filter: blur(22px) saturate(165%) !important;
+      border-color: rgba(103, 232, 249, 0.42) !important;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
     }
     body.liquid-glass-mode .header-nav {
       background: rgba(8, 18, 36, 0.72) !important;
       backdrop-filter: blur(24px) !important;
       border-color: rgba(103, 232, 249, 0.35) !important;
     }
-    .bar-fill { transition: height 0.45s cubic-bezier(0.22, 1, 0.36, 1); }
   </style>
 </head>
-<body class="min-h-screen antialiased selection:bg-cyan-400 selection:text-slate-950">
-  <div class="fixed inset-0 pointer-events-none overflow-hidden -z-10">
-    <div class="absolute -top-32 -left-24 w-96 h-96 bg-cyan-500/20 rounded-full blur-[120px]"></div>
-    <div class="absolute top-1/2 -right-24 w-96 h-96 bg-indigo-600/20 rounded-full blur-[120px]"></div>
+<body class="min-h-screen antialiased">
+  <div class="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
+    <div class="absolute -top-32 -left-24 w-96 h-96 rounded-full blur-[130px] opacity-25" style="background:#22d3ee"></div>
+    <div class="absolute top-1/2 -right-24 w-96 h-96 rounded-full blur-[130px] opacity-20" style="background:#6366f1"></div>
   </div>
 
+  <!-- NAVBAR -->
   <header class="header-nav sticky top-0 z-50">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
       <div class="flex items-center gap-2.5">
-        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-400 to-indigo-500 flex items-center justify-center text-slate-950 font-black shadow-lg shadow-cyan-500/30">
+        <div class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-950 font-black shadow-lg" style="background: linear-gradient(135deg, #22d3ee, #6366f1)">
           <span class="material-symbols-outlined text-xl">monitoring</span>
         </div>
         <div>
-          <span class="font-display font-bold text-white tracking-tight text-base">PulseMetrics AI</span>
-          <span class="hidden sm:inline-block ml-2 px-2 py-0.5 rounded-full text-[10px] font-bold bg-cyan-500/15 text-cyan-300 border border-cyan-400/30">LIVE DEMO</span>
+          <span class="font-extrabold text-white text-base tracking-tight">PulseMetrics AI</span>
+          <span class="hidden sm:inline-block ml-2 px-2 py-0.5 rounded-full text-[10px] font-bold bg-white/10 text-cyan-200 border border-white/15">DEMO LIVE</span>
         </div>
       </div>
 
+      <nav class="hidden md:flex items-center gap-6 text-xs font-semibold text-slate-300">
+        <a href="#simulador" class="hover:text-white transition-colors">Cotizador</a>
+        <a href="#catalogo" class="hover:text-white transition-colors">Servicios</a>
+        <a href="#diferenciador" class="hover:text-white transition-colors">Ventajas</a>
+        <a href="#resenas" class="hover:text-white transition-colors">Reseñas</a>
+      </nav>
+
       <div class="flex items-center gap-2">
-        <button id="glass-toggle-btn" onclick="toggleLiquidGlass()" class="px-3.5 py-2 rounded-xl bg-gradient-to-r from-cyan-400/20 to-indigo-500/20 hover:from-cyan-400/30 hover:to-indigo-500/30 border border-cyan-400/40 text-cyan-200 font-bold text-xs flex items-center gap-1.5 transition-all shadow-lg">
+        <button id="glass-toggle-btn" onclick="toggleLiquidGlass()" class="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/15 border border-cyan-400/40 text-cyan-200 font-bold text-xs transition-all shadow-lg">
           <span>💎 Activar Liquid Glass</span>
         </button>
-        <button onclick="sendWhatsApp('general')" class="hidden sm:flex px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-400 to-indigo-500 text-slate-950 font-extrabold text-xs items-center gap-1.5 shadow-lg shadow-cyan-500/25 hover:brightness-110 transition-all">
+        <button onclick="sendWhatsApp('header')" class="hidden sm:flex px-4 py-2 rounded-xl text-slate-950 font-black text-xs items-center gap-1.5 shadow-lg hover:brightness-110 transition-all" style="background: linear-gradient(135deg, #22d3ee, #6366f1)">
           <span class="material-symbols-outlined text-base">chat</span>
-          <span>Cotizar Dashboard</span>
+          <span>Cotizar Ahora</span>
         </button>
       </div>
     </div>
   </header>
 
-  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-10 space-y-12">
-    <section class="grid lg:grid-cols-12 gap-8 items-center">
-      <div class="lg:col-span-7 space-y-5">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-cyan-300 text-xs font-bold">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-          <span>TELEMETRÍA FINANCIERA &amp; AGENTE GEMINI 2.5</span>
-        </div>
-        <h1 class="font-display text-4xl sm:text-5xl font-bold text-white leading-tight">
-          Controla tu <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-400 to-indigo-400">MRR, Churn y Sucursales</span> en tiempo real.
-        </h1>
-        <p class="text-slate-300 text-base leading-relaxed max-w-2xl">
-          Plataforma ejecutiva diseñada para directores y fundadores en Sonora y México. Detecta picos de demanda, automatiza alertas por WhatsApp y proyecta ingresos con Inteligencia Artificial.
-        </p>
-        <div class="flex flex-wrap gap-3">
-          <a href="#simulador" class="px-5 py-3 rounded-2xl bg-gradient-to-r from-cyan-400 to-indigo-500 text-slate-950 font-black text-sm shadow-xl shadow-cyan-500/25 hover:scale-[1.02] transition-all flex items-center gap-2">
-            <span class="material-symbols-outlined text-lg">auto_graph</span>
-            <span>Probar Simulador IA</span>
-          </a>
-          <button onclick="sendWhatsApp('general')" class="px-5 py-3 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/15 text-white font-bold text-sm transition-all flex items-center gap-2">
-            <span>Solicitar Demo Personalizada</span>
-          </button>
-        </div>
-      </div>
-
-      <div class="lg:col-span-5 demo-card rounded-3xl p-6 space-y-5">
-        <div class="flex items-center justify-between">
-          <div>
-            <p class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Ingresos Recurrentes (MRR)</p>
-            <h2 id="hero-mrr" class="text-3xl font-black text-white mt-0.5">$148,500 MXN</h2>
+  <main class="space-y-16 pb-16">
+    <!-- 1. HERO FULL-BLEED CINEMATOGRÁFICO -->
+    <section class="relative overflow-hidden border-b border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 grid lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-6 space-y-6 relative z-10">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs font-extrabold tracking-wider uppercase" style="color:#22d3ee">
+            <span class="w-2 h-2 rounded-full animate-ping" style="background:#22d3ee"></span>
+            <span>TELEMETRÍA FINANCIERA &amp; GEMINI 2.5 IA</span>
           </div>
-          <span class="px-2.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-emerald-300 text-xs font-extrabold">+18.4%</span>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.08] tracking-tight">
+            Controla tu <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-400 to-indigo-400">MRR, Churn y Sucursales</span> en tiempo real.
+          </h1>
+          <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-xl">
+            Plataforma ejecutiva diseñada para directores y fundadores en Sonora y México. Detecta picos de demanda, automatiza alertas por WhatsApp y proyecta ingresos con Inteligencia Artificial.
+          </p>
+          <div class="flex flex-wrap gap-3 pt-1">
+            <a href="#simulador" class="px-6 py-3.5 rounded-2xl text-slate-950 font-black text-sm shadow-xl hover:scale-[1.02] transition-all flex items-center gap-2" style="background: linear-gradient(135deg, #22d3ee, #6366f1)">
+              <span class="material-symbols-outlined text-lg">calculate</span>
+              <span>Probar Simulador en Vivo</span>
+            </a>
+            <button onclick="sendWhatsApp('hero')" class="px-6 py-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/15 text-white font-bold text-sm transition-all flex items-center gap-2">
+              <span class="material-symbols-outlined text-lg">chat</span>
+              <span>Hablar por WhatsApp</span>
+            </button>
+          </div>
+          <div class="grid grid-cols-3 gap-3 pt-4">
+            <div class="demo-card rounded-2xl p-3.5 text-center"><div class="text-lg sm:text-xl font-black text-white">99.98%</div><div class="text-[11px] text-slate-400">Uptime Edge Cloud</div></div>
+<div class="demo-card rounded-2xl p-3.5 text-center"><div class="text-lg sm:text-xl font-black text-white">< 120ms</div><div class="text-[11px] text-slate-400">Latencia Webhooks</div></div>
+<div class="demo-card rounded-2xl p-3.5 text-center"><div class="text-lg sm:text-xl font-black text-white">+32%</div><div class="text-[11px] text-slate-400">Conversión promedio</div></div>
+          </div>
         </div>
-        <div class="flex items-center gap-1.5 bg-slate-950/60 p-1 rounded-xl border border-white/10 w-fit">
-          <button onclick="setPeriod('hoy')" id="btn-hoy" class="px-3 py-1 rounded-lg text-xs font-bold bg-cyan-400 text-slate-950">Hoy</button>
-          <button onclick="setPeriod('semana')" id="btn-semana" class="px-3 py-1 rounded-lg text-xs font-bold text-slate-400 hover:text-white">Semana</button>
-          <button onclick="setPeriod('mes')" id="btn-mes" class="px-3 py-1 rounded-lg text-xs font-bold text-slate-400 hover:text-white">Mes</button>
-        </div>
-        <div class="h-36 flex items-end justify-between gap-2 pt-4 border-t border-white/10" id="chart-bars">
-          <div class="flex-1 flex flex-col items-center gap-1.5 h-full justify-end"><div class="bar-fill w-full rounded-t-lg bg-gradient-to-t from-indigo-600 to-cyan-400" style="height: 45%"></div><span class="text-[10px] text-slate-400">Lun</span></div>
-          <div class="flex-1 flex flex-col items-center gap-1.5 h-full justify-end"><div class="bar-fill w-full rounded-t-lg bg-gradient-to-t from-indigo-600 to-cyan-400" style="height: 62%"></div><span class="text-[10px] text-slate-400">Mar</span></div>
-          <div class="flex-1 flex flex-col items-center gap-1.5 h-full justify-end"><div class="bar-fill w-full rounded-t-lg bg-gradient-to-t from-indigo-600 to-cyan-400" style="height: 55%"></div><span class="text-[10px] text-slate-400">Mié</span></div>
-          <div class="flex-1 flex flex-col items-center gap-1.5 h-full justify-end"><div class="bar-fill w-full rounded-t-lg bg-gradient-to-t from-indigo-600 to-cyan-400" style="height: 88%"></div><span class="text-[10px] text-slate-400">Jue</span></div>
-          <div class="flex-1 flex flex-col items-center gap-1.5 h-full justify-end"><div class="bar-fill w-full rounded-t-lg bg-gradient-to-t from-indigo-600 to-cyan-400" style="height: 95%"></div><span class="text-[10px] text-slate-400">Vie</span></div>
-          <div class="flex-1 flex flex-col items-center gap-1.5 h-full justify-end"><div class="bar-fill w-full rounded-t-lg bg-gradient-to-t from-indigo-600 to-cyan-400" style="height: 76%"></div><span class="text-[10px] text-slate-400">Sáb</span></div>
+
+        <div class="lg:col-span-6 relative">
+          <div class="demo-card rounded-3xl p-2.5 shadow-2xl overflow-hidden">
+            <img src="/images/stitch/pulse-metrics-hero.webp" alt="PulseMetrics AI" class="w-full h-[280px] sm:h-[380px] object-cover rounded-2xl bg-slate-950" />
+            <div class="p-4 flex items-center justify-between text-xs">
+              <span class="font-bold text-white flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-base" style="color:#22d3ee">verified</span>
+                <span>Estándar Google Stitch + Liquid Glass</span>
+              </span>
+              <span class="text-slate-400 font-mono">Guaymas • San Carlos</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="grid sm:grid-cols-3 gap-4">
-      <div class="demo-card rounded-2xl p-5">
-        <span class="material-symbols-outlined text-cyan-400 text-2xl">bolt</span>
-        <h3 class="font-bold text-white text-lg mt-2">Latencia &lt; 120ms</h3>
-        <p class="text-xs text-slate-400 mt-1">Sincronización instantánea vía webhooks y Edge Workers sin recargar la página.</p>
-      </div>
-      <div class="demo-card rounded-2xl p-5">
-        <span class="material-symbols-outlined text-indigo-400 text-2xl">psychology</span>
-        <h3 class="font-bold text-white text-lg mt-2">Insights con Gemini IA</h3>
-        <p class="text-xs text-slate-400 mt-1">Detecta horarios pico por colonia o sucursal y sugiere campañas automáticas.</p>
-      </div>
-      <div class="demo-card rounded-2xl p-5">
-        <span class="material-symbols-outlined text-emerald-400 text-2xl">picture_as_pdf</span>
-        <h3 class="font-bold text-white text-lg mt-2">Reportes Ejecutivos</h3>
-        <p class="text-xs text-slate-400 mt-1">Exportación directa en PDF y alertas diarias al WhatsApp de dirección.</p>
+    <!-- 2. WIDGET SIMULADOR / COTIZADOR INTERACTIVO -->
+    <section id="simulador" class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="demo-card rounded-3xl p-6 sm:p-10 space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-5">
+          <div>
+            <span class="text-xs font-extrabold uppercase tracking-widest" style="color:#22d3ee">Herramienta Interactiva en Tiempo Real</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white mt-1">Simulador Interactivo de Crecimiento MRR</h2>
+            <p class="text-xs sm:text-sm text-slate-400 mt-1">Ajusta tu facturación actual y proyecta el impacto de automatizar seguimiento con IA</p>
+          </div>
+          <div class="px-5 py-3 rounded-2xl bg-black/40 border border-white/10 text-right">
+            <span class="text-[11px] text-slate-400 block">Proyección Mensual con IA (+28%)</span>
+            <span id="sim-result" class="text-2xl sm:text-3xl font-black" style="color:#22d3ee"></span>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-12 gap-6 items-center">
+          <div class="md:col-span-7 space-y-3">
+            <div class="flex justify-between text-sm font-bold">
+              <span class="text-slate-200">MRR Actual Mensual (MXN)</span>
+              <span id="sim-input-val" class="font-black" style="color:#22d3ee"></span>
+            </div>
+            <input id="sim-slider" type="range" min="30000" max="500000" step="5000" value="148500" oninput="updateSim()" class="w-full h-2 rounded-lg cursor-pointer accent-cyan-400" />
+            <div class="flex justify-between text-[11px] text-slate-400 font-mono">
+              <span>Mín: 30,000 MXN</span>
+              <span>Máx: 500,000 MXN</span>
+            </div>
+          </div>
+          <div class="md:col-span-5">
+            <button onclick="sendWhatsApp('sim')" class="w-full py-4 px-5 rounded-2xl text-slate-950 font-black text-sm flex items-center justify-center gap-2 shadow-xl hover:brightness-110 transition-all" style="background: linear-gradient(135deg, #22d3ee, #6366f1)">
+              <span class="material-symbols-outlined text-xl">send</span>
+              <span>Enviar Simulación a WhatsApp</span>
+            </button>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="simulador" class="demo-card rounded-3xl p-6 sm:p-8 space-y-6">
-      <div class="flex flex-wrap items-center justify-between gap-4">
-        <div>
-          <span class="text-xs font-extrabold uppercase tracking-widest text-cyan-400">Simulador Interactivo de Crecimiento</span>
-          <h2 class="font-display text-2xl sm:text-3xl font-bold text-white mt-1">Proyecta tu facturación con automatización IA</h2>
+    <!-- 3. CATÁLOGO DE SERVICIOS / PRODUCTOS ESTRELLA -->
+    <section id="catalogo" class="max-w-7xl mx-auto px-4 sm:px-6 space-y-8">
+      <div class="text-center max-w-2xl mx-auto space-y-2">
+        <span class="text-xs font-extrabold uppercase tracking-widest" style="color:#22d3ee">Catálogo Oficial</span>
+        <h2 class="text-3xl sm:text-4xl font-black text-white">Módulos Empresariales Integrados</h2>
+        <p class="text-sm text-slate-400">Arquitectura modular lista para conectar Stripe, MercadoPago, POS y WhatsApp Business.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="demo-card rounded-3xl p-5 flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <span class="inline-block px-2.5 py-0.5 rounded-full bg-white/10 text-[10px] font-bold uppercase tracking-wider" style="color:#22d3ee">Core SaaS</span>
+            <h3 class="font-extrabold text-white text-base">Radar MRR &amp; Churn</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">Mide ingresos recurrentes, retención neta y alertas tempranas de cancelación.</p>
+          </div>
+          <div class="pt-3 border-t border-white/10 flex items-center justify-between gap-2">
+            <span class="font-black text-sm" style="color:#22d3ee">$4,900 MXN/mód</span>
+            <button onclick="selectCatalogItem('Radar MRR &amp; Churn', '$4,900 MXN/mód')" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-all">Cotizar</button>
+          </div>
         </div>
-        <div class="px-4 py-2 rounded-2xl bg-emerald-500/15 border border-emerald-400/30 text-right">
-          <span class="text-[11px] text-emerald-300 block font-semibold">Proyección Mensual</span>
-          <span id="sim-projected" class="text-2xl font-black text-emerald-400">$185,625 MXN</span>
+<div class="demo-card rounded-3xl p-5 flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <span class="inline-block px-2.5 py-0.5 rounded-full bg-white/10 text-[10px] font-bold uppercase tracking-wider" style="color:#22d3ee">IA Generativa</span>
+            <h3 class="font-extrabold text-white text-base">Copiloto Gemini 2.5</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">Resumen ejecutivo diario enviado a tu WhatsApp con recomendaciones de campaña.</p>
+          </div>
+          <div class="pt-3 border-t border-white/10 flex items-center justify-between gap-2">
+            <span class="font-black text-sm" style="color:#22d3ee">$6,500 MXN/mód</span>
+            <button onclick="selectCatalogItem('Copiloto Gemini 2.5', '$6,500 MXN/mód')" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-all">Cotizar</button>
+          </div>
+        </div>
+<div class="demo-card rounded-3xl p-5 flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <span class="inline-block px-2.5 py-0.5 rounded-full bg-white/10 text-[10px] font-bold uppercase tracking-wider" style="color:#22d3ee">Tiempo Real</span>
+            <h3 class="font-extrabold text-white text-base">Multi-Sucursal Sonora</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">Compara ventas por colonia, turno y vendedor en tiempo real desde tu celular.</p>
+          </div>
+          <div class="pt-3 border-t border-white/10 flex items-center justify-between gap-2">
+            <span class="font-black text-sm" style="color:#22d3ee">$3,900 MXN/mód</span>
+            <button onclick="selectCatalogItem('Multi-Sucursal Sonora', '$3,900 MXN/mód')" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-all">Cotizar</button>
+          </div>
+        </div>
+<div class="demo-card rounded-3xl p-5 flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <span class="inline-block px-2.5 py-0.5 rounded-full bg-white/10 text-[10px] font-bold uppercase tracking-wider" style="color:#22d3ee">Finanzas</span>
+            <h3 class="font-extrabold text-white text-base">Exportador PDF / SAT</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">Reportes ejecutivos automatizados listos para socios y juntas mensuales.</p>
+          </div>
+          <div class="pt-3 border-t border-white/10 flex items-center justify-between gap-2">
+            <span class="font-black text-sm" style="color:#22d3ee">$2,500 MXN/mód</span>
+            <button onclick="selectCatalogItem('Exportador PDF / SAT', '$2,500 MXN/mód')" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-all">Cotizar</button>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="grid md:grid-cols-2 gap-6 items-center">
-        <div class="space-y-4">
-          <div>
-            <div class="flex justify-between text-xs font-bold mb-2">
-              <span class="text-slate-300">MRR Actual de tu Empresa</span>
-              <span id="base-label" class="text-cyan-300">$148,500 MXN</span>
-            </div>
-            <input id="base-slider" type="range" min="30000" max="500000" step="5000" value="148500" oninput="updateSim()" class="w-full accent-cyan-400 cursor-pointer" />
-          </div>
-          <div>
-            <div class="flex justify-between text-xs font-bold mb-2">
-              <span class="text-slate-300">Impulso esperado con Agente IA &amp; Embudo</span>
-              <span id="growth-label" class="text-indigo-300">+25%</span>
-            </div>
-            <input id="growth-slider" type="range" min="10" max="80" step="5" value="25" oninput="updateSim()" class="w-full accent-indigo-400 cursor-pointer" />
+    <!-- 4. DIFERENCIADOR EXCLUSIVO DEL GIRO -->
+    <section id="diferenciador" class="max-w-7xl mx-auto px-4 sm:px-6 space-y-8">
+      <div class="demo-card rounded-3xl p-6 sm:p-10 space-y-8">
+        <div class="max-w-2xl space-y-2">
+          <span class="text-xs font-extrabold uppercase tracking-widest" style="color:#22d3ee">Ingeniería &amp; Calidad</span>
+          <h2 class="text-2xl sm:text-4xl font-black text-white">¿Por qué PulseMetrics supera a Excel y hojas manuales?</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-5">
+          <div class="p-5 rounded-2xl bg-black/35 border border-white/10 space-y-2">
+          <span class="material-symbols-outlined text-2xl" style="color:#22d3ee">bolt</span>
+          <h3 class="font-bold text-white text-base">Datos en vivo sin captura manual</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">Conecta tu pasarela de cobro o punto de venta y observa cada venta reflejada al instante.</p>
+        </div>
+<div class="p-5 rounded-2xl bg-black/35 border border-white/10 space-y-2">
+          <span class="material-symbols-outlined text-2xl" style="color:#22d3ee">psychology</span>
+          <h3 class="font-bold text-white text-base">Predicción de demanda con IA</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">Identifica qué días y horarios convierten mejor en Guaymas, San Carlos o Hermosillo.</p>
+        </div>
+<div class="p-5 rounded-2xl bg-black/35 border border-white/10 space-y-2">
+          <span class="material-symbols-outlined text-2xl" style="color:#22d3ee">shield_lock</span>
+          <h3 class="font-bold text-white text-base">Acceso por roles y seguridad SSL</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">Controla qué métricas ve gerencia, ventas o contabilidad con cifrado de extremo a extremo.</p>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. TESTIMONIOS DE CLIENTES EN SONORA -->
+    <section id="resenas" class="max-w-7xl mx-auto px-4 sm:px-6 space-y-8">
+      <div class="text-center max-w-2xl mx-auto space-y-2">
+        <span class="text-xs font-extrabold uppercase tracking-widest" style="color:#22d3ee">Prueba Social Verificada</span>
+        <h2 class="text-3xl sm:text-4xl font-black text-white">Clientes satisfechos en Sonora</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-5">
+        <div class="demo-card rounded-3xl p-6 space-y-3">
+          <div class="flex text-amber-400 text-sm">★★★★★</div>
+          <p class="text-sm text-slate-200 leading-relaxed">"Antes tardábamos 3 días cerrando reportes en Excel; ahora vemos cada sucursal al minuto desde el teléfono."</p>
+          <div class="pt-2 border-t border-white/10">
+            <div class="font-bold text-white text-xs">Carlos Mendívil</div>
+            <div class="text-[11px] text-slate-400">Director Comercial • Hermosillo</div>
           </div>
         </div>
+<div class="demo-card rounded-3xl p-6 space-y-3">
+          <div class="flex text-amber-400 text-sm">★★★★★</div>
+          <p class="text-sm text-slate-200 leading-relaxed">"Las alertas de Gemini IA nos ayudaron a recuperar 19% de clientes inactivos en el primer mes."</p>
+          <div class="pt-2 border-t border-white/10">
+            <div class="font-bold text-white text-xs">Sofía Lizárraga</div>
+            <div class="text-[11px] text-slate-400">Fundadora SaaS • Guaymas</div>
+          </div>
+        </div>
+<div class="demo-card rounded-3xl p-6 space-y-3">
+          <div class="flex text-amber-400 text-sm">★★★★★</div>
+          <p class="text-sm text-slate-200 leading-relaxed">"La interfaz en modo Liquid Glass es rapidísima incluso en red móvil 4G."</p>
+          <div class="pt-2 border-t border-white/10">
+            <div class="font-bold text-white text-xs">Ing. Raúl Parra</div>
+            <div class="text-[11px] text-slate-400">Grupo Industrial • Obregón</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <div class="p-5 rounded-2xl bg-slate-950/70 border border-white/10 space-y-3">
-          <div class="flex justify-between text-sm">
-            <span class="text-slate-400">Incremento neto mensual:</span>
-            <span id="sim-diff" class="font-black text-cyan-300">+$37,125 MXN</span>
-          </div>
-          <div class="flex justify-between text-sm">
-            <span class="text-slate-400">Impacto anual acumulado:</span>
-            <span id="sim-annual" class="font-black text-emerald-400">+$445,500 MXN/año</span>
-          </div>
-          <button onclick="sendWhatsApp('sim')" class="w-full mt-2 py-3 rounded-xl bg-gradient-to-r from-cyan-400 to-indigo-500 text-slate-950 font-black text-sm flex items-center justify-center gap-2 shadow-lg hover:brightness-110 transition-all">
-            <span class="material-symbols-outlined text-lg">send</span>
-            <span>Implementar PulseMetrics en mi Empresa</span>
+    <!-- 6. UBICACIÓN, HORARIOS Y CTA FINAL -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="demo-card rounded-3xl p-6 sm:p-10 grid md:grid-cols-12 gap-8 items-center">
+        <div class="md:col-span-7 space-y-3">
+          <span class="text-xs font-extrabold uppercase tracking-widest" style="color:#22d3ee">Contacto Directo</span>
+          <h2 class="text-2xl sm:text-3xl font-black text-white">PulseMetrics AI</h2>
+          <p class="text-sm text-slate-300 flex items-center gap-2">
+            <span class="material-symbols-outlined text-lg" style="color:#22d3ee">location_on</span>
+            <span>Guaymas, San Carlos &amp; Cobertura Nacional Remota</span>
+          </p>
+          <p class="text-sm text-slate-300 flex items-center gap-2">
+            <span class="material-symbols-outlined text-lg" style="color:#22d3ee">schedule</span>
+            <span>Soporte Ejecutivo 24/7 • SLA 99.98%</span>
+          </p>
+        </div>
+        <div class="md:col-span-5 flex flex-col sm:flex-row md:flex-col gap-3">
+          <button onclick="sendWhatsApp('final')" class="w-full py-3.5 px-5 rounded-2xl text-slate-950 font-black text-sm flex items-center justify-center gap-2 shadow-xl hover:brightness-110 transition-all" style="background: linear-gradient(135deg, #22d3ee, #6366f1)">
+            <span class="material-symbols-outlined text-lg">chat</span>
+            <span>Quiero una Web Así para mi Negocio</span>
           </button>
         </div>
       </div>
@@ -186,39 +293,24 @@
   </main>
 
   <footer class="border-t border-white/10 py-8 text-center text-xs text-slate-400">
-    <p>Demo interactiva desarrollada por <strong class="text-cyan-300">HP Digital &amp; AI Agency</strong> • Guaymas, Sonora • Paquete Escalable / App IA</p>
+    <p>Demo interactiva de alto impacto desarrollada por <strong class="text-white">HP Digital &amp; AI Agency</strong> • Guaymas, Sonora • Flujo Google Stitch → Demo → Antigravity</p>
   </footer>
 
   <script>
-    const periodData = {
-      hoy: { mrr: '$148,500 MXN', bars: [45, 62, 55, 88, 95, 76] },
-      semana: { mrr: '$384,200 MXN', bars: [60, 74, 68, 92, 85, 98] },
-      mes: { mrr: '$1,485,000 MXN', bars: [52, 68, 79, 84, 91, 100] },
-    };
-
-    function setPeriod(p) {
-      const d = periodData[p];
-      document.getElementById('hero-mrr').innerText = d.mrr;
-      const bars = document.querySelectorAll('#chart-bars .bar-fill');
-      bars.forEach((b, i) => { b.style.height = d.bars[i] + '%'; });
-      ['hoy', 'semana', 'mes'].forEach((k) => {
-        const btn = document.getElementById('btn-' + k);
-        btn.className = k === p
-          ? 'px-3 py-1 rounded-lg text-xs font-bold bg-cyan-400 text-slate-950'
-          : 'px-3 py-1 rounded-lg text-xs font-bold text-slate-400 hover:text-white';
-      });
-    }
+    const SIM_MULT = 1.28;
+    const SIM_UNIT = "MXN";
+    const BRAND_NAME = "PulseMetrics AI";
 
     function updateSim() {
-      const base = Number(document.getElementById('base-slider').value);
-      const growth = Number(document.getElementById('growth-slider').value);
-      const projected = Math.round(base * (1 + growth / 100));
-      const diff = projected - base;
-      document.getElementById('base-label').innerText = '$' + base.toLocaleString('es-MX') + ' MXN';
-      document.getElementById('growth-label').innerText = '+' + growth + '%';
-      document.getElementById('sim-projected').innerText = '$' + projected.toLocaleString('es-MX') + ' MXN';
-      document.getElementById('sim-diff').innerText = '+$' + diff.toLocaleString('es-MX') + ' MXN';
-      document.getElementById('sim-annual').innerText = '+$' + (diff * 12).toLocaleString('es-MX') + ' MXN/año';
+      const val = Number(document.getElementById('sim-slider').value);
+      const out = Math.round(val * SIM_MULT);
+      document.getElementById('sim-input-val').innerText = val.toLocaleString('es-MX') + ' ' + SIM_UNIT;
+      document.getElementById('sim-result').innerText = out.toLocaleString('es-MX') + (SIM_UNIT === 'm²' ? ' BTU' : ' MXN');
+    }
+
+    function selectCatalogItem(itemTitle, itemPrice) {
+      const msg = `¡Hola Miguel! Vi en la demo de ${BRAND_NAME} el paquete "${itemTitle}" (${itemPrice}) y quiero cotizar una plataforma así para mi negocio.`;
+      window.open(`https://wa.me/526222259974?text=${encodeURIComponent(msg)}`, '_blank');
     }
 
     function toggleLiquidGlass() {
@@ -228,13 +320,16 @@
         : '<span>💎 Activar Liquid Glass</span>';
     }
 
-    function sendWhatsApp(mode) {
-      const projected = document.getElementById('sim-projected').innerText;
-      const msg = mode === 'sim'
-        ? `¡Hola Miguel! Probé la demo de PulseMetrics AI (proyección ${projected}) y quiero cotizar el Paquete Escalable para mi negocio.`
-        : '¡Hola Miguel! Vi la demo web de PulseMetrics AI y quiero cotizar un dashboard analítico para mi empresa.';
+    function sendWhatsApp(source) {
+      const simIn = document.getElementById('sim-input-val').innerText;
+      const simOut = document.getElementById('sim-result').innerText;
+      const msg = source === 'sim'
+        ? `¡Hola Miguel! Probé el simulador de ${BRAND_NAME} (${simIn} → ${simOut}) y quiero implementar una web con este nivel para mi empresa.`
+        : `¡Hola Miguel! Vi la demo completa de ${BRAND_NAME} con Modo Liquid Glass y quiero cotizar un proyecto así.`;
       window.open(`https://wa.me/526222259974?text=${encodeURIComponent(msg)}`, '_blank');
     }
+
+    updateSim();
   </script>
 </body>
 </html>
