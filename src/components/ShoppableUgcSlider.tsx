@@ -70,7 +70,7 @@ export const PORTFOLIO_DEMO_ITEMS: DemoSliderItem[] = [
     depositMxn: '$4,450 MXN (50% anticipo)',
     description: 'Menú digital interactivo en alta definición, comanda directa por WhatsApp para mesas, fotos de platillos y valoraciones locales en Google Maps.',
     features: ['Menú QR para mesas', 'Pedidos directos a WhatsApp', '1.er año Hosting y Dominio GRATIS', 'SEO Local en Google Maps'],
-    svgPreview: '/images/stitch/mariscos-el-rey-full.png',
+    svgPreview: '/images/stitch/mariscos-el-rey-full.webp',
     fullDemoUrl: '/demos/mariscos-el-rey.html',
     authorHandle: 'mariscos_el_rey_guaymas',
     videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-top-shot-of-a-table-with-food-and-hands-cutting-42475-large.mp4',
@@ -138,7 +138,7 @@ export const PORTFOLIO_DEMO_ITEMS: DemoSliderItem[] = [
     depositMxn: '$4,450 MXN (50% anticipo)',
     description: 'App web gastronómica de comida corrida: menú de 6 tiempos ($129 MXN), comanda de cocina y despacho a WhatsApp.',
     features: ['Menú rotativo diario a $129 MXN', 'Selector de guisado en cazuela caliente', 'Comanda directa a cocina por WhatsApp', 'Sin comisiones abusivas del 30%'],
-    svgPreview: '/images/stitch/la-olla-de-barro-hero.png',
+    svgPreview: '/images/stitch/la-olla-de-barro-hero.webp',
     fullDemoUrl: '/demos/la-olla-de-barro.html',
     authorHandle: 'la_olla_de_barro_guaymas',
     videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-chef-garnishing-a-plate-with-herbs-42523-large.mp4',
@@ -643,7 +643,7 @@ export default function ShoppableUgcSlider({
                         src={demo.svgPreview}
                         alt={demo.title}
                         className={`drop-shadow-[0_0_12px_rgba(56,189,248,0.3)] filter contrast-110 ${
-                          demo.svgPreview.endsWith('.png')
+                          demo.svgPreview.match(/\.(png|webp)$/)
                             ? 'w-full h-full object-cover object-top'
                             : 'max-h-full w-auto object-contain'
                         }`}
@@ -993,7 +993,7 @@ export default function ShoppableUgcSlider({
                       {NICHE_STITCH_PROMPTS[selectedDemoModal.slug] || 'Prompt de diseño Liquid Glass para Stitch...'}
                     </div>
 
-                    {selectedDemoModal.svgPreview.endsWith('.png') && (
+                    {selectedDemoModal.svgPreview.match(/\.(png|webp)$/) && (
                       <div className="rounded-xl overflow-hidden border border-indigo-400/30 bg-black/50 p-2 space-y-2">
                         <div className="flex items-center justify-between text-[10px] font-mono text-indigo-300">
                           <span>📸 BOCETO WIREFRAME GENERADO EN GOOGLE STITCH</span>

@@ -173,14 +173,14 @@ export default function InteractiveNicheBoceto({
         name: 'Gran Festín Imperial del Rey',
         price: 485,
         desc: 'Pulpo zarandeado a la leña, callo de hacha sonorense y camarón en aguachile negro tatemado con chiltepín.',
-        img: '/images/stitch/mariscos-festin-imperial.png',
+        img: '/images/stitch/mariscos-festin-imperial.webp',
         tag: 'Chef Signature 🔥',
       },
       molcajete: {
         name: 'Molcajete Volcánico Mar y Tierra',
         price: 440,
         desc: 'Arrachera al carbón de mezquite, camarones jumbo U-15, queso panela asado y salsa verde en piedra hirviendo.',
-        img: '/images/stitch/mariscos-molcajete.png',
+        img: '/images/stitch/mariscos-molcajete.webp',
         tag: 'Más Vendido 🌋',
       },
       tacos: {
@@ -1703,13 +1703,13 @@ export default function InteractiveNicheBoceto({
         name: 'Carne con Chile en Cazuela',
         desc: 'Pulpa de res suave en adobo tatemado de chile colorado con frijoles maneados de la sierra y queso regional.',
         tag: 'Firma de la Casa 🔥',
-        img: '/images/stitch/la-olla-de-barro-carne-con-chile.png',
+        img: '/images/stitch/la-olla-de-barro-carne-con-chile.webp',
       },
       {
         name: 'Costillita en Salsa Verde de Milpa',
         desc: 'Costilla de cerdo dorada en salsa de tomatillo asado con cilantro criollo y calabacitas tiernas.',
         tag: 'Receta de la Abuela',
-        img: '/images/stitch/la-olla-de-barro-hero.png',
+        img: '/images/stitch/la-olla-de-barro-hero.webp',
       },
       {
         name: 'Gallina Pinta Tradicional',

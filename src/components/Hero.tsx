@@ -17,7 +17,7 @@ export default function Hero() {
         <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full p-[2.5px] bg-gradient-to-tr from-sky-400 via-indigo-500 to-rose-400">
           <div className="relative w-full h-full rounded-full overflow-hidden bg-slate-900 border-2 border-white/20">
             <Image
-              src="/images/avatar.jpg"
+              src="/images/avatar.webp"
               alt={PROFILE_INFO.name}
               fill
               sizes="(max-width: 640px) 96px, 112px"

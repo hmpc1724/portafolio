@@ -37,7 +37,7 @@ export default function AboutSection() {
             <div className="relative w-20 h-20 rounded-2xl flex-shrink-0 overflow-hidden p-[2px] bg-gradient-to-tr from-sky-400 via-indigo-500 to-purple-600 shadow-lg shadow-sky-500/20">
               <div className="relative w-full h-full rounded-[14px] overflow-hidden bg-slate-950">
                 <Image
-                  src="/images/avatar.jpg"
+                  src="/images/avatar.webp"
                   alt={PROFILE_INFO.name}
                   fill
                   sizes="80px"

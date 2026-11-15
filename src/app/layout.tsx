@@ -17,7 +17,12 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
+const SITE_URL = 'https://portafolio.agencia-liquid-glass.workers.dev';
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  alternates: { canonical: '/' },
+  robots: { index: true, follow: true },
   title: 'Hector Palomares — Diseñador & Desarrollador Full Stack | Liquid Glass UI',
   description:
     'Portafolio de Hector Miguel Palomares Cota, desarrollador full stack senior especializado en interfaces Liquid Glass con Next.js, React y TypeScript. 10 proyectos demo de alta calidad.',
@@ -36,6 +41,16 @@ export const metadata: Metadata = {
     title: 'Hector Palomares — Liquid Glass Portfolio',
     description: 'Experiencias web de cristal líquido, alto rendimiento y código limpio.',
     type: 'website',
+    url: SITE_URL,
+    siteName: 'Hector Palomares — Liquid Glass Portfolio',
+    locale: 'es_MX',
+    images: [{ url: '/hp-logo-holo.jpg', width: 1200, height: 630, alt: 'Hector Palomares — Liquid Glass Portfolio' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Hector Palomares — Liquid Glass Portfolio',
+    description: 'Experiencias web de cristal líquido, alto rendimiento y código limpio.',
+    images: ['/hp-logo-holo.jpg'],
   },
 };
 

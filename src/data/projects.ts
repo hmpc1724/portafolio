@@ -122,7 +122,7 @@ export const PROJECTS: Project[] = [
     packagePrice: '$8,900 MXN',
     description: 'App web gastronómica de comida corrida: menú de 6 tiempos ($129), comanda de cocina y despacho a WhatsApp.',
     longDescription: 'La Olla de Barro es una aplicación web interactiva (PWA) diseñada para negocios gastronómicos tradicionales y dark kitchens. Permite al comensal personalizar su menú del día de 6 tiempos, elegir su guisado en cazuela caliente, indicar el nivel de picante, seleccionar guarniciones y despachar el pedido con ticket formal de cocina directamente al WhatsApp del negocio, evitando comisiones del 30% de plataformas de delivery.',
-    image: '/images/stitch/la-olla-de-barro-hero.png',
+    image: '/images/stitch/la-olla-de-barro-hero.webp',
     stack: ['React', 'Vite', 'Tailwind CSS', 'Lucide React', 'WhatsApp API'],
     features: [
       'Menú del día rotativo de 6 tiempos a $129 MXN con actualización en segundos',
@@ -380,7 +380,7 @@ export const PROJECTS: Project[] = [
     packagePrice: '$8,900 MXN',
     description: 'Menú digital interactivo en alta definición, comanda directa por WhatsApp para mesas, fotos de platillos y valoraciones locales en Google Maps.',
     longDescription: 'Mariscos & Parrilla El Rey es una plataforma web gastronómica de alta conversión diseñada para restaurantes y marisquerías de Guaymas y Sonora. Permite a los comensales visualizar el menú digital QR desde su mesa o celular, ordenar con fotos reales generadas y bocetadas en Google Stitch, seleccionar salsas artesanales con chiltepín sonorense y despachar comandas completas con número de mesa directo a WhatsApp, ahorrando comisiones de plataformas de delivery.',
-    image: '/images/stitch/mariscos-el-rey-full.png',
+    image: '/images/stitch/mariscos-el-rey-full.webp',
     stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Google Stitch UI', 'WhatsApp API'],
     features: [
       'Menú digital interactivo con comanda por número de mesa en tiempo real',
@@ -573,7 +573,7 @@ export const CERTIFICATES: Certificate[] = [
     duration: '28 horas en total',
     category: 'frontend',
     categoryLabel: 'Frontend & Frameworks',
-    image: '/certificates/master-frameworks-javascript.png',
+    image: '/certificates/master-frameworks-javascript.webp',
     pdfUrl: '/certificates/master-frameworks-javascript.pdf',
     credentialId: 'UC-c0d1da80-8389-4747-8962-dd975d7d94d6',
     verificationUrl: 'https://ude.my/UC-c0d1da80-8389-4747-8962-dd975d7d94d6',
@@ -590,7 +590,7 @@ export const CERTIFICATES: Certificate[] = [
     duration: '53 horas en total',
     category: 'web',
     categoryLabel: 'Fundamentos & Estándares Web',
-    image: '/certificates/desarrollo-web-moderno.png',
+    image: '/certificates/desarrollo-web-moderno.webp',
     pdfUrl: '/certificates/desarrollo-web-moderno.pdf',
     credentialId: 'UC-9a5999d0-6416-4933-889e-901a824e2725',
     verificationUrl: 'https://ude.my/UC-9a5999d0-6416-4933-889e-901a824e2725',
@@ -607,7 +607,7 @@ export const CERTIFICATES: Certificate[] = [
     duration: '6 horas',
     category: 'ai',
     categoryLabel: 'IA en Producción',
-    image: '/certificates/desarrollo-ia-produccion.png',
+    image: '/certificates/desarrollo-ia-produccion.webp',
     pdfUrl: '/certificates/desarrollo-ia-produccion.pdf',
     description: 'Jornadas formativas de alto nivel sobre integración de Inteligencia Artificial en flujos de producción real, despliegue de aplicaciones y optimización de productividad de software.',
     badgeColor: 'from-emerald-500 to-teal-600',
@@ -622,7 +622,7 @@ export const CERTIFICATES: Certificate[] = [
     duration: '4 horas',
     category: 'ai',
     categoryLabel: 'Inteligencia Artificial',
-    image: '/certificates/iniciacion-desarrollo-ia-mouredev.png',
+    image: '/certificates/iniciacion-desarrollo-ia-mouredev.webp',
     pdfUrl: '/certificates/iniciacion-desarrollo-ia-mouredev.pdf',
     description: 'Curso de desarrollo con IA para el nuevo programador. Asimilación de modelos LLM, ingeniería de prompts, pair programming asistido por IA y automatización de flujos de desarrollo.',
     badgeColor: 'from-cyan-500 to-blue-600',
@@ -637,7 +637,7 @@ export const CERTIFICATES: Certificate[] = [
     duration: '6 horas',
     category: 'security',
     categoryLabel: 'Ciberseguridad & Hacking Ético',
-    image: '/certificates/hacking-etico-aplicaciones.png',
+    image: '/certificates/hacking-etico-aplicaciones.webp',
     pdfUrl: '/certificates/hacking-etico-aplicaciones.pdf',
     description: 'Capacitación en seguridad informática aplicada, identificación de vulnerabilidades web (OWASP Top 10), análisis de vectores de ataque y buenas prácticas de protección y blindaje.',
     badgeColor: 'from-emerald-600 to-green-700',
@@ -659,7 +659,7 @@ export const PROFILE_INFO = {
   radarUrl:
     typeof window !== 'undefined' && window.location.hostname === 'localhost'
       ? 'http://localhost:3240'
-      : 'https://agencia-liquid-glass.vercel.app',
+      : 'https://agencia-liquid-glass.agencia-liquid-glass.workers.dev',
   status: 'Disponible para nuevos proyectos',
   email: 'abrakza03@gmail.com',
   social: {

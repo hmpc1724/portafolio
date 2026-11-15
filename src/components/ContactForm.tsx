@@ -292,7 +292,7 @@ export default function ContactForm() {
                       href={`${
                         typeof window !== 'undefined' && window.location.hostname === 'localhost'
                           ? 'http://localhost:3240'
-                          : 'https://agencia-liquid-glass.vercel.app'
+                          : 'https://agencia-liquid-glass.agencia-liquid-glass.workers.dev'
                       }/?inbound=1&name=${encodeURIComponent(
                         lastSubmitted.name
                       )}&tier=${encodeURIComponent(
