@@ -359,14 +359,48 @@ interface ShoppableUgcSliderProps {
   className?: string;
 }
 
+type SliderCategory = 'all' | 'saas' | 'local' | 'commerce';
+
+const SLIDER_CATEGORIES: Array<{ id: SliderCategory; label: string }> = [
+  { id: 'all', label: 'Todos' },
+  { id: 'saas', label: 'SaaS & IA' },
+  { id: 'local', label: 'Negocios Locales' },
+  { id: 'commerce', label: 'E-Commerce & Turismo' },
+];
+
+const SLUG_CATEGORY: Record<string, Exclude<SliderCategory, 'all'>> = {
+  'radar-clientes': 'saas',
+  'pulse-metrics': 'saas',
+  'novapay-billing': 'saas',
+  'obramaestra-cad': 'saas',
+  'cinevault-v3': 'saas',
+  'artisan-market': 'local',
+  'la-olla-de-barro': 'local',
+  'dentcare-clinica': 'local',
+  'aircon-climas': 'local',
+  'limpiapro-servicios': 'local',
+  'solartec-energia': 'local',
+  'studio-veloce': 'local',
+  'aura-creative': 'local',
+  'zenith-architects': 'commerce',
+  'luxury-hotel-guest-app': 'commerce',
+  'lumina-store': 'commerce',
+  'kroma-visuals': 'commerce',
+};
+
 export default function ShoppableUgcSlider({
   demos = PORTFOLIO_DEMO_ITEMS,
-  title = 'Portafolio Oficial: 10 Demos Interactivos en Carrusel 3D',
+  title = 'Portafolio Oficial: 17 Demos Interactivos en Carrusel 3D',
   subtitle = 'Explora cada desarrollo web funcional adaptado a los principales nichos comerciales de Sonora. Toca cualquier tarjeta para probar el demo o cotizar con anticipo del 50%.',
-  badgeText = '🚀 10 Demos Oficiales • Coverflow 3D Liquid Glass',
+  badgeText = '🚀 17 Demos Oficiales • Coverflow 3D Liquid Glass',
   phoneNumber = '526222259974',
   className = '',
 }: ShoppableUgcSliderProps) {
+  const [activeCategory, setActiveCategory] = useState<SliderCategory>('all');
+  const filteredDemos =
+    activeCategory === 'all'
+      ? demos
+      : demos.filter((d) => (SLUG_CATEGORY[d.slug] ?? 'local') === activeCategory);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedDemoModal, setSelectedDemoModal] = useState<DemoSliderItem | null>(null);
   const [viewportMode, setViewportMode] = useState<'desktop' | 'mobile'>('desktop');
@@ -408,12 +442,12 @@ export default function ShoppableUgcSlider({
   }, [currentIndex]);
 
   const handlePrev = useCallback(() => {
-    setCurrentIndex((prev) => (prev > 0 ? prev - 1 : demos.length - 1));
-  }, [demos.length]);
+    setCurrentIndex((prev) => (prev > 0 ? prev - 1 : filteredDemos.length - 1));
+  }, [filteredDemos.length]);
 
   const handleNext = useCallback(() => {
-    setCurrentIndex((prev) => (prev < demos.length - 1 ? prev + 1 : 0));
-  }, [demos.length]);
+    setCurrentIndex((prev) => (prev < filteredDemos.length - 1 ? prev + 1 : 0));
+  }, [filteredDemos.length]);
 
   // Teclas de dirección
   useEffect(() => {
@@ -479,6 +513,34 @@ export default function ShoppableUgcSlider({
         <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
           {subtitle}
         </p>
+
+        {/* FILTROS POR CATEGORÍA */}
+        <div className="flex flex-wrap items-center justify-center gap-2 pt-3">
+          {SLIDER_CATEGORIES.map((cat) => {
+            const count =
+              cat.id === 'all'
+                ? demos.length
+                : demos.filter((d) => (SLUG_CATEGORY[d.slug] ?? 'local') === cat.id).length;
+            const active = activeCategory === cat.id;
+            return (
+              <button
+                key={cat.id}
+                type="button"
+                onClick={() => {
+                  setActiveCategory(cat.id);
+                  setCurrentIndex(0);
+                }}
+                className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer border ${
+                  active
+                    ? 'bg-gradient-to-r from-sky-500 to-indigo-600 text-white border-sky-400/50 shadow-md shadow-sky-500/25'
+                    : 'bg-white/60 dark:bg-slate-900/70 text-slate-700 dark:text-slate-300 border-slate-300/60 dark:border-white/15 hover:border-cyan-400/50'
+                }`}
+              >
+                {cat.label} ({count})
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       {/* CONTENEDOR 3D COVERFLOW DEL CARRUSEL DE DEMOS */}
@@ -511,17 +573,17 @@ export default function ShoppableUgcSlider({
 
         {/* PISTA DE TARJETAS COVERFLOW */}
         <div className="relative w-full h-[430px] xs:h-[460px] sm:h-[500px] md:h-[540px] flex items-center justify-center overflow-hidden">
-          {demos.map((demo, idx) => {
+          {filteredDemos.map((demo, idx) => {
             const offset = idx - currentIndex;
             const absOffset = Math.abs(offset);
 
-            if (absOffset > 2 && absOffset !== demos.length - 1 && absOffset !== demos.length - 2) {
+            if (absOffset > 2 && absOffset !== filteredDemos.length - 1 && absOffset !== filteredDemos.length - 2) {
               return null;
             }
 
             let normalizedOffset = offset;
-            if (offset > demos.length / 2) normalizedOffset -= demos.length;
-            if (offset < -demos.length / 2) normalizedOffset += demos.length;
+            if (offset > filteredDemos.length / 2) normalizedOffset -= filteredDemos.length;
+            if (offset < -filteredDemos.length / 2) normalizedOffset += filteredDemos.length;
 
             const isCenter = normalizedOffset === 0;
             const isLeft = normalizedOffset < 0;
@@ -753,7 +815,7 @@ export default function ShoppableUgcSlider({
 
       {/* PAGINACIÓN CON BULLETS DINÁMICOS */}
       <div className="flex items-center justify-center gap-2 mt-4 relative z-20">
-        {demos.map((d, idx) => (
+        {filteredDemos.map((d, idx) => (
           <button
             key={d.id}
             type="button"

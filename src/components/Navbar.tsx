@@ -30,11 +30,10 @@ export default function Navbar() {
 
   const navLinks = [
     { name: 'Inicio', href: '/#inicio' },
-    { name: 'Agencia', href: 'https://agencia-liquid-glass.agencia-liquid-glass.workers.dev' },
-    { name: 'Proyectos 3D', href: '/#demos-carrusel' },
-    { name: 'Paquetes', href: '/#paquetes' },
-    { name: 'Certificados', href: '/#certificados' },
     { name: 'Sobre mí', href: '/#sobre-mi' },
+    { name: 'Certificados', href: '/#certificados' },
+    { name: 'Proyectos', href: '/#proyectos' },
+    { name: 'Paquetes', href: '/#paquetes' },
     { name: 'Contacto', href: '/#contacto' },
   ];
 
@@ -119,6 +118,17 @@ export default function Navbar() {
                 <div className="w-4 h-4" />
               )}
             </button>
+
+            {/* Agencia Link */}
+            <a
+              href="https://agencia-liquid-glass.agencia-liquid-glass.workers.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:inline-flex items-center gap-1 text-xs font-semibold px-3 py-2 rounded-xl border border-cyan-400/35 bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 hover:bg-cyan-500/20 transition-colors"
+            >
+              Agencia
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </a>
 
             {/* CTA Button */}
             <a
