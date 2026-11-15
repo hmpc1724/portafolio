@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lumina Store — E-Commerce Boutique &amp; Catálogo Flash</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background: #0f070c; color: #fdf2f8; font-family: 'Plus Jakarta Sans', sans-serif; transition: background 0.35s ease; }
+    .font-serif-display { font-family: 'Playfair Display', serif; }
+    .demo-card { background: rgba(30, 12, 24, 0.86); border: 1px solid rgba(244, 114, 182, 0.25); transition: all 0.35s ease; }
+    .header-nav { background: rgba(15, 7, 12, 0.9); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(244, 114, 182, 0.25); }
+    body.liquid-glass-mode { background: radial-gradient(circle at top right, #500724 0%, #030712 55%, #0c4a6e 100%) !important; }
+    body.liquid-glass-mode .demo-card {
+      background: rgba(15, 23, 42, 0.56) !important;
+      backdrop-filter: blur(22px) saturate(160%) !important;
+      border-color: rgba(103, 232, 249, 0.45) !important;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.14) !important;
+    }
+    body.liquid-glass-mode .header-nav {
+      background: rgba(10, 18, 34, 0.72) !important;
+      backdrop-filter: blur(24px) !important;
+      border-color: rgba(103, 232, 249, 0.35) !important;
+    }
+  </style>
+</head>
+<body class="min-h-screen antialiased">
+  <div class="fixed inset-0 pointer-events-none -z-10">
+    <div class="absolute -top-24 right-10 w-96 h-96 bg-pink-500/20 rounded-full blur-[130px]"></div>
+    <div class="absolute bottom-0 left-10 w-80 h-80 bg-rose-500/15 rounded-full blur-[120px]"></div>
+  </div>
+
+  <header class="header-nav sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+      <div class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-pink-400 to-rose-500 flex items-center justify-center text-slate-950 font-black">
+          <span class="material-symbols-outlined text-xl">shopping_bag</span>
+        </div>
+        <span class="font-serif-display font-bold text-white text-lg">Lumina Boutique</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <button id="glass-toggle-btn" onclick="toggleLiquidGlass()" class="px-3.5 py-2 rounded-xl bg-pink-500/15 hover:bg-pink-500/25 border border-pink-400/40 text-pink-200 font-bold text-xs transition-all">
+          <span>💎 Activar Liquid Glass</span>
+        </button>
+        <div class="px-3 py-2 rounded-xl bg-white/10 text-xs font-bold text-white flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-base text-pink-300">shopping_cart</span>
+          <span id="cart-count">0</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-10 space-y-8">
+    <div class="text-center max-w-2xl mx-auto space-y-3">
+      <span class="inline-flex px-3 py-1 rounded-full bg-pink-500/15 border border-pink-400/30 text-pink-300 text-xs font-bold">E-COMMERCE BOUTIQUE • CHECKOUT DIRECTO WHATSAPP</span>
+      <h1 class="font-serif-display text-4xl sm:text-5xl font-bold text-white">Nueva Colección Resort Sonora</h1>
+      <p class="text-slate-300 text-sm">Agrega prendas a tu bolsa y envía tu pedido con tallas directo a WhatsApp o pago con tarjeta.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5">
+      <div class="demo-card rounded-3xl p-5 flex flex-col justify-between space-y-4">
+        <div class="h-44 rounded-2xl bg-gradient-to-br from-rose-900/60 via-pink-900/30 to-slate-900 border border-white/10 flex flex-col items-center justify-center">
+          <span class="material-symbols-outlined text-5xl text-pink-300">styler</span>
+          <span class="text-xs text-pink-200 mt-2 font-semibold">Edición Limitada</span>
+        </div>
+        <div>
+          <h3 class="font-extrabold text-white text-base">Vestido Lino Bahía Sunset</h3>
+          <p class="text-xs text-slate-400 mt-1">100% lino fresco orgánico • Tallas S / M / L</p>
+        </div>
+        <div class="flex items-center justify-between pt-2 border-t border-white/10">
+          <span class="text-lg font-black text-pink-300">$1,290 MXN</span>
+          <button onclick="addItem('Vestido Lino Bahía Sunset', 1290)" class="px-3.5 py-2 rounded-xl bg-gradient-to-r from-pink-400 to-rose-500 text-slate-950 font-black text-xs hover:brightness-110">Agregar +</button>
+        </div>
+      </div>
+
+      <div class="demo-card rounded-3xl p-5 flex flex-col justify-between space-y-4">
+        <div class="h-44 rounded-2xl bg-gradient-to-br from-amber-900/50 via-rose-900/30 to-slate-900 border border-white/10 flex flex-col items-center justify-center">
+          <span class="material-symbols-outlined text-5xl text-amber-300">eyeglasses</span>
+          <span class="text-xs text-amber-200 mt-2 font-semibold">UV400 Polarizado</span>
+        </div>
+        <div>
+          <h3 class="font-extrabold text-white text-base">Lentes Sol San Carlos Gold</h3>
+          <p class="text-xs text-slate-400 mt-1">Armazón acetato italiano + estuche rígido</p>
+        </div>
+        <div class="flex items-center justify-between pt-2 border-t border-white/10">
+          <span class="text-lg font-black text-pink-300">$890 MXN</span>
+          <button onclick="addItem('Lentes Sol San Carlos Gold', 890)" class="px-3.5 py-2 rounded-xl bg-gradient-to-r from-pink-400 to-rose-500 text-slate-950 font-black text-xs hover:brightness-110">Agregar +</button>
+        </div>
+      </div>
+
+      <div class="demo-card rounded-3xl p-5 flex flex-col justify-between space-y-4">
+        <div class="h-44 rounded-2xl bg-gradient-to-br from-purple-900/50 via-pink-900/30 to-slate-900 border border-white/10 flex flex-col items-center justify-center">
+          <span class="material-symbols-outlined text-5xl text-purple-300">work</span>
+          <span class="text-xs text-purple-200 mt-2 font-semibold">Piel Vegana</span>
+        </div>
+        <div>
+          <h3 class="font-extrabold text-white text-base">Bolso Tote Perla Marina</h3>
+          <p class="text-xs text-slate-400 mt-1">Compartimento térmico + correa desmontable</p>
+        </div>
+        <div class="flex items-center justify-between pt-2 border-t border-white/10">
+          <span class="text-lg font-black text-pink-300">$1,450 MXN</span>
+          <button onclick="addItem('Bolso Tote Perla Marina', 1450)" class="px-3.5 py-2 rounded-xl bg-gradient-to-r from-pink-400 to-rose-500 text-slate-950 font-black text-xs hover:brightness-110">Agregar +</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-card rounded-3xl p-6 flex flex-wrap items-center justify-between gap-4">
+      <div>
+        <span class="text-xs text-slate-400 block">Resumen de tu Bolsa</span>
+        <div id="cart-summary" class="text-lg font-black text-white">0 artículos • $0 MXN</div>
+      </div>
+      <button onclick="sendWhatsApp()" class="px-6 py-3 rounded-xl bg-gradient-to-r from-pink-400 to-rose-500 text-slate-950 font-black text-sm flex items-center gap-2 shadow-lg hover:brightness-110">
+        <span class="material-symbols-outlined text-lg">shopping_cart_checkout</span>
+        <span>Finalizar Pedido por WhatsApp</span>
+      </button>
+    </div>
+  </main>
+
+  <footer class="border-t border-white/10 py-8 text-center text-xs text-slate-400">
+    Demo interactiva desarrollada por <strong class="text-pink-300">HP Digital &amp; AI Agency</strong> • Guaymas, Sonora
+  </footer>
+
+  <script>
+    const cart = [];
+    function addItem(name, price) {
+      cart.push({ name, price });
+      const total = cart.reduce((s, i) => s + i.price, 0);
+      document.getElementById('cart-count').innerText = cart.length;
+      document.getElementById('cart-summary').innerText = `${cart.length} artículo(s) • $${total.toLocaleString('es-MX')} MXN`;
+    }
+    function toggleLiquidGlass() {
+      const isGlass = document.body.classList.toggle('liquid-glass-mode');
+      document.getElementById('glass-toggle-btn').innerHTML = isGlass ? '<span>✨ Volver a Estilo Original</span>' : '<span>💎 Activar Liquid Glass</span>';
+    }
+    function sendWhatsApp() {
+      const list = cart.length ? cart.map(i => `• ${i.name} ($${i.price})`).join('\n') : '• Consulta de tienda e-commerce boutique';
+      const total = cart.reduce((s, i) => s + i.price, 0);
+      const msg = `¡Hola Miguel! Probé la tienda Lumina Store:\n${list}\nTotal: $${total} MXN\nQuiero cotizar una tienda online así para mi marca.`;
+      window.open(`https://wa.me/526222259974?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+  </script>
+</body>
+</html>

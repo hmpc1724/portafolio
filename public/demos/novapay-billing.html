@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NovaPay — Facturación CFDI 4.0 &amp; Cobranza Inteligente</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background: #040d0a; color: #e2e8f0; font-family: 'Plus Jakarta Sans', sans-serif; transition: background 0.35s ease; }
+    .demo-card { background: rgba(6, 24, 18, 0.85); border: 1px solid rgba(16, 185, 129, 0.25); transition: all 0.35s ease; }
+    .header-nav { background: rgba(4, 13, 10, 0.9); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(16, 185, 129, 0.25); }
+    body.liquid-glass-mode { background: radial-gradient(circle at top left, #064e3b 0%, #030712 55%, #082f49 100%) !important; }
+    body.liquid-glass-mode .demo-card {
+      background: rgba(10, 28, 36, 0.56) !important;
+      backdrop-filter: blur(22px) saturate(160%) !important;
+      border-color: rgba(56, 189, 248, 0.4) !important;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.14) !important;
+    }
+    body.liquid-glass-mode .header-nav {
+      background: rgba(8, 20, 32, 0.72) !important;
+      backdrop-filter: blur(24px) !important;
+      border-color: rgba(56, 189, 248, 0.35) !important;
+    }
+  </style>
+</head>
+<body class="min-h-screen antialiased">
+  <div class="fixed inset-0 pointer-events-none -z-10">
+    <div class="absolute -top-24 right-10 w-96 h-96 bg-emerald-500/20 rounded-full blur-[130px]"></div>
+    <div class="absolute bottom-0 left-10 w-80 h-80 bg-teal-500/15 rounded-full blur-[120px]"></div>
+  </div>
+
+  <header class="header-nav sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+      <div class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-400 to-teal-500 flex items-center justify-center text-slate-950 font-black">
+          <span class="material-symbols-outlined text-xl">receipt_long</span>
+        </div>
+        <span class="font-extrabold text-white text-base tracking-tight">NovaPay CFDI 4.0</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <button id="glass-toggle-btn" onclick="toggleLiquidGlass()" class="px-3.5 py-2 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-400/40 text-emerald-200 font-bold text-xs transition-all">
+          <span>💎 Activar Liquid Glass</span>
+        </button>
+        <button onclick="sendWhatsApp()" class="hidden sm:flex px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-400 to-teal-400 text-slate-950 font-black text-xs items-center gap-1.5">
+          <span class="material-symbols-outlined text-base">chat</span>
+          <span>Contratar Sistema</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-10 space-y-10">
+    <section class="grid lg:grid-cols-12 gap-8 items-center">
+      <div class="lg:col-span-6 space-y-5">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-400/30 text-emerald-300 text-xs font-bold">
+          <span>TIMBRADO SAT CFDI 4.0 + ANTICIPOS 50%</span>
+        </span>
+        <h1 class="text-4xl sm:text-5xl font-black text-white leading-tight">
+          Cobra anticipos del 50% y <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-cyan-300">factura en 1 clic</span>.
+        </h1>
+        <p class="text-slate-300 text-base leading-relaxed">
+          Sistema fintech para agencias, despachos y comercios en México. Calcula IVA 16%, controla pagos parciales, genera enlaces de cobro Stripe/SPEI y envía recibos por WhatsApp.
+        </p>
+        <div class="grid grid-cols-3 gap-3 pt-2">
+          <div class="demo-card rounded-2xl p-3.5 text-center">
+            <div class="text-xl font-black text-emerald-400">0.8s</div>
+            <div class="text-[11px] text-slate-400">Timbrado XML/PDF</div>
+          </div>
+          <div class="demo-card rounded-2xl p-3.5 text-center">
+            <div class="text-xl font-black text-cyan-300">100%</div>
+            <div class="text-[11px] text-slate-400">Válido SAT 4.0</div>
+          </div>
+          <div class="demo-card rounded-2xl p-3.5 text-center">
+            <div class="text-xl font-black text-amber-300">50/50</div>
+            <div class="text-[11px] text-slate-400">Control Anticipos</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-6 demo-card rounded-3xl p-6 space-y-5">
+        <div class="flex items-center justify-between border-b border-white/10 pb-3">
+          <div>
+            <h2 class="font-extrabold text-white text-lg">Calculadora &amp; Timbrado en Vivo</h2>
+            <p class="text-xs text-emerald-300">Simula el cobro de tu próximo proyecto o factura</p>
+          </div>
+          <span class="font-mono text-xs px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">RFC VERIFICADO</span>
+        </div>
+
+        <div class="space-y-3">
+          <div>
+            <label class="text-xs font-bold text-slate-300 block mb-1.5">Concepto / Servicio</label>
+            <input id="concept" type="text" value="Desarrollo Web Liquid Glass + Hosting Anual" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950/70 border border-white/15 text-sm text-white focus:outline-none focus:border-emerald-400" />
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="text-xs font-bold text-slate-300 block mb-1.5">Subtotal (MXN)</label>
+              <input id="subtotal" type="number" value="8900" oninput="calcCfdi()" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950/70 border border-white/15 text-sm text-white font-mono focus:outline-none focus:border-emerald-400" />
+            </div>
+            <div>
+              <label class="text-xs font-bold text-slate-300 block mb-1.5">Aplicar IVA (16%)</label>
+              <select id="iva-mode" onchange="calcCfdi()" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950/70 border border-white/15 text-sm text-white focus:outline-none focus:border-emerald-400">
+                <option value="1.16">+ 16% IVA (Factura Fiscal)</option>
+                <option value="1">Sin IVA (Nota de Remisión)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-slate-950/75 border border-white/10 space-y-2 text-sm">
+          <div class="flex justify-between text-slate-400"><span>IVA Calculado:</span><span id="iva-val" class="font-mono text-white">$1,424.00 MXN</span></div>
+          <div class="flex justify-between text-slate-400"><span>Total Factura:</span><span id="total-val" class="font-mono font-bold text-white">$10,324.00 MXN</span></div>
+          <div class="flex justify-between pt-2 border-t border-white/10 items-center">
+            <span class="font-bold text-emerald-300">Anticipo 50% para iniciar:</span>
+            <span id="deposit-val" class="text-xl font-black text-emerald-400 font-mono">$5,162.00 MXN</span>
+          </div>
+        </div>
+
+        <button onclick="sendWhatsApp()" class="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-400 to-teal-400 text-slate-950 font-black text-sm flex items-center justify-center gap-2 shadow-lg hover:brightness-110 transition-all">
+          <span class="material-symbols-outlined text-lg">verified</span>
+          <span>Enviar Comprobante CFDI por WhatsApp</span>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10 py-8 text-center text-xs text-slate-400">
+    Demo interactiva desarrollada por <strong class="text-emerald-300">HP Digital &amp; AI Agency</strong> • Guaymas, Sonora
+  </footer>
+
+  <script>
+    function calcCfdi() {
+      const sub = Math.max(0, Number(document.getElementById('subtotal').value) || 0);
+      const mult = Number(document.getElementById('iva-mode').value);
+      const total = sub * mult;
+      const iva = total - sub;
+      const dep = total * 0.5;
+      document.getElementById('iva-val').innerText = '$' + iva.toLocaleString('es-MX', { minimumFractionDigits: 2 }) + ' MXN';
+      document.getElementById('total-val').innerText = '$' + total.toLocaleString('es-MX', { minimumFractionDigits: 2 }) + ' MXN';
+      document.getElementById('deposit-val').innerText = '$' + dep.toLocaleString('es-MX', { minimumFractionDigits: 2 }) + ' MXN';
+    }
+    function toggleLiquidGlass() {
+      const isGlass = document.body.classList.toggle('liquid-glass-mode');
+      document.getElementById('glass-toggle-btn').innerHTML = isGlass ? '<span>✨ Volver a Estilo Original</span>' : '<span>💎 Activar Liquid Glass</span>';
+    }
+    function sendWhatsApp() {
+      const concept = document.getElementById('concept').value;
+      const total = document.getElementById('total-val').innerText;
+      const dep = document.getElementById('deposit-val').innerText;
+      const msg = `¡Hola Miguel! Probé la demo de NovaPay CFDI 4.0:\n• Concepto: ${concept}\n• Total: ${total}\n• Anticipo 50%: ${dep}\nQuiero cotizar un sistema de facturación/cobranza similar.`;
+      window.open(`https://wa.me/526222259974?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+  </script>
+</body>
+</html>

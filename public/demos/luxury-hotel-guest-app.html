@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hotel &amp; Suites Cortés — Concierge VIP &amp; Reservas Directas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background: #040b18; color: #f1f5f9; font-family: 'Plus Jakarta Sans', sans-serif; transition: background 0.35s ease; }
+    .font-serif-display { font-family: 'Playfair Display', serif; }
+    .demo-card { background: rgba(10, 23, 46, 0.86); border: 1px solid rgba(251, 191, 36, 0.25); transition: all 0.35s ease; }
+    .header-nav { background: rgba(4, 11, 24, 0.9); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(251, 191, 36, 0.25); }
+    body.liquid-glass-mode { background: radial-gradient(circle at top right, #1e3a8a 0%, #030712 55%, #0f172a 100%) !important; }
+    body.liquid-glass-mode .demo-card {
+      background: rgba(12, 26, 52, 0.56) !important;
+      backdrop-filter: blur(22px) saturate(160%) !important;
+      border-color: rgba(103, 232, 249, 0.45) !important;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.14) !important;
+    }
+    body.liquid-glass-mode .header-nav {
+      background: rgba(8, 20, 42, 0.72) !important;
+      backdrop-filter: blur(24px) !important;
+      border-color: rgba(103, 232, 249, 0.35) !important;
+    }
+  </style>
+</head>
+<body class="min-h-screen antialiased">
+  <div class="fixed inset-0 pointer-events-none -z-10">
+    <div class="absolute -top-24 right-10 w-96 h-96 bg-amber-500/15 rounded-full blur-[130px]"></div>
+    <div class="absolute bottom-0 left-10 w-96 h-96 bg-blue-600/20 rounded-full blur-[130px]"></div>
+  </div>
+
+  <header class="header-nav sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+      <div class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-300 to-amber-500 flex items-center justify-center text-slate-950 font-black">
+          <span class="material-symbols-outlined text-xl">hotel</span>
+        </div>
+        <span class="font-serif-display font-bold text-white text-lg">Hotel &amp; Suites Cortés</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <button id="glass-toggle-btn" onclick="toggleLiquidGlass()" class="px-3.5 py-2 rounded-xl bg-amber-400/15 hover:bg-amber-400/25 border border-amber-300/40 text-amber-200 font-bold text-xs transition-all">
+          <span>💎 Activar Liquid Glass</span>
+        </button>
+        <button onclick="sendWhatsApp()" class="hidden sm:flex px-4 py-2 rounded-xl bg-gradient-to-r from-amber-300 to-amber-500 text-slate-950 font-black text-xs items-center gap-1.5">
+          <span>Reservar Sin Comisiones</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-10 space-y-10">
+    <section class="grid lg:grid-cols-12 gap-8 items-center">
+      <div class="lg:col-span-6 space-y-5">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/15 border border-amber-300/30 text-amber-200 text-xs font-bold">
+          <span>AHORRA 25% VS BOOKING &amp; EXPEDIA • RESERVA DIRECTA</span>
+        </span>
+        <h1 class="font-serif-display text-4xl sm:text-5xl font-bold text-white leading-tight">
+          Concierge digital y <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-cyan-300">reservas directas</span> frente al mar.
+        </h1>
+        <p class="text-slate-300 text-base leading-relaxed">
+          Check-in anticipado, selección de suite con vista al Mar de Cortés y experiencias privadas como paseo en yate al atardecer o cena romántica en la playa.
+        </p>
+      </div>
+
+      <div class="lg:col-span-6 demo-card rounded-3xl p-6 space-y-5">
+        <div class="flex items-center justify-between border-b border-white/10 pb-3">
+          <div>
+            <h2 class="font-extrabold text-white text-lg">Reserva Directa + Concierge VIP</h2>
+            <p class="text-xs text-amber-300">Sin comisiones de intermediarios</p>
+          </div>
+          <span class="px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-300 text-xs font-bold">0% COMISIÓN</span>
+        </div>
+
+        <div class="space-y-4">
+          <div>
+            <label class="text-xs font-bold text-slate-300 block mb-1.5">Categoría de Suite</label>
+            <select id="suite-sel" onchange="calcHotel()" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950/80 border border-white/15 text-sm text-white">
+              <option value="2850">Junior Suite Vista Bahía ($2,850/noche)</option>
+              <option value="4400">Master Suite Mar de Cortés ($4,400/noche)</option>
+              <option value="6900">Villa Privada Frente al Mar ($6,900/noche)</option>
+            </select>
+          </div>
+
+          <div>
+            <div class="flex justify-between text-xs font-bold mb-1.5">
+              <span class="text-slate-300">Noches de Estancia:</span>
+              <span id="nights-label" class="text-amber-300 font-black">3 Noches</span>
+            </div>
+            <input id="nights-slider" type="range" min="1" max="10" step="1" value="3" oninput="calcHotel()" class="w-full accent-amber-400 cursor-pointer" />
+          </div>
+
+          <label class="flex items-center justify-between p-3 rounded-xl bg-slate-950/60 border border-white/10 cursor-pointer">
+            <span class="text-xs font-semibold text-slate-200">+ Paseo Privado en Yate al Atardecer (+$2,400 MXN)</span>
+            <input id="yacht-check" type="checkbox" onchange="calcHotel()" class="w-4 h-4 accent-amber-400" />
+          </label>
+
+          <div class="p-4 rounded-2xl bg-slate-950/80 border border-white/10 flex items-center justify-between">
+            <div>
+              <span class="text-xs text-slate-400 block">Total Estancia Directa</span>
+              <span id="hotel-total" class="text-2xl font-black text-emerald-400">$8,550 MXN</span>
+            </div>
+            <span class="text-xs font-bold text-amber-300 bg-amber-500/15 px-2.5 py-1 rounded-lg">Desayuno Incluido</span>
+          </div>
+        </div>
+
+        <button onclick="sendWhatsApp()" class="w-full py-3 rounded-xl bg-gradient-to-r from-amber-300 to-amber-500 text-slate-950 font-black text-sm flex items-center justify-center gap-2 shadow-lg hover:brightness-110 transition-all">
+          <span class="material-symbols-outlined text-lg">concierge</span>
+          <span>Confirmar Reserva VIP por WhatsApp</span>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10 py-8 text-center text-xs text-slate-400">
+    Demo interactiva desarrollada por <strong class="text-amber-300">HP Digital &amp; AI Agency</strong> • Guaymas, Sonora
+  </footer>
+
+  <script>
+    function calcHotel() {
+      const rate = Number(document.getElementById('suite-sel').value);
+      const nights = Number(document.getElementById('nights-slider').value);
+      const yacht = document.getElementById('yacht-check').checked ? 2400 : 0;
+      const total = rate * nights + yacht;
+      document.getElementById('nights-label').innerText = nights + (nights === 1 ? ' Noche' : ' Noches');
+      document.getElementById('hotel-total').innerText = '$' + total.toLocaleString('es-MX') + ' MXN';
+    }
+    function toggleLiquidGlass() {
+      const isGlass = document.body.classList.toggle('liquid-glass-mode');
+      document.getElementById('glass-toggle-btn').innerHTML = isGlass ? '<span>✨ Volver a Estilo Original</span>' : '<span>💎 Activar Liquid Glass</span>';
+    }
+    function sendWhatsApp() {
+      const suite = document.getElementById('suite-sel').options[document.getElementById('suite-sel').selectedIndex].text;
+      const nights = document.getElementById('nights-label').innerText;
+      const total = document.getElementById('hotel-total').innerText;
+      const msg = `¡Hola Miguel! Probé la app Concierge de Hotel & Suites Cortés (${suite}, ${nights}, ${total}) y quiero cotizar una app hotelera sin comisiones.`;
+      window.open(`https://wa.me/526222259974?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+  </script>
+</body>
+</html>

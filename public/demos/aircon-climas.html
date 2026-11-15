@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AirCon Pro Guaymas — Climatización Inverter &amp; Mantenimiento</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background: #040d18; color: #e0f2fe; font-family: 'Plus Jakarta Sans', sans-serif; transition: background 0.35s ease; }
+    .demo-card { background: rgba(8, 26, 46, 0.85); border: 1px solid rgba(56, 189, 248, 0.25); transition: all 0.35s ease; }
+    .header-nav { background: rgba(4, 13, 24, 0.9); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(56, 189, 248, 0.25); }
+    body.liquid-glass-mode { background: radial-gradient(circle at top right, #075985 0%, #030712 55%, #1e1b4b 100%) !important; }
+    body.liquid-glass-mode .demo-card {
+      background: rgba(12, 26, 48, 0.55) !important;
+      backdrop-filter: blur(22px) saturate(160%) !important;
+      border-color: rgba(103, 232, 249, 0.45) !important;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.14) !important;
+    }
+    body.liquid-glass-mode .header-nav {
+      background: rgba(8, 20, 38, 0.72) !important;
+      backdrop-filter: blur(24px) !important;
+      border-color: rgba(103, 232, 249, 0.35) !important;
+    }
+  </style>
+</head>
+<body class="min-h-screen antialiased">
+  <div class="fixed inset-0 pointer-events-none -z-10">
+    <div class="absolute -top-24 right-10 w-96 h-96 bg-sky-500/20 rounded-full blur-[130px]"></div>
+    <div class="absolute bottom-0 left-10 w-80 h-80 bg-cyan-500/15 rounded-full blur-[120px]"></div>
+  </div>
+
+  <header class="header-nav sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+      <div class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-sky-400 to-cyan-300 flex items-center justify-center text-slate-950 font-black">
+          <span class="material-symbols-outlined text-xl">ac_unit</span>
+        </div>
+        <span class="font-extrabold text-white text-base tracking-tight">AirCon Pro Guaymas</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <button id="glass-toggle-btn" onclick="toggleLiquidGlass()" class="px-3.5 py-2 rounded-xl bg-sky-500/15 hover:bg-sky-500/25 border border-sky-400/40 text-sky-200 font-bold text-xs transition-all">
+          <span>💎 Activar Liquid Glass</span>
+        </button>
+        <button onclick="sendWhatsApp()" class="hidden sm:flex px-4 py-2 rounded-xl bg-gradient-to-r from-sky-400 to-cyan-300 text-slate-950 font-black text-xs items-center gap-1.5">
+          <span>Agendar Técnico</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-10 space-y-10">
+    <section class="grid lg:grid-cols-12 gap-8 items-center">
+      <div class="lg:col-span-6 space-y-5">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/15 border border-sky-400/30 text-sky-300 text-xs font-bold">
+          <span>CLIMATIZACIÓN INVERTER PARA CALOR EXTREMO (45°C+)</span>
+        </span>
+        <h1 class="text-4xl sm:text-5xl font-black text-white leading-tight">
+          Calcula las <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-cyan-200">Toneladas BTU exactas</span> y agenda hoy mismo.
+        </h1>
+        <p class="text-slate-300 text-base leading-relaxed">
+          Instalación limpia con bomba de vacío, mantenimiento preventivo con hidrolavadora y venta de equipos Inverter SEER 20+ con garantía directa en Guaymas y San Carlos.
+        </p>
+      </div>
+
+      <div class="lg:col-span-6 demo-card rounded-3xl p-6 space-y-5">
+        <div class="flex items-center justify-between border-b border-white/10 pb-3">
+          <div>
+            <h2 class="font-extrabold text-white text-lg">Selector Inteligente de Tonelaje</h2>
+            <p class="text-xs text-sky-300">Ajustado a la carga térmica de Sonora</p>
+          </div>
+          <span class="px-2.5 py-1 rounded-full bg-cyan-500/15 text-cyan-300 text-xs font-bold">BTU CALC</span>
+        </div>
+
+        <div class="space-y-4">
+          <div>
+            <div class="flex justify-between text-xs font-bold mb-1.5">
+              <span class="text-slate-300">Área de la habitación o local:</span>
+              <span id="area-label" class="text-sky-300 font-black">24 m²</span>
+            </div>
+            <input id="area-slider" type="range" min="10" max="80" step="2" value="24" oninput="calcAir()" class="w-full accent-sky-400 cursor-pointer" />
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div class="p-4 rounded-2xl bg-slate-950/70 border border-white/10">
+              <span class="text-xs text-slate-400 block">Capacidad Sugerida</span>
+              <span id="ton-label" class="text-xl font-black text-white">1.5 Toneladas</span>
+              <span id="btu-label" class="text-[11px] text-sky-300 block">18,000 BTU Inverter</span>
+            </div>
+            <div class="p-4 rounded-2xl bg-slate-950/70 border border-white/10">
+              <span class="text-xs text-slate-400 block">Mantenimiento Express</span>
+              <span class="text-xl font-black text-emerald-400">$650 MXN</span>
+              <span class="text-[11px] text-emerald-300 block">Limpieza + Gas Check</span>
+            </div>
+          </div>
+        </div>
+
+        <button onclick="sendWhatsApp()" class="w-full py-3 rounded-xl bg-gradient-to-r from-sky-400 to-cyan-300 text-slate-950 font-black text-sm flex items-center justify-center gap-2 shadow-lg hover:brightness-110 transition-all">
+          <span class="material-symbols-outlined text-lg">ac_unit</span>
+          <span>Agendar Servicio por WhatsApp</span>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10 py-8 text-center text-xs text-slate-400">
+    Demo interactiva desarrollada por <strong class="text-sky-300">HP Digital &amp; AI Agency</strong> • Guaymas, Sonora
+  </footer>
+
+  <script>
+    function calcAir() {
+      const m2 = Number(document.getElementById('area-slider').value);
+      let ton = '1.0 Tonelada', btu = '12,000 BTU Inverter';
+      if (m2 > 18 && m2 <= 28) { ton = '1.5 Toneladas'; btu = '18,000 BTU Inverter'; }
+      else if (m2 > 28 && m2 <= 42) { ton = '2.0 Toneladas'; btu = '24,000 BTU Inverter'; }
+      else if (m2 > 42) { ton = '3.0 Toneladas'; btu = '36,000 BTU Piso/Techo'; }
+      document.getElementById('area-label').innerText = m2 + ' m²';
+      document.getElementById('ton-label').innerText = ton;
+      document.getElementById('btu-label').innerText = btu;
+    }
+    function toggleLiquidGlass() {
+      const isGlass = document.body.classList.toggle('liquid-glass-mode');
+      document.getElementById('glass-toggle-btn').innerHTML = isGlass ? '<span>✨ Volver a Estilo Original</span>' : '<span>💎 Activar Liquid Glass</span>';
+    }
+    function sendWhatsApp() {
+      const area = document.getElementById('area-label').innerText;
+      const ton = document.getElementById('ton-label').innerText;
+      const msg = `¡Hola Miguel! Probé la demo de AirCon Pro (${area} -> ${ton}) y quiero cotizar una web/calculadora para mi negocio.`;
+      window.open(`https://wa.me/526222259974?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+  </script>
+</body>
+</html>

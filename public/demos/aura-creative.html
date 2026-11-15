@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aura Creative — Estudio de Branding, Diseño UI/UX &amp; Marca</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background: #090614; color: #f5f3ff; font-family: 'Plus Jakarta Sans', sans-serif; transition: background 0.35s ease; }
+    .font-serif-display { font-family: 'Playfair Display', serif; }
+    .demo-card { background: rgba(20, 14, 38, 0.88); border: 1px solid rgba(167, 139, 250, 0.28); transition: all 0.35s ease; }
+    .header-nav { background: rgba(9, 6, 20, 0.9); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(167, 139, 250, 0.28); }
+    body.liquid-glass-mode { background: radial-gradient(circle at top right, #312e81 0%, #030712 55%, #0c4a6e 100%) !important; }
+    body.liquid-glass-mode .demo-card {
+      background: rgba(15, 23, 42, 0.56) !important;
+      backdrop-filter: blur(22px) saturate(160%) !important;
+      border-color: rgba(103, 232, 249, 0.45) !important;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.14) !important;
+    }
+    body.liquid-glass-mode .header-nav {
+      background: rgba(10, 18, 34, 0.72) !important;
+      backdrop-filter: blur(24px) !important;
+      border-color: rgba(103, 232, 249, 0.35) !important;
+    }
+  </style>
+</head>
+<body class="min-h-screen antialiased">
+  <div class="fixed inset-0 pointer-events-none -z-10">
+    <div class="absolute -top-24 right-10 w-96 h-96 bg-violet-600/20 rounded-full blur-[130px]"></div>
+    <div class="absolute bottom-0 left-10 w-80 h-80 bg-amber-400/15 rounded-full blur-[120px]"></div>
+  </div>
+
+  <header class="header-nav sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+      <div class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-violet-400 to-amber-300 flex items-center justify-center text-slate-950 font-black">
+          <span class="material-symbols-outlined text-xl">palette</span>
+        </div>
+        <span class="font-serif-display font-bold text-white text-lg">Aura Creative</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <button id="glass-toggle-btn" onclick="toggleLiquidGlass()" class="px-3.5 py-2 rounded-xl bg-violet-500/15 hover:bg-violet-500/25 border border-violet-400/40 text-violet-200 font-bold text-xs transition-all">
+          <span>💎 Activar Liquid Glass</span>
+        </button>
+        <button onclick="sendWhatsApp()" class="hidden sm:flex px-4 py-2 rounded-xl bg-gradient-to-r from-violet-400 to-amber-300 text-slate-950 font-black text-xs items-center gap-1.5">
+          <span>Iniciar Rebranding</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-10 space-y-10">
+    <section class="grid lg:grid-cols-12 gap-8 items-center">
+      <div class="lg:col-span-6 space-y-5">
+        <span class="inline-flex px-3 py-1 rounded-full bg-violet-500/15 border border-violet-400/30 text-violet-300 text-xs font-bold">IDENTIDAD VISUAL • UI/UX • MANUAL DE MARCA</span>
+        <h1 class="font-serif-display text-4xl sm:text-5xl font-bold text-white leading-tight">Marcas memorables con <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-300 to-amber-300">estética editorial</span>.</h1>
+        <p class="text-slate-300 text-base leading-relaxed">Arma tu paquete de identidad visual, sistema de diseño en Figma / Google Stitch y kit de lanzamiento para redes sociales.</p>
+      </div>
+
+      <div class="lg:col-span-6 demo-card rounded-3xl p-6 space-y-5">
+        <div class="flex items-center justify-between border-b border-white/10 pb-3">
+          <div>
+            <h2 class="font-extrabold text-white text-lg">Constructor de Paquete Branding</h2>
+            <p class="text-xs text-violet-300">Marca los entregables que necesita tu empresa</p>
+          </div>
+          <span class="px-2.5 py-1 rounded-full bg-violet-500/15 text-violet-300 text-xs font-bold">BRAND KIT</span>
+        </div>
+
+        <div class="space-y-2.5">
+          <label class="flex items-center justify-between p-3 rounded-xl bg-slate-950/60 border border-white/10 cursor-pointer">
+            <span class="text-xs font-semibold text-white">Logotipo + Paleta + Manual de Marca ($3,800)</span>
+            <input type="checkbox" checked value="3800" onchange="calcAura()" class="aura-opt w-4 h-4 accent-violet-400" />
+          </label>
+          <label class="flex items-center justify-between p-3 rounded-xl bg-slate-950/60 border border-white/10 cursor-pointer">
+            <span class="text-xs font-semibold text-white">Kit 15 Plantillas Redes Sociales ($2,200)</span>
+            <input type="checkbox" value="2200" onchange="calcAura()" class="aura-opt w-4 h-4 accent-violet-400" />
+          </label>
+          <label class="flex items-center justify-between p-3 rounded-xl bg-slate-950/60 border border-white/10 cursor-pointer">
+            <span class="text-xs font-semibold text-white">Landing Page Liquid Glass ($4,900)</span>
+            <input type="checkbox" value="4900" onchange="calcAura()" class="aura-opt w-4 h-4 accent-violet-400" />
+          </label>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-slate-950/80 border border-white/10 flex items-center justify-between">
+          <span class="text-sm font-bold text-slate-300">Inversión Total:</span>
+          <span id="aura-total" class="text-2xl font-black text-violet-300">$3,800 MXN</span>
+        </div>
+
+        <button onclick="sendWhatsApp()" class="w-full py-3 rounded-xl bg-gradient-to-r from-violet-400 to-amber-300 text-slate-950 font-black text-sm flex items-center justify-center gap-2 shadow-lg hover:brightness-110">
+          <span class="material-symbols-outlined text-lg">auto_awesome</span>
+          <span>Enviar Brief Creativo por WhatsApp</span>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10 py-8 text-center text-xs text-slate-400">
+    Demo interactiva desarrollada por <strong class="text-violet-300">HP Digital &amp; AI Agency</strong> • Guaymas, Sonora
+  </footer>
+
+  <script>
+    function calcAura() {
+      let sum = 0;
+      document.querySelectorAll('.aura-opt:checked').forEach(el => sum += Number(el.value));
+      document.getElementById('aura-total').innerText = '$' + sum.toLocaleString('es-MX') + ' MXN';
+    }
+    function toggleLiquidGlass() {
+      const isGlass = document.body.classList.toggle('liquid-glass-mode');
+      document.getElementById('glass-toggle-btn').innerHTML = isGlass ? '<span>✨ Volver a Estilo Original</span>' : '<span>💎 Activar Liquid Glass</span>';
+    }
+    function sendWhatsApp() {
+      const total = document.getElementById('aura-total').innerText;
+      const msg = `¡Hola Miguel! Probé Aura Creative (paquete ${total}) y quiero cotizar mi identidad de marca y sitio web.`;
+      window.open(`https://wa.me/526222259974?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+  </script>
+</body>
+</html>
