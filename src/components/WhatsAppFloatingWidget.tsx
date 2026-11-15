@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { MessageCircle, X, Wand2, Sparkles, ExternalLink } from 'lucide-react';
+import { MessageCircle, X, Sparkles, ExternalLink } from 'lucide-react';
 import { PROFILE_INFO } from '@/data/projects';
 
 export default function WhatsAppFloatingWidget() {
@@ -67,19 +67,6 @@ export default function WhatsAppFloatingWidget() {
                 <ExternalLink className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
               </a>
             ))}
-
-            <a
-              href={PROFILE_INFO.radarUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-3.5 py-2.5 rounded-xl bg-sky-500/15 border border-sky-400/40 text-xs font-bold text-sky-700 dark:text-sky-300 hover:bg-sky-500/25 transition-all flex items-center justify-between gap-2"
-            >
-              <span className="flex items-center gap-1.5">
-                <Wand2 className="w-3.5 h-3.5" />
-                Abrir Cotizador en Radar de Clientes
-              </span>
-              <ExternalLink className="w-3.5 h-3.5 shrink-0" />
-            </a>
           </div>
         </div>
       )}

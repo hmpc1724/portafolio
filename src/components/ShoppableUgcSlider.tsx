@@ -22,7 +22,6 @@ import {
 
 export const NICHE_STITCH_PROMPTS: Record<string, string> = {
   'artisan-market': 'Design a high-converting restaurant and seafood bistro landing page in "Liquid Glass" aesthetic for "Mariscos & Parrilla El Rey" in Guaymas, Sonora. Digital QR food menu, table order selector, dish cards with fresh coastal photography, spicy salsa selector, WhatsApp order integration, Google Maps location, opening hours and reviews. Translucent glassmorphism cards (backdrop-blur-xl), luminous amber and cyan accents, Plus Jakarta Sans typography.',
-  'radar-clientes': 'Design a B2B SaaS prospect radar and AI commercial audit platform in "Liquid Glass" obsidian neon aesthetic for "Radar de Clientes B2B". Google Gemini 2.5 Flash audit engine, interactive Google Maps radar scan, postal code and neighborhood filters in Sonora (85400 Centro, 85506 San Carlos), Kanban sales pipeline and WhatsApp proposal generator. Cyan and emerald luminous badges.',
   'pulse-metrics': 'Design a real-time SaaS business intelligence and branch performance dashboard in "Liquid Glass" neon aesthetic for "PulseMetrics Analytics". Interactive MRR revenue charts, timeframe toggles (day/week/month), growth simulation slider, Google Gemini AI predictive insights and executive PDF export. Indigo, cyan and amber neon glow.',
   'novapay-billing': 'Design an automated invoicing and payment portal in "Liquid Glass" fintech aesthetic for "NovaPay Billing Engine". Client RFC field, CFDI 4.0 concept selector, 16% IVA calculation, 50% deposit generator, official beneficiary HP Digital & AI Agency and WhatsApp payment proof submission. Emerald and cyan glassmorphism.',
   'la-olla-de-barro': 'Design a traditional home-style restaurant and dark kitchen daily menu website in "Liquid Glass" warm aesthetic for "La Olla de Barro" in Guaymas. 6-course daily menu at $129 MXN, steaming clay pot guisados selector, spiciness gauge, handmade tortillas option, kitchen comanda ticket generator and WhatsApp dispatch without 30% delivery fees. Warm terracotta, amber and obsidian glass.',
@@ -74,23 +73,6 @@ export const PORTFOLIO_DEMO_ITEMS: DemoSliderItem[] = [
     fullDemoUrl: '/demos/mariscos-el-rey.html',
     authorHandle: 'mariscos_el_rey_guaymas',
     videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-top-shot-of-a-table-with-food-and-hands-cutting-42475-large.mp4',
-    rating: 5.0,
-  },
-  {
-    id: 'radar-clientes',
-    slug: 'radar-clientes',
-    title: 'Radar de Clientes B2B & Auditoría IA',
-    nicheLabel: 'Prospección B2B & Inteligencia Artificial',
-    badge: '🏢 SaaS IA & Google Maps',
-    packageTier: 'Paquete Escalable / App IA',
-    priceMxn: '$14,900 MXN',
-    depositMxn: '$7,450 MXN (50% anticipo)',
-    description: 'Plataforma de prospección automatizada de comercios con IA Gemini, geolocalización Google Maps y pipeline de ventas.',
-    features: ['Auditoría con Gemini Flash en 0.4s', 'Filtro por Código Postal y Colonias', 'Pipeline Kanban con 4 fases', 'Despacho de propuestas a WhatsApp'],
-    svgPreview: '/images/projects/radar-clientes.svg',
-    fullDemoUrl: '/proyecto/radar-clientes?demo=live',
-    authorHandle: 'radar_clientes_b2b',
-    videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-software-developer-working-on-code-in-his-office-42795-large.mp4',
     rating: 5.0,
   },
   {
@@ -369,7 +351,6 @@ const SLIDER_CATEGORIES: Array<{ id: SliderCategory; label: string }> = [
 ];
 
 const SLUG_CATEGORY: Record<string, Exclude<SliderCategory, 'all'>> = {
-  'radar-clientes': 'saas',
   'pulse-metrics': 'saas',
   'novapay-billing': 'saas',
   'obramaestra-cad': 'saas',
@@ -390,9 +371,9 @@ const SLUG_CATEGORY: Record<string, Exclude<SliderCategory, 'all'>> = {
 
 export default function ShoppableUgcSlider({
   demos = PORTFOLIO_DEMO_ITEMS,
-  title = 'Portafolio Oficial: 17 Demos Interactivos en Carrusel 3D',
+  title = 'Portafolio Oficial: 16 Demos Interactivos en Carrusel 3D',
   subtitle = 'Explora cada desarrollo web funcional adaptado a los principales nichos comerciales de Sonora. Toca cualquier tarjeta para probar el demo o cotizar con anticipo del 50%.',
-  badgeText = '🚀 17 Demos Oficiales • Coverflow 3D Liquid Glass',
+  badgeText = '🚀 16 Demos Oficiales • Coverflow 3D Liquid Glass',
   phoneNumber = '526222259974',
   className = '',
 }: ShoppableUgcSliderProps) {

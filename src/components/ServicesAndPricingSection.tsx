@@ -170,16 +170,6 @@ export default function ServicesAndPricingSection() {
               Renovación Anual, Pólizas Mensuales e Iguala de Campañas
             </h3>
           </div>
-          <a
-            href={PROFILE_INFO.radarUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-xs font-bold px-3.5 py-2 rounded-xl bg-sky-500/15 border border-sky-400/30 text-sky-600 dark:text-sky-300 hover:bg-sky-500/25 transition-all w-fit"
-          >
-            <Wand2 className="w-3.5 h-3.5" />
-            <span>Abrir Laboratorio Conectado en Radar de Clientes</span>
-            <ExternalLink className="w-3 h-3" />
-          </a>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">

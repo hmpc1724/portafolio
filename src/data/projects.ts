@@ -17,37 +17,6 @@ export const CATEGORIES = [
 export const PROJECTS: Project[] = [
   // 🏢 NICHO 1: SAAS & IA
   {
-    id: 'proj-radar',
-    slug: 'radar-clientes',
-    title: 'Radar de Clientes B2B & Auditoría IA',
-    category: 'saas-ia',
-    categoryLabel: 'SaaS & IA',
-    nicheLabel: 'Prospección B2B & Inteligencia Artificial',
-    suggestedPackage: 'Paquete Escalable / App IA',
-    packagePrice: '$14,900 MXN',
-    description: 'Plataforma de prospección automatizada de comercios con IA Gemini, geolocalización Google Maps y pipeline de ventas.',
-    longDescription: 'Radar de Clientes B2B es una solución de inteligencia comercial diseñada para la captación automatizada de clientes locales en Sonora. Integra el SDK oficial de Google AI Studio (@google/genai) con Gemini 2.5 Flash para auditar la presencia web y SEO de los prospectos, visualización interactiva sobre Google Maps, pipeline Kanban de ventas y módulo de cobranza de anticipos del 50%. Cuenta con filtro segmentado por Códigos Postales y colonias de Guaymas y San Carlos.',
-    image: '/images/projects/radar-clientes.svg',
-    stack: ['React 19', 'TypeScript', 'Tailwind CSS 4', 'Google Gemini SDK', 'Google Maps API', 'Node.js Express'],
-    features: [
-      'Auditoría inteligente de sitios web y redes sociales con Google Gemini en 0.4s',
-      'Filtro de prospectos por Código Postal (85400 Centro, 85506 San Carlos, etc.)',
-      'Pipeline comercial Kanban con arrastre de prospectos en 4 fases de cierre',
-      'Facturación de anticipos (50%) y liquidaciones con control de pólizas recurrentes',
-      'Despacho de propuestas comerciales con 1 clic hacia WhatsApp'
-    ],
-    demoUrl: '/proyecto/radar-clientes?demo=live',
-    githubUrl: 'https://github.com/abrakza03-jpg',
-    clientGoal: 'Automatizar la búsqueda y calificación de prospectos locales multiplicando la captación comercial.',
-    metrics: [
-      { label: 'Prospección', value: '+140 Leads/h' },
-      { label: 'Tiempo Auditoría', value: '< 1s' },
-      { label: 'Precisión IA', value: '98.5%' }
-    ],
-    featured: true,
-    accentColor: '#0ea5e9'
-  },
-  {
     id: 'proj-pulse',
     slug: 'pulse-metrics',
     title: 'PulseMetrics SaaS Analytics',
@@ -656,10 +625,6 @@ export const PROFILE_INFO = {
   phoneTel: 'tel:+526222259974',
   whatsappUrl: 'https://wa.me/526222259974?text=Hola%20Hector,%20vi%20tu%20portafolio%20Liquid%20Glass%20y%20me%20gustar%C3%ADa%20ver%20un%20boceto%20en%20Stitch%20para%20mi%20negocio',
   cvUrl: '/cv-hector-palomares.pdf',
-  radarUrl:
-    typeof window !== 'undefined' && window.location.hostname === 'localhost'
-      ? 'http://localhost:3240'
-      : 'https://agencia-liquid-glass.agencia-liquid-glass.workers.dev',
   status: 'Disponible para nuevos proyectos',
   email: 'abrakza03@gmail.com',
   social: {
