@@ -798,26 +798,3 @@ export const OFFICIAL_RECURRING_PLANS = [
     description: 'Creación de anuncios, segmentación en tu ciudad y optimización continua de campañas (pauta publicitaria pagada directo a Meta/Google).'
   }
 ] as const;
-
-export const OFFICIAL_PAYMENT_CARDS = [
-  {
-    id: 'tarjeta_1',
-    alias: 'Tarjeta Oficial 1 (Principal)',
-    bankNetwork: 'BBVA / Visa Débito',
-    formattedNumber: '4152 3147 1472 5713',
-    cleanNumber: '4152314714725713',
-    holder: 'HP Digital & AI Agency',
-    gradient: 'from-sky-500 via-blue-600 to-indigo-600',
-    note: 'Depósito o transferencia inmediata a 16 dígitos (Anticipo 50% o Liquidación)'
-  },
-  {
-    id: 'tarjeta_2',
-    alias: 'Tarjeta Oficial 2 (Alterna)',
-    bankNetwork: 'Inbursa / Visa',
-    formattedNumber: '4658 2850 2069 2996',
-    cleanNumber: '4658285020692996',
-    holder: 'HP Digital & AI Agency',
-    gradient: 'from-emerald-500 via-teal-600 to-cyan-600',
-    note: 'Opción alterna activa 24/7 (Banco Inbursa) para transferencia a tarjeta o depósito directo'
-  }
-] as const;

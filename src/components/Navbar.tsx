@@ -30,9 +30,8 @@ export default function Navbar() {
 
   const navLinks = [
     { name: 'Inicio', href: '/#inicio' },
-    { name: 'Agencia', href: '/agencia' },
-    { name: 'Demos 3D', href: '/#demos-carrusel' },
-    { name: 'Proyectos', href: '/#proyectos' },
+    { name: 'Agencia', href: 'https://agencia-liquid-glass.agencia-liquid-glass.workers.dev' },
+    { name: 'Proyectos 3D', href: '/#demos-carrusel' },
     { name: 'Paquetes', href: '/#paquetes' },
     { name: 'Certificados', href: '/#certificados' },
     { name: 'Sobre mí', href: '/#sobre-mi' },

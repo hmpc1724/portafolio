@@ -463,6 +463,7 @@ export default function ShoppableUgcSlider({
 
   return (
     <section id="demos-carrusel" className={`w-full py-16 text-slate-100 relative overflow-hidden select-none ${className}`}>
+      <span id="proyectos" className="sr-only" aria-hidden="true" />
       {/* Luces Liquid Glass de fondo */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[400px] bg-gradient-to-tr from-cyan-500/10 via-indigo-500/15 to-rose-500/10 rounded-full blur-[120px] pointer-events-none" />
 
@@ -683,7 +684,7 @@ export default function ShoppableUgcSlider({
 
                 {/* BOTÓN PROMINENTE EN TARJETA CENTRAL */}
                 {isCenter && (
-                  <div className="relative z-20 px-3">
+                  <div className="relative z-20 px-3 space-y-1.5">
                     <button
                       type="button"
                       onClick={(e) => {
@@ -695,6 +696,14 @@ export default function ShoppableUgcSlider({
                       <Zap className="w-3.5 h-3.5 fill-slate-950 text-slate-950" />
                       <span>⚡ Probar Boceto & Demo</span>
                     </button>
+                    <Link
+                      href={`/proyecto/${demo.slug}`}
+                      onClick={(e) => e.stopPropagation()}
+                      className="w-full py-1.5 px-3 rounded-lg bg-slate-950/70 hover:bg-slate-900 border border-white/15 text-slate-200 hover:text-cyan-300 text-[11px] font-semibold flex items-center justify-center gap-1 backdrop-blur-md transition-colors"
+                    >
+                      <span>Ver ficha técnica</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </Link>
                   </div>
                 )}
 

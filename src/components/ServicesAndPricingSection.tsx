@@ -12,26 +12,17 @@ import {
   ShieldCheck,
   ExternalLink,
   CreditCard,
-  Copy,
-  Check,
 } from 'lucide-react';
 import {
   OFFICIAL_AGENCY_PACKAGES,
   OFFICIAL_RECURRING_PLANS,
-  OFFICIAL_PAYMENT_CARDS,
   PROFILE_INFO,
 } from '@/data/projects';
+import { StripePayButtons } from '@/components/StripePayButtons';
 
 export default function ServicesAndPricingSection() {
   const [selectedPkgId, setSelectedPkgId] = useState<string>('profesional');
   const [selectedRecurringId, setSelectedRecurringId] = useState<string>('crecimiento_seo');
-  const [copiedCardKey, setCopiedCardKey] = useState<string | null>(null);
-
-  const handleCopyCard = (text: string, key: string) => {
-    navigator.clipboard.writeText(text);
-    setCopiedCardKey(key);
-    setTimeout(() => setCopiedCardKey(null), 2500);
-  };
 
   const formatMxn = (val: number) =>
     new Intl.NumberFormat('es-MX', {
@@ -294,101 +285,25 @@ export default function ServicesAndPricingSection() {
         </div>
       </div>
 
-      {/* MODO DE PAGO OFICIAL — 2 TARJETAS DIRECTAS (ANTICIPO 50% O LIQUIDACIÓN) */}
-      <div id="modo-pago" className="mt-10 glass-panel-elevated p-6 sm:p-8 border border-sky-400/30">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-200/60 dark:border-white/10">
+      {/* MODO DE PAGO OFICIAL — STRIPE CHECKOUT (ANTICIPO 50% O LIQUIDACIÓN) */}
+      <div id="modo-pago" className="mt-10 glass-panel-elevated p-6 sm:p-8 border border-sky-400/30 space-y-6">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-slate-200/60 dark:border-white/10">
           <div className="space-y-1">
             <span className="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-sky-600 dark:text-sky-400">
               <CreditCard className="w-4 h-4" />
-              <span>Modo de Pago Oficial • Transferencia o Depósito a Tarjeta</span>
+              <span>Pago en Línea Seguro • Stripe</span>
             </span>
             <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white">
-              2 Tarjetas Oficiales para tu Anticipo del 50% o Liquidación
+              Paga tu Anticipo del 50% o Liquidación con Tarjeta
             </h3>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-2xl">
-              Una vez aprobado tu <strong>Boceto en Google Stitch y Demo en Vivo</strong>, realiza tu pago en cualquiera de nuestras <strong>2 tarjetas oficiales</strong> y envíanos el comprobante por WhatsApp:
+              Una vez aprobado tu <strong>Boceto en Google Stitch y Demo en Vivo</strong>, inicia o liquida el{' '}
+              <strong>{selectedPkg.name}</strong> ({formatMxn(selectedPkg.priceMxn)} MXN) de forma segura con Stripe.
             </p>
           </div>
-
-          <a
-            href={`https://wa.me/526222259974?text=${encodeURIComponent(
-              `Hola Miguel 👋, acabo de realizar el pago del Anticipo 50% (${formatMxn(
-                selectedPkg.depositMxn
-              )} MXN) para el *${selectedPkg.name}* (${formatMxn(
-                selectedPkg.priceMxn
-              )} MXN). Te comparto mi comprobante de transferencia:`
-            )}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-extrabold text-xs flex items-center gap-2 shadow-md transition-all shrink-0 w-fit"
-          >
-            <MessageCircle className="w-4 h-4" />
-            <span>Enviar Comprobante por WhatsApp</span>
-          </a>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-          {OFFICIAL_PAYMENT_CARDS.map((card, idx) => (
-            <div
-              key={card.id}
-              className="glass-panel p-5 sm:p-6 rounded-2xl border border-slate-200/70 dark:border-white/15 relative overflow-hidden flex flex-col justify-between gap-4"
-            >
-              <div className="flex items-center justify-between gap-2">
-                <div className="flex items-center gap-2">
-                  <span
-                    className={`px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-gradient-to-r ${card.gradient} text-white shadow-xs`}
-                  >
-                    Opción {idx + 1}
-                  </span>
-                  <span className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">
-                    {card.alias}
-                  </span>
-                </div>
-                <span className="glass-pill text-[11px] font-mono font-bold text-sky-600 dark:text-sky-300 py-0.5 px-2.5">
-                  {card.bankNetwork}
-                </span>
-              </div>
-
-              <div className="p-4 rounded-xl bg-slate-900/95 text-white border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <div>
-                  <div className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">
-                    Número de Tarjeta (16 dígitos)
-                  </div>
-                  <div className="text-lg sm:text-2xl font-black font-mono tracking-wider text-white mt-0.5 select-all">
-                    {card.formattedNumber}
-                  </div>
-                </div>
-
-                <button
-                  type="button"
-                  onClick={() => handleCopyCard(card.cleanNumber, card.id)}
-                  className="px-3.5 py-2 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-600 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-md hover:opacity-95 transition-all shrink-0"
-                >
-                  {copiedCardKey === card.id ? (
-                    <>
-                      <Check className="w-3.5 h-3.5 text-emerald-300" />
-                      <span>¡Copiado!</span>
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="w-3.5 h-3.5" />
-                      <span>Copiar 16 dígitos</span>
-                    </>
-                  )}
-                </button>
-              </div>
-
-              <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-600 dark:text-slate-300">
-                <span>
-                  Beneficiario: <strong className="text-slate-900 dark:text-white">{card.holder}</strong>
-                </span>
-                <span className="font-semibold text-emerald-600 dark:text-emerald-400">
-                  Anticipo {selectedPkg.name}: {formatMxn(selectedPkg.depositMxn)} MXN
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
+        <StripePayButtons tierId={selectedPkg.id} />
       </div>
     </section>
   );
