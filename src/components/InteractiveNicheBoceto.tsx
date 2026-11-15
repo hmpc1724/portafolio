@@ -162,6 +162,40 @@ export default function InteractiveNicheBoceto({
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(msg)}`, '_blank');
   };
 
+  const DEMO_URLS: Record<string, string> = {
+    'artisan-market': '/demos/mariscos-el-rey.html',
+    'la-olla-de-barro': '/demos/la-olla-de-barro.html',
+    'pulse-metrics': '/demos/pulse-metrics.html',
+    'novapay-billing': '/demos/novapay-billing.html',
+    'dentcare-clinica': '/demos/dentcare-clinica.html',
+    'obramaestra-cad': '/demos/obramaestra-cad.html',
+    'aircon-climas': '/demos/aircon-climas.html',
+    'zenith-architects': '/demos/zenith-architects.html',
+    'luxury-hotel-guest-app': '/demos/luxury-hotel-guest-app.html',
+    'limpiapro-servicios': '/demos/limpiapro-servicios.html',
+    'lumina-store': '/demos/lumina-store.html',
+    'solartec-energia': '/demos/solartec-energia.html',
+    'cinevault-v3': '/demos/cinevault-v3.html',
+    'kroma-visuals': '/demos/kroma-visuals.html',
+    'studio-veloce': '/demos/studio-veloce.html',
+    'aura-creative': '/demos/aura-creative.html',
+  };
+
+  const CUSTOM_MODE_SLUGS = new Set([
+    'artisan-market',
+    'la-olla-de-barro',
+    'dentcare-clinica',
+    'obramaestra-cad',
+    'aircon-climas',
+    'luxury-hotel-guest-app',
+    'limpiapro-servicios',
+    'solartec-energia',
+    'cinevault-v3',
+  ]);
+
+  const demoUrl = DEMO_URLS[slug];
+
+  const renderSlugBody = () => {
   /* ========================================================
      1. ARTISAN MARKET (Restaurantes, Cafeterías & Gastronomía)
      ======================================================== */
@@ -2610,6 +2644,90 @@ Total: $129 MXN`)}
     <div className="p-4 rounded-2xl bg-slate-900 border border-white/10 text-center text-slate-300 text-xs">
       <Sparkles className="w-6 h-6 text-cyan-400 mx-auto mb-2" />
       <span>Boceto interactivo cargado con éxito.</span>
+    </div>
+  );
+  };
+
+  const isCustomMode = CUSTOM_MODE_SLUGS.has(slug);
+  const isBoceto = visualMode === 'boceto';
+
+  if (isCustomMode) {
+    return (
+      <div className="space-y-2.5">
+        {demoUrl && (
+          <div className="flex flex-wrap items-center justify-between gap-2 px-3 py-2 rounded-xl bg-white/[0.04] border border-white/10 text-[11px]">
+            <span className="font-mono font-bold text-cyan-300">
+              {isBoceto ? '✏️ MODO BOCETO WIREFRAME (GOOGLE STITCH)' : '💎 MODO LIQUID GLASS (ALTA FIDELIDAD)'}
+            </span>
+            <a
+              href={demoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-1 rounded-lg bg-gradient-to-r from-cyan-400 to-indigo-500 text-slate-950 font-black text-[11px] flex items-center gap-1 shadow-md hover:brightness-110 transition-all"
+            >
+              <span>Abrir Demo Web Completa</span>
+              <ExternalLink className="w-3 h-3" />
+            </a>
+          </div>
+        )}
+        {renderSlugBody()}
+      </div>
+    );
+  }
+
+  if (isBoceto) {
+    return (
+      <div className="p-3 sm:p-5 rounded-2xl bg-[#09111e] text-slate-100 border-2 border-dashed border-sky-400/50 font-mono text-xs sm:text-sm space-y-3 shadow-2xl relative overflow-hidden bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px]">
+        <div className="flex flex-wrap items-center justify-between gap-2 pb-2.5 border-b border-sky-400/30 text-[10px] text-sky-400">
+          <div className="flex items-center gap-1.5 font-bold">
+            <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse" />
+            <span>[BOCETO ARQUITECTÓNICO WIREFRAME • {slug.toUpperCase()}]</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <span className="text-slate-400 hidden sm:inline">SPEC: GOOGLE_STITCH_V1 • 12_COL_GRID</span>
+            {demoUrl && (
+              <a
+                href={demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-amber-300 hover:text-white underline font-bold flex items-center gap-1"
+              >
+                <span>Ver Landing Web Completa</span>
+                <ExternalLink className="w-3 h-3" />
+              </a>
+            )}
+          </div>
+        </div>
+        <div className="[&>div]:!bg-sky-950/35 [&>div]:!border-dashed [&>div]:!border-sky-400/30 [&_*]:font-mono">
+          {renderSlugBody()}
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="p-3 sm:p-5 rounded-2xl bg-[#0c141e]/95 text-slate-100 border border-cyan-400/40 text-xs sm:text-sm space-y-3 shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_35px_rgba(6,182,212,0.25)] backdrop-blur-2xl ring-1 ring-white/10 relative overflow-hidden">
+      <div className="absolute -top-10 -left-10 w-40 h-40 bg-cyan-500/15 rounded-full blur-[50px] pointer-events-none" />
+      <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-indigo-500/15 rounded-full blur-[50px] pointer-events-none" />
+      {demoUrl && (
+        <div className="flex flex-wrap items-center justify-between gap-2 pb-2.5 border-b border-white/10 relative z-10 text-[11px]">
+          <span className="px-2.5 py-0.5 rounded-full bg-cyan-500/15 text-cyan-300 border border-cyan-400/40 text-[10px] font-extrabold uppercase">
+            💎 Liquid Glass • Alta Fidelidad
+          </span>
+          <a
+            href={demoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-3 py-1 rounded-lg bg-gradient-to-r from-cyan-400 to-indigo-500 text-slate-950 font-black text-[11px] flex items-center gap-1 shadow-md hover:brightness-110 transition-all"
+          >
+            <span>Ver Web Completa</span>
+            <ExternalLink className="w-3 h-3" />
+          </a>
+        </div>
+      )}
+      <div className="relative z-10 [&>div]:!bg-transparent [&>div]:!border-0 [&>div]:!p-0">
+        {renderSlugBody()}
+      </div>
     </div>
   );
 }
