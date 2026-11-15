@@ -22,6 +22,12 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   return {
     title: `${project.title} — ${PROFILE_INFO.name}`,
     description: project.description,
+    alternates: { canonical: `/proyecto/${slug}` },
+    openGraph: {
+      title: `${project.title} — ${PROFILE_INFO.name}`,
+      description: project.description,
+      images: [{ url: project.image, alt: project.title }],
+    },
   };
 }
 

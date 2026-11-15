@@ -38,7 +38,7 @@ export async function POST(req: Request) {
       date: new Date().toISOString(),
     };
 
-    // Persist locally in data/contact-submissions.json so no lead is ever lost
+    // Persist locally in data/contact-submissions.json when running on Node/local
     try {
       const dataDir = path.join(process.cwd(), 'data');
       await fs.mkdir(dataDir, { recursive: true });
@@ -52,11 +52,42 @@ export async function POST(req: Request) {
       }
       existing.unshift(safeData);
       await fs.writeFile(filePath, JSON.stringify(existing, null, 2), 'utf-8');
-    } catch (err) {
-      console.warn('[CONTACT FORM] Could not persist to disk:', err);
+    } catch {
+      // Cloudflare Workers no tiene sistema de archivos persistente
     }
 
-    console.log('[CONTACT FORM] New message received & persisted:', safeData);
+    // Enviar aviso por correo con Resend si está configurado en Cloudflare Secrets / .env
+    const resendKey = process.env.RESEND_API_KEY;
+    const toEmail = process.env.LEADS_TO_EMAIL;
+    const fromEmail = process.env.LEADS_FROM_EMAIL || 'Portafolio Liquid Glass <onboarding@resend.dev>';
+    if (resendKey && toEmail) {
+      const esc = (s: string) =>
+        s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      const html = `<h2>Nuevo contacto desde tu Portafolio</h2>
+<p><b>Nombre:</b> ${esc(safeData.name)}</p>
+<p><b>Email:</b> ${esc(safeData.email)}</p>
+<p><b>Paquete de interés:</b> ${esc(safeData.packageInterest)}</p>
+<p><b>Mensaje:</b></p><pre style="white-space:pre-wrap;font-family:sans-serif">${esc(safeData.message)}</pre>`;
+      const text = `Nuevo contacto desde tu Portafolio\nNombre: ${safeData.name}\nEmail: ${safeData.email}\nPaquete: ${safeData.packageInterest}\nMensaje:\n${safeData.message}`;
+
+      const r = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${resendKey}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          from: fromEmail,
+          to: [toEmail],
+          reply_to: safeData.email,
+          subject: `Portafolio: ${safeData.name} (${safeData.packageInterest})`,
+          html,
+          text,
+        }),
+      });
+      if (!r.ok) {
+        console.error('[CONTACT FORM] Resend respondió', r.status);
+      }
+    }
+
+    console.log('[CONTACT FORM] New message received:', safeData.id);
 
     return NextResponse.json<ApiResponse>(
       {
