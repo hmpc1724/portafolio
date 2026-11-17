@@ -49,7 +49,7 @@ export async function POST(req: Request) {
     form.set('line_items[0][price_data][product_data][name]', `${label} — Plan ${p.nombre}`);
     form.set(
       'line_items[0][price_data][product_data][description]',
-      `Liquid Glass Digital & AI Agency${business ? ` · ${business}` : ''}`
+      `HP Digital & AI Agency${business ? ` · ${business}` : ''}`
     );
     form.set('payment_intent_data[description]', `${label} Plan ${p.nombre}${business ? ` — ${business}` : ''}`);
     form.set('metadata[tier]', tier);
