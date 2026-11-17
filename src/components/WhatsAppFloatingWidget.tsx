@@ -20,6 +20,10 @@ export default function WhatsAppFloatingWidget() {
       label: '🤖 Cotizar Plan Escalable + Agente IA ($14,900 MXN)',
       url: 'https://wa.me/526222259974?text=Hola%20Hector%20%F0%9F%91%8B,%20me%20interesa%20el%20Plan%20Escalable%20con%20Agente%20de%20IA%2024/7%20($14,900%20MXN)',
     },
+    {
+      label: '💳 Pedir CLABE / tarjeta o resolver dudas',
+      url: 'https://wa.me/526222259974?text=Hola%20%F0%9F%91%8B,%20me%20pasas%20la%20CLABE%20o%20n%C3%BAmero%20de%20tarjeta%20para%20transferir,%20o%20tengo%20una%20duda%20sobre%20los%20paquetes',
+    },
   ];
 
   return (

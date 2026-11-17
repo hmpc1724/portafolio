@@ -51,9 +51,10 @@ export function StripePayButtons({ tierId, businessName }: Props) {
     }
   };
 
+  const waBaseUrl = PROFILE_INFO.whatsappUrl.split('?')[0];
   const waText = `Hola 👋, quiero pagar el ${pkg.name} (${mxn(pkg.priceMxn)} MXN)${
     businessName ? ` para ${businessName}` : ''
-  }. ¿Me ayudas con el pago?`;
+  }. ¿Me pasas la CLABE / número de tarjeta o me ayudas con unas dudas?`;
 
   return (
     <div className="space-y-4">
@@ -95,13 +96,13 @@ export function StripePayButtons({ tierId, businessName }: Props) {
           Pago procesado por Stripe. Nunca vemos ni guardamos los datos de tu tarjeta.
         </span>
         <a
-          href={`${PROFILE_INFO.whatsappUrl}?text=${encodeURIComponent(waText)}`}
+          href={`${waBaseUrl}?text=${encodeURIComponent(waText)}`}
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-1.5 font-bold text-emerald-600 dark:text-emerald-300 hover:underline"
         >
           <Phone className="w-3.5 h-3.5" />
-          ¿Prefieres transferencia? Pide los datos por WhatsApp
+          ¿Prefieres CLABE / tarjeta o tienes dudas? Escríbeme por WhatsApp
         </a>
       </div>
     </div>
