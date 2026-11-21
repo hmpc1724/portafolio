@@ -43,7 +43,7 @@ export default function LiquidBackground() {
 
       {/* Subtle Iridescent Glass Mesh Grid Overlay */}
       <div
-        className="absolute inset-0 opacity-[0.03] dark:opacity-[0.06] bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px]"
+        className="absolute inset-0 opacity-[0.045] dark:opacity-[0.06] bg-[radial-gradient(#0f172a_1px,transparent_1px)] dark:bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px]"
       />
     </div>
   );
