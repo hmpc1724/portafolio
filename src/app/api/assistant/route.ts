@@ -6,7 +6,7 @@ interface ChatMessage {
 }
 
 const SYSTEM_PROMPT = `Eres el Asistente IA 24/7 oficial de **HP Digital & AI Agency** (Guaymas, San Carlos y Sonora, México; también atendemos todo México).
-Tu trabajo es atender a clientes potenciales cuando Miguel no puede responder en WhatsApp: resolver dudas, cotizar, dar datos para transferir (CLABE o tarjeta), explicar cómo funciona el boceto/demo gratis y guiarlos al pago con tarjeta en Stripe.
+Tu trabajo es atender a clientes potenciales cuando Miguel no puede responder en WhatsApp: resolver dudas, cotizar, explicar cómo funciona el boceto/demo gratis, guiarlos al pago con tarjeta en Stripe o indicarles cómo pedir los datos de transferencia SPEI por WhatsApp.
 
 Datos oficiales que SIEMPRE debes respetar (no inventes precios ni datos):
 - Marca: HP Digital & AI Agency (Titular: Héctor Miguel Palomares).
@@ -14,9 +14,9 @@ Datos oficiales que SIEMPRE debes respetar (no inventes precios ni datos):
 - Sitio oficial: https://portafolio.agencia-liquid-glass.workers.dev
 
 Catálogo oficial de paquetes (MXN):
-1. Paquete Esencial: $4,900 MXN (Anticipo 50%: $2,450 MXN). Landing Page Liquid Glass de alta conversión (4 secciones) + 1.er año de Hosting y Dominio incluido + botón WhatsApp. Entrega estimada: 5 a 7 días hábiles.
-2. Paquete Profesional: $8,900 MXN (Anticipo 50%: $4,450 MXN). Sitio Web Comercial Completo (6 vistas) + Agenda/Pedidos por WhatsApp + SEO Local en Google Maps + 1.er año Hosting/Dominio gratis. Entrega estimada: 7 a 14 días hábiles.
-3. Paquete Escalable / App IA: $14,900 MXN (Anticipo 50%: $7,450 MXN). Ecosistema Web + Aplicación Web/Móvil (PWA) autoadministrable + Agente IA 24/7 con Google Gemini. Entrega estimada: 14 a 21 días hábiles.
+1. Paquete Esencial: $4,900 MXN (Anticipo 50%: $2,450 MXN). Landing Page Liquid Glass de alta conversión (4 secciones) + 1.er año de Hosting y Dominio incluido + botón WhatsApp. Entrega estimada: 3 a 5 días.
+2. Paquete Profesional: $8,900 MXN (Anticipo 50%: $4,450 MXN). Sitio Web Comercial Completo (6 vistas) + Agenda/Pedidos por WhatsApp + SEO Local en Google Maps + 1.er año Hosting/Dominio gratis. Entrega estimada: 5 a 7 días.
+3. Paquete Escalable / App IA: $14,900 MXN (Anticipo 50%: $7,450 MXN). Ecosistema Web + Aplicación Web/Móvil (PWA) autoadministrable + Agente IA 24/7 con Google Gemini. Entrega estimada: 7 a 10 días.
 
 Pólizas recurrentes (opcionales):
 - Renovación Anual Básica (a partir del 2.º año; 1.er año gratis): $1,950 MXN/año.
@@ -26,10 +26,7 @@ Pólizas recurrentes (opcionales):
 
 Métodos de pago:
 - Pago con tarjeta (crédito/débito) en línea seguro con Stripe en la sección #modo-pago de esta página (anticipo 50% o liquidación).
-- Transferencia SPEI / depósito BBVA a nombre de Héctor Miguel Palomares:
-  • CLABE interbancaria: 012180015255287461
-  • Tarjeta BBVA (para depósito en practicaja/OXXO): 4152 3147 1472 5313
-  • Al transferir, pedir que envíen su comprobante por WhatsApp (+52 622 225 9974).
+- Transferencia SPEI / depósito: por seguridad, los datos bancarios (CLABE o cuenta) se envían únicamente de forma directa en el chat privado de WhatsApp (+52 622 225 9974). Al transferir, pedir que envíen su comprobante por WhatsApp.
 
 Flujo comercial (3 pasos):
 1. Boceto visual gratis en Google Stitch adaptado a su giro.
@@ -44,10 +41,8 @@ function fallbackReply(lastUserText: string): string {
   const q = lastUserText.toLowerCase();
   if (/clabe|transfer|banco|bbva|cuenta|deposito|depósito|tarjeta.*4152|oxxo/.test(q)) {
     return [
-      'Aquí tienes los datos para transferencia o depósito en **BBVA** (HP Digital & AI Agency):',
-      '• **CLABE:** `012180015255287461`',
-      '• **Tarjeta BBVA:** `4152 3147 1472 5313`',
-      'Si prefieres pagar con tarjeta de crédito/débito en línea, usa la sección **Modo de Pago (Stripe)** de esta página, o envíanos tu comprobante por WhatsApp (+52 622 225 9974).',
+      'Puedes pagar al instante con tarjeta en la sección **Modo de Pago (Stripe)** de esta página.',
+      'Si prefieres **transferencia SPEI o depósito**, por seguridad te compartimos la CLABE o cuenta directamente por **WhatsApp (+52 622 225 9974)**.',
     ].join('\n');
   }
   if (/stripe|pagar con tarjeta|link de pago|anticipo|liquidaci/.test(q)) {
@@ -70,7 +65,7 @@ function fallbackReply(lastUserText: string): string {
       '• **Escalable + IA ($14,900 MXN):** Web + App PWA + Agente IA 24/7. Anticipo: $7,450.',
     ].join('\n');
   }
-  return '¡Hola! Soy el Asistente IA de **HP Digital & AI Agency**. Puedo ayudarte con **precios y paquetes**, enviarte la **CLABE / tarjeta BBVA** o enlace de **pago con Stripe**, o tomar tus datos para un **boceto gratis**. ¿Qué necesitas?';
+  return '¡Hola! Soy el Asistente IA de **HP Digital & AI Agency**. Puedo ayudarte con **precios y paquetes**, enviarte el enlace de **pago con Stripe** o indicarte cómo pedir datos SPEI por **WhatsApp**, y tomar tus datos para un **boceto gratis**. ¿Qué necesitas?';
 }
 
 export async function POST(req: Request) {

@@ -635,7 +635,7 @@ export const PROFILE_INFO = {
   },
   stats: [
     { value: '100+', label: 'Soluciones comerciales por nicho' },
-    { value: '14', label: 'Demos interactivos por nicho' },
+    { value: '16', label: 'Demos interactivos por nicho' },
     { value: '5', label: 'Certificaciones profesionales' },
     { value: '97+', label: 'Horas de formación certificada' }
   ],
